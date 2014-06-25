@@ -9,7 +9,13 @@
 #include <iostream>
 using namespace std;
 
-//Program Exucution Starts Here
+//User-defined Libraries
+
+//Global Constants
+
+//Function Prototypes
+
+//Execution begins
 int main(int argc, char** argv) {
     
     //Display Simple Text
