@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     ecrev = revp * rev;
 
     //Display simple text
-    cout<<"The east coast division generates $"<<ecrev<<" of the total $"<<rev<<" revenue this year."<<endl;
+    cout<<"The east coast division generated $"<<ecrev<<" of the total $"<<rev<<" revenue this year."<<endl;
 
     //End Program
     return 0;
