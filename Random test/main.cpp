@@ -27,12 +27,11 @@ int main(int argc, char** argv) {
     srand(seed);
     
     //Calculations
-    v = rand() % 20;
-    w = v + 6;
-    x = rand() % 20;
-    y = rand() % 4;
-    z = rand() % 4;
-    u = rand() % 6;
+    v = 1 + rand() % 20;
+    x = 1 + rand() % 20;
+    y = 2 + rand() % 4;
+    z = 2 + rand() % 4;
+    u = 2 + rand() % 6;
         
     //Inputs
     cout << "What is the AC of the creature you are attacking? ";
@@ -47,29 +46,14 @@ int main(int argc, char** argv) {
     cin>>snk;
     cin.ignore();
     
-    //Fix zeroes for % calculations
-    hit = ac - atBonus;
-    if (v == 0) {
-        v = 20;
-    }
-    if (x == 0) {
-        x = 20;
-    }
-    if (y == 0) {
-        y = 4;
-    }
-    if (z == 0) {
-        z = 4;
-    }
-    if (u ==0) {
-        u = 6;
-    }
-    
 //Calculate damages
     critNrm = y + z;
     critSnk = y + z + u;
     dmg = y;
     dmgSnk = y + u;
+    
+//Calculate hit
+    hit = ac - atBonus;
     
 //Successful hit
     if (v >= hit) {
@@ -79,13 +63,13 @@ int main(int argc, char** argv) {
 
         //Sneak attack
                 if (snk = 'y') {
-                    cout << "You deal " << critSnk << " critical damage!" << endl;
+                    cout << "You deal " << critSnk << " CRITICAL damage!" << endl;
                 }
         //Normal attack
                 else {
-                    cout << "You deal " << critNrm << " critical damage!" << endl;
+                    cout << "You deal " << critNrm << " CRITICAL damage!" << endl;
                 }
-        }
+            }
         }
     //Non-critical
         if (v < 19) {
