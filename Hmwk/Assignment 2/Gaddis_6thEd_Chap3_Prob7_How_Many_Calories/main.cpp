@@ -33,7 +33,10 @@ int main(int argc, char** argv) {
     cal = (cook / serv) * calPer;
     
     //Output data
-    cout << "You consumed " << cal << " calories." << endl;
+    if (cal >= 1000)
+        cout << "You consumed " << cal << " calories, you fattie!!" << endl;
+    else
+        cout << "You consumed " << cal << " calories." << endl;
 
     //Finish him!!
     return 0;
