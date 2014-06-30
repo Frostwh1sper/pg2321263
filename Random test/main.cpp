@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     cin.ignore();
     
     cout << "Is this a sneak attack? (y/n) " ;
-    cin>>snk;
+    cin >> snk;
     cin.ignore();
     
 //Calculate damages
