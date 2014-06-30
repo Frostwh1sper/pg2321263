@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=TruthTable
+PROJECTNAME=Gaddis_6thEd_Chap3_Prob15_Math_Tutor
 
 # Active Configuration
 DEFAULTCONF=Debug
