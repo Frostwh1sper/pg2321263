@@ -13,13 +13,14 @@
 using namespace std;
 
 //Global Constants
+const int SIZE = 20;
 
 //Function Prototypes
+
 int main(int argc, char** argv) {
 
     //Declare and initialize variables
-    const int SIZE = 20;
-    char name1[SIZE], name2[SIZE], name3[SIZE];
+    char name1[SIZE], name2[SIZE], name3[SIZE]; //Three names
     
     //Request name input
     cout << "Enter three different first names:" << endl;
@@ -42,12 +43,9 @@ int main(int argc, char** argv) {
         {
             cout << name3 << endl << name1 << endl << name2;
         }
-        if (strcmp(name1,name3)<0)
+        if ((strcmp(name1,name3)<0) && (strcmp(name3,name2)<0))
         {
-            if (strcmp(name3,name2)<0)
-            {
-                cout << name1 << endl << name3 << endl << name2;
-            }
+            cout << name1 << endl << name3 << endl << name2;
         }
     }
     if (strcmp(name2,name1)<0)
@@ -60,12 +58,9 @@ int main(int argc, char** argv) {
         {
             cout << name3 << endl << name2 << endl << name1;
         }
-        if (strcmp(name2,name3)<0)
+        if ((strcmp(name2,name3))<0 && (strcmp(name3,name1)<0))
         {
-            if (strcmp(name3,name1)<0)
-            {
-                cout << name2 << endl << name3 << endl << name1;
-            }
+            cout << name2 << endl << name3 << endl << name1;
         }
     }
     
