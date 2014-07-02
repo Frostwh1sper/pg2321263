@@ -39,20 +39,21 @@ int main(int argc, char** argv) {
     profit = value - cost - buyComm - selComm;
     
     //Output information
-    cout << "Purchase transaction" << endl;
-    cout << setw(25) << "Price per share:" << setw(2) << buyShar << endl;
-    cout << setw(25) << "Shares purchased:" << setw(2) << numShar << endl;
-    cout << setw(25) << "Subtotal:" << setw(2) << cost << endl;
-    cout << setw(25) << "Commission on sale:" << setw(2) << buyComm << endl;
-    cout << setw(25) << "Total:" << setw(2) << cost + buyComm << endl;
+    cout << setprecision(2) << fixed;
+    cout << setw(25) << "Purchase transaction" << endl;
+    cout << setw(25) << "Price per share:" << setw(3) << "$" << setw(10) << buyShar << endl;
+    cout << setw(25) << "Shares purchased:" << setw(3) << " " << setw(10) << numShar << endl;
+    cout << setw(25) << "Subtotal:" << setw(3) << "$" << setw(10) << cost << endl;
+    cout << setw(25) << "Commission on sale:" << setw(3) << "$" << setw(10) << buyComm << endl;
+    cout << setw(25) << "Total:" << setw(3) << "$" << setw(10) << cost + buyComm << endl;
     cout << endl;
-    cout << "Sell transaction" << endl;
-    cout << setw(25) << "Price per share:" << setw(2) << buyShar << endl;
-    cout << setw(25) << "Shares purchased:" << setw(2) << numShar << endl;
-    cout << setw(25) << "Subtotal:" << setw(2) << cost << endl;
-    cout << setw(25) << "Commission on sale:" << setw(2) << buyComm << endl;
-    cout << setw(25) << "Total:" << setw(2) << cost + buyComm << endl;
-    cout << endl;
+    cout << setw(25) << "Sell transaction" << endl;
+    cout << setw(25) << "Price per share:" << setw(3) << "$" << setw(10) << buyShar << endl;
+    cout << setw(25) << "Shares purchased:" << setw(3) << " " << setw(10) << numShar << endl;
+    cout << setw(25) << "Subtotal:" << setw(3) << "$" << setw(10) << cost << endl;
+    cout << setw(25) << "Commission on sale:" << setw(3) << "-$" << setw(10) << selComm << endl;
+    cout << setw(25) << "Total:" << setw(3) << "$" << setw(10) << value - selComm << endl << endl;
+    cout << setw(25) << "Profit:" << setw(3) << "$" << setw(10) << profit << endl;
     
     //Finish him!!
     return 0;
