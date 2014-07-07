@@ -28,17 +28,17 @@ int main(int argc, char** argv) {
     bool loop=true;
     do{
         //Menu Options
-        cout << "Homework Assignment #3 Menu:" << endl;
-        cout << "Type 1 for the Minimum/Maximum problem." << endl;
-        cout << "Type 2 for the Roman Numeral Converter." << endl;
-        cout << "Type 3 to calculate your Body Mass Index (BMI)." << endl;
-        cout << "Type 4 for the Time Calculator." << endl;
-        cout << "Type 5 to Sort Names." << endl;
-        cout << "Type 6 for the Math Tutor." << endl;
-        cout << "Type 7 for The Speed of Sound problem." << endl;
-        cout << "Type 8 for the Freezing and Boiling Points problem." << endl;
-        cout << "Type 9 to calculate the cost of Long Distance Calls." << endl;
-        cout << "Type 10 to calculate the bill from an Internet Service Provider." << endl;
+        cout << "Homework Assignment #3 Menu:" << endl;                                     //Menu header
+        cout << "Type 1 for the Minimum/Maximum problem." << endl;                          //Gaddis 6thEd Chap4 Prob1
+        cout << "Type 2 for the Roman Numeral Converter." << endl;                          //Gaddis 6thEd Chap4 Prob2
+        cout << "Type 3 to calculate your Body Mass Index (BMI)." << endl;                  //Gaddis 6thEd Chap4 Prob5
+        cout << "Type 4 for the Time Calculator." << endl;                                  //Gaddis 6thEd Chap4 Prob7
+        cout << "Type 5 to Sort Names." << endl;                                            //Gaddis 6thEd Chap4 Prob8
+        cout << "Type 6 for the Math Tutor." << endl;                                       //Gaddis 6thEd Chap4 Prob9
+        cout << "Type 7 for The Speed of Sound problem." << endl;                           //Gaddis 6thEd Chap4 Prob18
+        cout << "Type 8 for the Freezing and Boiling Points problem." << endl;              //Gaddis 6thEd Chap4 Prob20
+        cout << "Type 9 to calculate the cost of Long Distance Calls." << endl;             //Gaddis 6thEd Chap4 Prob22
+        cout << "Type 10 to calculate the bill from an Internet Service Provider." << endl; //Gaddis 6thEd Chap4 Prob23
         cout << "Type anything else to quit the program." << endl;
         
         //User choice
