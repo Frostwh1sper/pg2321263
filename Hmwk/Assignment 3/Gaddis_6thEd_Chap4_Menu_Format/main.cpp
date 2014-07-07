@@ -356,6 +356,53 @@ int main(int argc, char** argv) {
         
             case 8:{    //Gaddis 6thEd Chap4, Problem 20, Freezing and Boiling Points
                 
+                //Declare and initialize variables
+                int ethylF=-173, ethylB=172; //Freezing and boiling point of Ethyl Alcohol
+                int mercF=-38, mercB=676; //Freezing and boiling point of Mercury
+                int oxyF=-362, oxyB=-306; //Freezing and boiling point of Oxygen
+                int watF=32, watB=212; //Freezing and boiling point of Water
+                int tempF;
+    
+                //User input
+                cout << "This program will determine whether ethyl alcohol, mercury, oxygen, or water will freeze or boil at any given temperature." << endl;
+                cout << "What temperature would you like to check? (Fahrenheit) ";
+                cin >> tempF;
+    
+                //Output
+                cout << "At " << tempF << " degrees Fahrenheit:" << endl;
+                if (tempF<=-173||tempF>=172){
+                    if(tempF<=-173){
+                        cout << "Ethyl alcohol freezes" << endl;
+                    }
+                    if (tempF>=172){
+                        cout << "Ethyl alcohol boils" << endl;
+                    }
+                }
+                if (tempF<=-38||tempF>=676){
+                    if(tempF<=-38){
+                        cout << "Mercury freezes" << endl;
+                    }
+                    if (tempF>=676){
+                        cout << "Mercury boils" << endl;
+                    }
+                }
+                if (tempF<=-362||tempF>=-306){
+                    if(tempF<=-362){
+                        cout << "Oxygen freezes" << endl;
+                    }
+                    if (tempF>=-306){
+                        cout << "Oxygen boils" << endl;
+                    }
+                }
+                if (tempF<=32||tempF>=212){
+                    if(tempF<=32){
+                        cout << "Water freezes" << endl;
+                    }
+                    if (tempF>=212){
+                        cout << "Water boils" << endl;
+                    }
+                }
+                
                 //Return user to the menu
                 cout << "Press any key and enter to return to the menu: ";
                 char temp;
@@ -366,6 +413,42 @@ int main(int argc, char** argv) {
         
             case 9:{    //Gaddis 6thEd Chap4, Problem 22, Long Distance Calls
                 
+                //Declare and initialize variables
+                float rate1=0.12, rate2=0.55, rate3=0.35; //Rates from 0000-0659, 0700-1900, 1901-2359
+                int min;
+                float time;
+                bool loop=true;
+    
+                //User input
+                cout << "This program will calculate the cost of your recent long distance call." << endl;
+                cout << "Please enter the duration of your phone call, in minutes: ";
+                cin >> min;
+                do{
+                    cout << "What time was the call made? (Format HH.MM)" << endl;
+                    cin >> time;
+    
+                //Output
+                    cout << setprecision(2) << fixed;
+                    if(time>=00.00 && time<=06.59){
+                        cout << "Your charges, for the call lasting " << min << " minutes, is $" << min*rate1 << endl;
+                        loop=false;
+                        break;
+                    }
+                    else if(time>=07.00 && time<=19.00){
+                        cout << "Your charges, for the call lasting " << min << " minutes, is $" << min*rate2 << endl;
+                        loop=false;
+                        break;
+                    }
+                    else if(time>=19.01 && time<=23.59){
+                        cout << "Your charges, for the call lasting " << min << " minutes, is $" << min*rate3 << endl;
+                        loop=false;
+                        break;
+                    }
+                    else{
+                        cout << "You did not select an appropriate time for the start of the phone call, please try again." << endl;
+                    }
+                }while(loop);
+                
                 //Return user to the menu
                 cout << "Press any key and enter to return to the menu: ";
                 char temp;
@@ -375,6 +458,51 @@ int main(int argc, char** argv) {
             }
         
             case 10:{   //Gaddis 6thEd Chap4, Problem 23, Internet Service Provider
+                
+                //Declare and initialize variables
+                char package;
+                int hours;
+                float rate1, rate2, rate3;
+                bool loop=true;
+    
+                //User input
+                cout << "How many hours of Internet did you consume this month? ";
+                cin >> hours;
+                do{             //Begin do-while loop
+                    cout << "Which subscription package do you subscribe to?" << endl;
+                    cout << "Package A: For $9.95 per month, 10 hours of access are provided. Additional hours" << endl;
+                    cout << " are $2.00 per hour." << endl;
+                    cout << "Package B: For $14.95 per month, 20 hours of access are provided. Additional hours" << endl;
+                    cout << " are $1.00 per hour." << endl;
+                    cout << "Package C: For $19.95 per month, unlimited access is provided." << endl;
+                    cout << "Enter your package letter: ";
+                    cin >> package;
+                    cin.ignore();
+                    
+                //Outputs
+                    cout << setprecision(2) << fixed;
+                    switch(package){
+                        case 'a': case 'A':{
+                            cout << "Your bill for this month is $" << (hours-10)*2.0f+9.95f << "." << endl;
+                            loop=false;
+                            break;
+                        }
+                        case 'b': case 'B':{
+                            cout << "Your bill for this month is $" << (hours-20)*1.0f+14.95f << "." << endl;
+                            loop=false;
+                            break;
+                        }
+                        case 'c': case 'C':{
+                            cout << "Your bill for this month is $19.95." << endl;
+                            loop=false;
+                            break;
+                        }
+                        default:{
+                            cout << "You didn't enter a valid package number, please try again." << endl;
+                            break;
+                        }
+                    }
+                }while(loop);   //End do-while loop
                 
                 //Return user to the menu
                 cout << "Press any key and enter to return to the menu: ";
