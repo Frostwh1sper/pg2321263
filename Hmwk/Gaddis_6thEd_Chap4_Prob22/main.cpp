@@ -30,9 +30,10 @@ int main(int argc, char** argv) {
     cout << "Please enter the duration of your phone call, in minutes: ";
     cin >> min;
     do{
-        cout << "Enter 1 for calls made between midnight and 6:59AM" << endl;
-        cout << "Enter 2 for calls made between 7AM and 7PM" << endl;
-        cout << "Enter 3 for calls made between 7PM and 11:59PM" << endl;
+        cout << "What time was the call made?" << endl;
+        cout << "1) Midnight - 6:59AM" << endl;
+        cout << "2) 7AM - 7PM" << endl;
+        cout << "3) 7PM and 11:59PM" << endl;
         cin >> time;
     
     //Output
