@@ -31,27 +31,27 @@ int main(int argc, char** argv) {
     cin >> hours;
     do{
     cout << "Which subscription package do you subscribe to?" << endl;
-    cout << "1) Package A: For $9.95 per month, 10 hours of access are provided. Additional hours" << endl;
+    cout << "Package A: For $9.95 per month, 10 hours of access are provided. Additional hours" << endl;
     cout << "              are $2.00 per hour." << endl;
-    cout << "2) Package B: For $14.95 per month, 20 hours of access are provided. Additional hours" << endl;
+    cout << "Package B: For $14.95 per month, 20 hours of access are provided. Additional hours" << endl;
     cout << "              are $1.00 per hour." << endl;
-    cout << "3) Package C: For $19.95 per month, unlimited access is provided." << endl;
-    cout << "Enter the number for the corresponding package: ";
+    cout << "Package C: For $19.95 per month, unlimited access is provided." << endl;
+    cout << "Enter your package letter: ";
     cin >> package;
     cin.ignore();
     cout << setprecision(2) << fixed;
     switch(package){
-        case '1':{
+        case 'a': case 'A':{
             cout << "Your bill for this month is $" << (hours-10)*2.0f+9.95f << "." << endl;
             loop=false;
             break;
         }
-        case '2':{
+        case 'b': case 'B':{
             cout << "Your bill for this month is $" << (hours-20)*1.0f+14.95f << "." << endl;
             loop=false;
             break;
         }
-        case '3':{
+        case 'c': case 'C':{
             cout << "Your bill for this month is $19.95." << endl;
             loop=false;
             break;
