@@ -471,10 +471,10 @@ int main(int argc, char** argv) {
                 do{             //Begin do-while loop
                     cout << "Which subscription package do you subscribe to?" << endl;
                     cout << "Package A: For $9.95 per month, 10 hours of access are provided. Additional hours" << endl;
-                    cout << " are $2.00 per hour." << endl;
+                    cout << "           are $2.00 per hour." << endl;
                     cout << "Package B: For $14.95 per month, 20 hours of access are provided. Additional hours" << endl;
-                    cout << " are $1.00 per hour." << endl;
-                    cout << "Package C: For $19.95 per month, unlimited access is provided." << endl;
+                    cout << "           are $1.00 per hour." << endl;
+                    cout << "Package C: For $19.95 per month, unlimited access is provided." << endl << endl;
                     cout << "Enter your package letter: ";
                     cin >> package;
                     cin.ignore();
