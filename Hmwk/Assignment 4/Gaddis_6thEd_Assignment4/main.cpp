@@ -43,57 +43,105 @@ int main(int argc, char** argv) {
     cout << "*___________________________________________*" << endl;
     cout << "Please choose a program: ";
     cin >> choice;
+    cin.ignore();
     cout << string(50,'\n');
     
     //Begin switch for choice
     switch(choice){
-        case 1:{
+        case 1:{        //Problem 1, Sum of Numbers
             
+            //Declare and initialize variables
+            unsigned short num, sum=0, counter=1;
+            
+            //User input
+            cout << "This program will sum all integers leading up to a number you choose." << endl;
+            cout << "Please choose any positive integer: ";
+            cin >> num;
+            
+            //Calculations
+            while(counter<=num){
+                sum+=counter;
+                counter++;
+            }
+            
+            //Output
+            cout << "The sum of all numbers leading up to " << num << " is " << sum << "." << endl;
+            
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 2:{
+        case 2:{        //Problem 4, Calories Burned
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 3:{
+        case 3:{        //Problem 6, Distance Traveled
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 4:{
+        case 4:{        //Problem 8, Math Tutor
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 5:{
+        case 5:{        //Problem 11, Population
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 6:{
+        case 6:{        //Problem 13, The Greatest and Least of These
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 7:{
+        case 7:{        //Problem 16, Savings Account Balance
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 8:{
+        case 8:{        //Problem 17, Sales Bar Chart
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 9:{
+        case 9:{        //Problem 19, Budget Analysis
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
-        case 10:{
+        case 10:{       //Problem 21, Random Number Guessing Game
             
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
             cout << string(50,'\n');
             break;
         }
