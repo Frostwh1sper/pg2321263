@@ -85,7 +85,7 @@ int main(int argc, char** argv) {
             cout << "This is how many calories are burned on a treadmill over time" << endl;
             while(counter<=min){
                 calTot=counter*calPer;
-                cout << counter << " mins: " << setw(4) << calTot << " calories" << endl;
+                cout << counter << " minutes: " << setw(4) << calTot << " calories" << endl;
                 counter+=5;
             }
             
