@@ -27,7 +27,8 @@ int main(int argc, char** argv) {
     bool loop=true;
     do{
     //Menu Display
-    cout << "_____________________________________________" << endl;
+    cout << " ___________________________________________ " << endl;
+    cout << "*                                           *" << endl;
     cout << "* Glenning, Patrick - Assignment #4 - 46023 *" << endl;
     cout << "*  1) Sum of Numbers                        *" << endl;
     cout << "*  2) Calories Burned                       *" << endl;
@@ -39,7 +40,7 @@ int main(int argc, char** argv) {
     cout << "*  8) Sales Bar Chart                       *" << endl;
     cout << "*  9) Budget Analysis                       *" << endl;
     cout << "* 10) Random Number Guessing Game           *" << endl;
-    cout << "*   Enter any other key to exit program     *" << endl;
+    cout << "* Enter any other key to exit this program  *" << endl;
     cout << "*___________________________________________*" << endl;
     cout << "Please choose a program: ";
     cin >> choice;
@@ -74,6 +75,19 @@ int main(int argc, char** argv) {
             break;
         }
         case 2:{        //Problem 4, Calories Burned
+            
+            //Declare and initialize variables
+            float calPer=3.9, calTot;
+            int min=30;
+            int counter=10;
+            
+            //Output
+            cout << "This is how many calories are burned on a treadmill over time" << endl;
+            while(counter<=min){
+                calTot=counter*calPer;
+                cout << counter << " mins: " << setw(4) << calTot << " calories" << endl;
+                counter+=5;
+            }
             
             cout << "Enter any key to continue: ";
             char temp;
