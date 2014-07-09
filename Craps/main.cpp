@@ -26,12 +26,13 @@ int main(int argc, char** argv) {
     srand(seed);
     
     //Declare and initialize variables
-    int sum;                    //Sum of two dice
+    int sum, sum2;              //Sum of two dice
     int d6_1, d6_2;             //The dice
     bool loop=true;
     bool game=true;
+    bool reroll=true;
     float win=0;                //Total wins
-    short counter=0;            //Total win or lose rolls
+    float counter=0;            //Total win or lose rolls
     float winLoss;              //Ratio of wins to losses
     
     //Outputs
@@ -44,7 +45,7 @@ int main(int argc, char** argv) {
         
             switch(sum){
                 case 7: case 11:{
-                    cout << "You rolled a " << sum << "! You win!!" << endl;
+                    cout << "You rolled " << sum << "! You win!!" << endl;
                     win++;
                     counter++;
                     loop=false;
@@ -52,26 +53,43 @@ int main(int argc, char** argv) {
                 }
                 
                 case 2: case 3: case 12:{
-                    cout << "You rolled a " << sum << "! Sorry, you lose." << endl;
+                    cout << "You rolled " << sum << ". Sorry, you lose." << endl;
                     counter++;
                     loop=false;
                     break;
                 }
                 
                 default:{
-                    /*
-                    cout << "You rolled " << sum << ", roll again." << endl;
-                     */
-                    break;
+                    do{
+                        d6_1=1+rand()%6;
+                        d6_2=1+rand()%6;
+                        sum2=d6_1+d6_2;
+                        switch(sum2){
+                            case 7:{
+                                cout << "You rolled " << sum << " then 7. You lose." << endl;
+                                counter++;
+                                loop=false;
+                                reroll=false;
+                                break;
+                            }
+                            default:{
+                                if(sum==sum2){
+                                    cout << "You rolled double " << sum << "'s! You win!" << endl;
+                                    win++;
+                                    counter++;
+                                    loop=false;
+                                    reroll=false;
+                                }
+                                else{
+                                    counter++;
+                                }
+                                break;
+                            }
+                        }
+                    }while(reroll);
                 }
             }
         }while(loop);
-        
-        //Output win/loss ratio
-        winLoss=win/counter*100.0f;
-        cout << "You've won " << setprecision(1) << fixed << winLoss << "% of the time." << endl;
-        counter=0;
-        win=0;
         
         //Determine whether to repeat program
         cout << "Roll again? (y/n) ";
