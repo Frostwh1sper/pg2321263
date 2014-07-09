@@ -8,6 +8,7 @@
 //System Libraries
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 #include <ctime>
 using namespace std;
 
@@ -25,10 +26,12 @@ int main(int argc, char** argv) {
     srand(seed);
     
     //Declare and initialize variables
-    int sum;            //Sum of two dice
-    int d6_1, d6_2;     //The dice
+    int sum;                    //Sum of two dice
+    int d6_1, d6_2;             //The dice
     bool loop=true;
     bool game=true;
+    float win=0, counter=0;     //Tallies wins & total rolls
+    float winLoss;              //Ratio of wins to losses
     
     //Outputs
     do{
@@ -40,21 +43,36 @@ int main(int argc, char** argv) {
         
             switch(sum){
                 case 7: case 11:{
+                    /*
                     cout << "You rolled a " << sum << "! You win!!" << endl;
+                     */ 
+                    win++;
+                    counter++;
                     loop=false;
                     break;
                 }
                 case 2: case 3: case 12:{
+                    /*
                     cout << "You rolled a " << sum << "! Sorry, you lose." << endl;
+                     */
+                    counter++;
                     loop=false;
                     break;
                 }
                 default:{
+                    /*
                     cout << "You rolled " << sum << ", roll again." << endl;
+                     */
                     break;
                 }
             }
-        }while(loop);
+        }while(counter<=100);
+        
+        //Output win/loss ratio
+        winLoss=win/counter*100.0f;
+        cout << "You've won " << setprecision(1) << fixed << winLoss << "% of the time." << endl;
+        counter=0;
+        win=0;
         
         //Determine whether to repeat program
         cout << "Roll again? (y/n) ";
