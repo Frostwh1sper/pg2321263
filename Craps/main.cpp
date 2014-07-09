@@ -30,7 +30,8 @@ int main(int argc, char** argv) {
     int d6_1, d6_2;             //The dice
     bool loop=true;
     bool game=true;
-    float win=0, counter=0;     //Tallies wins & total rolls
+    float win=0;                //Total wins
+    short counter=0;            //Total win or lose rolls
     float winLoss;              //Ratio of wins to losses
     
     //Outputs
@@ -43,22 +44,20 @@ int main(int argc, char** argv) {
         
             switch(sum){
                 case 7: case 11:{
-                    /*
                     cout << "You rolled a " << sum << "! You win!!" << endl;
-                     */ 
                     win++;
                     counter++;
                     loop=false;
                     break;
                 }
+                
                 case 2: case 3: case 12:{
-                    /*
                     cout << "You rolled a " << sum << "! Sorry, you lose." << endl;
-                     */
                     counter++;
                     loop=false;
                     break;
                 }
+                
                 default:{
                     /*
                     cout << "You rolled " << sum << ", roll again." << endl;
@@ -66,7 +65,7 @@ int main(int argc, char** argv) {
                     break;
                 }
             }
-        }while(counter<=100);
+        }while(loop);
         
         //Output win/loss ratio
         winLoss=win/counter*100.0f;
