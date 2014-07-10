@@ -149,7 +149,7 @@ int main(int argc, char** argv) {
                 cout << endl;
 
                 //Output game information
-                cout << "A combination of " << numCol << " colors has been chosen." << endl 
+                cout << numCol << " colors have been chosen, and placed into a random order." << endl 
                      << "You have " << numTurn << " turns to crack the code and prove that you are a Mastermind!" << endl
                      << "The colors available are Red (R), Orange (O), Yellow (Y), Green (G), Blue (B), Purple (P)." << endl
                      << "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl
