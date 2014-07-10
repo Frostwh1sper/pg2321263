@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 
                 //Choose length of code
                 while(loop){
-                    cout << "How long would you like the code to be? (3-4) ";
+                    cout << "How long would you like the code to be? (4-6) ";
                     cin >> numCol;
                     switch(numCol){
                         case 4 ... 6:{
@@ -151,8 +151,10 @@ int main(int argc, char** argv) {
                 //Output game information
                 cout << "A combination of " << numCol << " colors has been chosen." << endl 
                      << "You have " << numTurn << " turns to crack the code and prove that you are a Mastermind!" << endl
-                     << "The colors you can choose from are Red, Orange, Yellow, Green, Blue, Purple." << endl
-                     << "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl;
+                     << "The colors available are Red (R), Orange (O), Yellow (Y), Green (G), Blue (B), Purple (P)." << endl
+                     << "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl
+                     << "+ = correct color, correct position," << endl 
+                     << "~ = correct color, incorrect position." << endl;
                 
                 //Output answer for comparison testing
                 for(int i=1; i<=numCol; i++){
@@ -171,6 +173,14 @@ int main(int argc, char** argv) {
                     for(int i=1; i<=numCol; i++){
                         if(userCol[i]==color[i]){
                             posCorr++;
+                        }
+                        else if(color[i]==userCol[1] || 
+                                color[i]==userCol[2] || 
+                                color[i]==userCol[3] || 
+                                color[i]==userCol[4] ||
+                                color[i]==userCol[5] ||
+                                color[i]==userCol[6]){
+                            colCorr++;
                         }
                     }
                     
