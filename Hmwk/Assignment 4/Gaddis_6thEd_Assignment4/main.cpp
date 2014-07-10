@@ -27,22 +27,23 @@ int main(int argc, char** argv) {
     bool loop=true;
     do{
     //Menu Display
-    cout << " _____________________________________________ " << endl;
-    cout << "*                                             *" << endl;
-    cout << "*  Glenning, Patrick - Assignment #4 - 46023  *" << endl;
-    cout << "*    1) Sum of Numbers                        *" << endl;
-    cout << "*    2) Calories Burned                       *" << endl;
-    cout << "*    3) Distance Traveled                     *" << endl;
-    cout << "*    4) Math Tutor                            *" << endl;
-    cout << "*    5) Population                            *" << endl;
-    cout << "*    6) The Greatest and Least of These       *" << endl;
-    cout << "*    7) Savings Account Balance               *" << endl;
-    cout << "*    8) Sales Bar Chart                       *" << endl;
-    cout << "*    9) Budget Analysis                       *" << endl;
-    cout << "*   10) Random Number Guessing Game           *" << endl;
-    cout << "*   Enter any other key to exit this program  *" << endl;
-    cout << "*_____________________________________________*" << endl;
-    cout << "Please choose a program: ";
+    cout << "            _________________________________________________ " << endl;
+    cout << "           *                                                 *" << endl;
+    cout << "           *    Glenning, Patrick - Assignment #4 - 46023    *" << endl;
+    cout << "           *                                                 *" << endl;
+    cout << "           *     1) Sum of Numbers                           *" << endl;
+    cout << "           *     2) Calories Burned                          *" << endl;
+    cout << "           *     3) Distance Traveled                        *" << endl;
+    cout << "           *     4) Math Tutor                               *" << endl;
+    cout << "           *     5) Population                               *" << endl;
+    cout << "           *     6) The Greatest and Least of These          *" << endl;
+    cout << "           *     7) Savings Account Balance                  *" << endl;
+    cout << "           *     8) Sales Bar Chart                          *" << endl;
+    cout << "           *     9) Budget Analysis                          *" << endl;
+    cout << "           *    10) Random Number Guessing Game              *" << endl;
+    cout << "           *    Enter any other key to exit this program     *" << endl;
+    cout << "           *_________________________________________________*" << endl;
+    cout << "           Please choose a program: ";
     cin >> choice;
     cin.ignore();
     cout << string(50,'\n');
@@ -96,6 +97,25 @@ int main(int argc, char** argv) {
             break;
         }
         case 3:{        //Problem 6, Distance Traveled
+            
+            //Declare and initialize variables
+            int mph;
+            int hours;
+            int distance;
+            
+            //User input
+            cout << "This program calculates the distance a vehicle has traveled over time." << endl;
+            cout << "Enter the speed of the vehicle, in miles per hour: ";
+            cin >> mph;
+            cout << "Enter the length of time the vehicle will travel: ";
+            cin >> hours;
+            
+            //Calculation and outputs
+            for(int i=1; i<=hours; i++){
+                distance=mph*i;
+                cout << "Hour " << i <<": " << distance << " Miles" << endl;
+            }
+            cout << endl;
             
             cout << "Enter any key to continue: ";
             char temp;
