@@ -75,6 +75,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 2:{        //Problem 4, Calories Burned
             
             //Declare and initialize variables
@@ -96,6 +97,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 3:{        //Problem 6, Distance Traveled
             
             //Declare and initialize variables
@@ -137,6 +139,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 4:{        //Problem 8, Math Tutor
             
             //Seed the RNG
@@ -222,6 +225,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 5:{        //Problem 11, Population
             
             //Declare and initialize variables
@@ -280,6 +284,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 6:{        //Problem 13, The Greatest and Least of These
             
             //Declare and initialize variables
@@ -337,6 +342,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 7:{        //Problem 16, Savings Account Balance
             
             //Declare and initialize variables
@@ -393,6 +399,7 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 8:{        //Problem 17, Sales Bar Chart
             
             //Declare and initialize variables
@@ -421,15 +428,41 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
         case 9:{        //Problem 19, Budget Analysis
             
-            cout << "Enter any key to continue: ";
-            char temp;
-            cin >> temp;
-            cout << string(50,'\n');
-            break;
-        }
-        case 10:{       //Problem 21, Random Number Guessing Game
+            //Declare and initialize variables
+            float budget;
+            float expense[20];
+            
+            //User input
+            cout << "What is your monthly budget? $";
+            cin >> budget;
+            cout << endl << "Now, enter all your expenses for the month." << endl;
+            cout << "Enter 9999 when you are finished entering expenses." << endl;
+            for(int i=1; i<=20; i++){
+                cout << "Expense " << i << ": $";
+                cin >> expense[i];
+                cin.ignore();
+                if(expense[i]==9999){
+                    i=21;
+                }
+                else{
+                    budget-=expense[i];
+                }
+            }
+            
+            //Display whether expenses are over or under budget, and by how much
+            cout << setprecision(2) << fixed;
+            if(budget<0){
+                cout << "You came in over budget. You need to cut $" << budget*(-1) << " in monthly expenses." << endl;
+            }
+            if(budget>0){
+                cout << "You came in under budget. You will have $" << budget << " surplus each month." << endl;
+            }
+            if(budget==0){
+                cout << "You came in exactly on budget." << endl;
+            }
             
             cout << "Enter any key to continue: ";
             char temp;
@@ -437,6 +470,51 @@ int main(int argc, char** argv) {
             cout << string(50,'\n');
             break;
         }
+        
+        case 10:{       //Problem 21, Random Number Guessing Game
+            
+            //Initialize RNG
+            unsigned seed=time(0);
+            srand(seed);
+            
+            //Declare and initialize variables
+            unsigned short guess;
+            unsigned short num;
+            
+            //Generate random number
+            num=rand()%1000+1;
+            
+            //User guess
+            cout << "I have picked a number from 1 to 1000. Make your guess: ";
+            do{
+                cin >> guess;
+                
+                if(guess-num>=500 || num-guess>=500){
+                    if(guess>num){
+                        cout << "Too high. ";
+                    }
+                    if(guess<num){
+                        cout << "Too low. ";
+                    }
+                    cout << "You're way off!! Guess again: " << endl;
+                }
+                else if(guess>num){
+                        cout << "Too high. Guess again: ";
+                    }
+                else if(guess<num){
+                        cout << "Too low. Guess again: ";
+                    }
+            }while(guess!=num);
+            
+            cout << num << " is correct!" << endl << endl;
+            
+            cout << "Enter any key to continue: ";
+            char temp;
+            cin >> temp;
+            cout << string(50,'\n');
+            break;
+        }
+        
         default:{
             cout << "Exiting program..." << endl;
             loop=false;
