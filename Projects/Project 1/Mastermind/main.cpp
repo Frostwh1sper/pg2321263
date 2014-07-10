@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
         cin >> numCol;
         switch(numCol){
             case 4 ... 6:{
-                cout << "You have selected " << numCol << " colors." << endl;
+                cout << "You have selected a code " << numCol << " colors long." << endl;
                 loop=false;
                 break;
             }
@@ -109,7 +109,7 @@ int main(int argc, char** argv) {
     
     //User guesses
     do{
-        
+        counter++;
     }while(counter<numTurn);
 
     //Finish him!!
