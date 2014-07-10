@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
     bool loop=true;             //Mini loop operator
     bool game=true;             //Loop operator for the game
     
+    cout << string(50,'\n');
     do{
         //Game menu
         cout << "        _______________________________________________________        " << endl;
@@ -73,44 +74,76 @@ int main(int argc, char** argv) {
 
             //User chooses difficulty settings
             case 2:{
-                
-                //Choose length of code
-                while(loop){
-                    cout << "How long would you like the color combination to be? (4-6) ";
-                    cin >> numCol;
-                    switch(numCol){
-                        case 4 ... 6:{
-                            cout << "You have chosen to crack a " << numCol << " color combination." << endl;
-                            loop=false;
+                do{
+                    //Settings menu
+                    cout << "        _______________________________________________________        " << endl;
+                    cout << "       *                                                       *       " << endl;
+                    cout << "       *                                                       *       " << endl;
+                    cout << "       *                 Welcome to Mastermind!                *       " << endl;
+                    cout << "       *                                                       *       " << endl;
+                    cout << "       *       Settings Menu:                                  *       " << endl;
+                    cout << "       *       1) Combination length                           *       " << endl;
+                    cout << "       *       2) Number of turns                              *       " << endl;
+                    cout << "       *       3) Return to main menu                          *       " << endl;
+                    cout << "       *                                                       *       " << endl;
+                    cout << "       *                                                       *       " << endl;
+                    cout << "       *_______________________________________________________*       " << endl;
+                    cout << "        Make your selection: ";
+                    int sett;
+                    cin>> sett;
+                    switch(sett){
+                        case 1:{
+                            //Choose length of code
+                            while(loop){
+                                cout << "How long would you like the color combination to be? (4-6) ";
+                                cin >> numCol;
+                                switch(numCol){
+                                    case 4 ... 6:{
+                                        cout << "You have chosen to crack a " << numCol << " color combination." << endl;
+                                        loop=false;
+                                        break;
+                                    }
+                                    default:{
+                                        cout << "Invalid entry, please re-enter your selection." << endl;
+                                        break;
+                                    }
+                                }
+                            }loop=true;
+                            cout << string(50,'\n');
                             break;
                         }
-                        default:{
-                            cout << "Invalid entry, please re-enter your selection." << endl;
-                            break;
-                        }
-                    }
-                }loop=true;
 
-                //Choose number or turns to crack the code
-                while(loop){
-                    cout << "How many turns do you think you can crack the code in? (8-12) ";
-                    cin >> numTurn;
-                    switch(numTurn){
-                        case 8 ... 12:{
-                            cout << "You have chosen to crack the code in " << numTurn << " turns." << endl;
+                        case 2:{
+                            //Choose number or turns to crack the code
+                            while(loop){
+                                cout << "How many turns do you think you can crack the code in? (8-12) ";
+                                cin >> numTurn;
+                                switch(numTurn){
+                                    case 8 ... 12:{
+                                        cout << "You have chosen to crack the code in " << numTurn << " turns." << endl;
+                                        loop=false;
+                                        break;
+                                    }
+                                    default:{
+                                        cout << "Invalid entry, please re-enter your selection." << endl;
+                                        break;
+                                    }
+                                }
+                            }loop=true;
+                            cout << string(50,'\n');
+                            break;
+                        }
+
+                        default:{
+                            cout << string(50,'\n');
                             loop=false;
                             break;
                         }
-                        default:{
-                            cout << "Invalid entry, please re-enter your selection." << endl;
-                            break;
-                        }
                     }
-                    cout << "Game settings saved..." << endl << endl;
-                }loop=true;
+                }while(loop);
+                loop=true;
                 break;
             }
-            loop=true;
 
             //Game begins
             case 3:{
