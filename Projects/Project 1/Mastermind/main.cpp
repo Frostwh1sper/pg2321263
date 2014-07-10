@@ -221,7 +221,7 @@ int main(int argc, char** argv) {
             }
 
             default:{
-                cout << "Invalid input. Please re-enter your selection: ";
+                cout << "Invalid input. Please re-enter your selection: " << endl;
                 break;
             }
 
