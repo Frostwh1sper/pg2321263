@@ -27,21 +27,21 @@ int main(int argc, char** argv) {
     bool loop=true;
     do{
     //Menu Display
-    cout << " ___________________________________________ " << endl;
-    cout << "*                                           *" << endl;
-    cout << "* Glenning, Patrick - Assignment #4 - 46023 *" << endl;
-    cout << "*  1) Sum of Numbers                        *" << endl;
-    cout << "*  2) Calories Burned                       *" << endl;
-    cout << "*  3) Distance Traveled                     *" << endl;
-    cout << "*  4) Math Tutor                            *" << endl;
-    cout << "*  5) Population                            *" << endl;
-    cout << "*  6) The Greatest and Least of These       *" << endl;
-    cout << "*  7) Savings Account Balance               *" << endl;
-    cout << "*  8) Sales Bar Chart                       *" << endl;
-    cout << "*  9) Budget Analysis                       *" << endl;
-    cout << "* 10) Random Number Guessing Game           *" << endl;
-    cout << "* Enter any other key to exit this program  *" << endl;
-    cout << "*___________________________________________*" << endl;
+    cout << " _____________________________________________ " << endl;
+    cout << "*                                             *" << endl;
+    cout << "*  Glenning, Patrick - Assignment #4 - 46023  *" << endl;
+    cout << "*    1) Sum of Numbers                        *" << endl;
+    cout << "*    2) Calories Burned                       *" << endl;
+    cout << "*    3) Distance Traveled                     *" << endl;
+    cout << "*    4) Math Tutor                            *" << endl;
+    cout << "*    5) Population                            *" << endl;
+    cout << "*    6) The Greatest and Least of These       *" << endl;
+    cout << "*    7) Savings Account Balance               *" << endl;
+    cout << "*    8) Sales Bar Chart                       *" << endl;
+    cout << "*    9) Budget Analysis                       *" << endl;
+    cout << "*   10) Random Number Guessing Game           *" << endl;
+    cout << "*   Enter any other key to exit this program  *" << endl;
+    cout << "*_____________________________________________*" << endl;
     cout << "Please choose a program: ";
     cin >> choice;
     cin.ignore();
