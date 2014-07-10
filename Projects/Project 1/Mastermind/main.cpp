@@ -26,13 +26,13 @@ int main(int argc, char** argv) {
     srand(seed);
     
     //Declare and initialize variables
-    char userCol[4];    //Variable for user's color selections
-    int counter=0;      //Keeps track of guess attempts
-    int numCol;         //Number of colors to be guessed within the allotted turns
-    int numTurn;        //Number of turns to crack the code
+    int counter=1;              //Keeps track of guess attempts
+    int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
+    int numTurn=3;             //Number of turns to crack the code (defaulted to 10)
     int choice;
-    bool loop=true;     //Loop operator
-    bool game=true;
+    int colCorr=0, posCorr=0;   //Number of correct colors, and correct positions
+    bool loop=true;             //Mini loop operator
+    bool game=true;             //Loop operator for the game
     
     do{
         //Game menu
@@ -51,7 +51,8 @@ int main(int argc, char** argv) {
         cout << "        Make your selection: ";
         cin >> choice;
         cin.ignore();
-
+        cout << string(50,'\n');
+        
         switch(choice){
 
             //Output Game Objectives
@@ -61,9 +62,12 @@ int main(int argc, char** argv) {
                 cout << "six colors available. The code-breaker makes a series of pattern guesses - after each guess" << endl;
                 cout << "the code-maker gives feedback in the form of 2 numbers, the number of pegs that are of" << endl;
                 cout << "the right color and in the correct position, and the number of pegs that are of the correct" << endl;
-                cout << "color but not in the correct position." << endl;
-                
-                
+                cout << "color but not in the correct position." << endl << endl;
+                cout << "Enter any key to return to the menu: ";
+                char temp;
+                cin >> temp;
+                cin.ignore();
+                cout << string(50,'\n');
                 break;
             }
 
@@ -85,9 +89,7 @@ int main(int argc, char** argv) {
                             break;
                         }
                     }
-                }
-
-                loop=true;
+                }loop=true;
 
                 //Choose number or turns to crack the code
                 while(loop){
@@ -104,8 +106,7 @@ int main(int argc, char** argv) {
                             break;
                         }
                     }
-                }
-                
+                }loop=true;
                 break;
             }
             loop=true;
@@ -114,7 +115,8 @@ int main(int argc, char** argv) {
             case 3:{
                 //Randomly generate the 'code' to be cracked
                 char color[numCol];         //Array of colors chosen for the code
-                for(int i=0; i<numCol; i++){
+                char userCol[numCol];       //Variable for user's color selections
+                for(int i=1; i<=numCol; i++){
                     int colNum=rand()%6+1;  //Switch operator for assigning color numbers
                     switch(colNum){
                         case 1:{
@@ -144,23 +146,99 @@ int main(int argc, char** argv) {
                     }
                 }
 
-                //Code output test (comment block when running finalized game debug)
-                for(int i=0; i<numCol; i++){
-                    cout << color[i] << " ";
-                }
                 cout << endl;
 
                 //Output game information
                 cout << "A combination of " << numCol << " colors has been chosen." << endl 
                      << "You have " << numTurn << " turns to crack the code and prove that you are a Mastermind!" << endl
-                     << "The colors you can choose from are R, O, Y, G, B, P." << endl;
+                     << "The colors you can choose from are Red, Orange, Yellow, Green, Blue, Purple. (Enter your guesses with a capital letter)" << endl;
 
                 //User guesses
                 do{
-
+                    cout << "Attempt " << setw(3) << counter << ":" << endl;;
+                    
+                    for(int i=1; i<=numCol; i++){
+                        cout << "Color " << i << ": ";
+                        cin >> userCol[i];
+                    }
+                    
+                //Compare values
+                    for(int i=1; i<=numCol; i++){
+                        if(userCol[i]==color[i]){
+                            colCorr++;
+                            posCorr++;
+                        }
+                    }
+                    if(userCol[1]!=color[1]){
+                        if(userCol[1]==color[2]&&userCol[2]!=color[2]){
+                            colCorr++;
+                        }
+                        if(userCol[1]==color[3]&&userCol[3]!=color[3]){
+                            colCorr++;
+                        }
+                        if(userCol[1]==color[4]&&userCol[4]!=color[4]){
+                            colCorr++;
+                        }
+                    }
+                    if(userCol[2]!=color[2]){
+                        if(userCol[2]==color[1]&&userCol[1]!=color[1]){
+                            colCorr++;
+                        }
+                        if(userCol[2]==color[3]&&userCol[3]!=color[3]){
+                            colCorr++;
+                        }
+                        if(userCol[2]==color[4]&&userCol[4]!=color[4]){
+                            colCorr++;
+                        }
+                    }
+                    if(userCol[3]!=color[3]){
+                        if(userCol[3]==color[1]&&userCol[1]!=color[1]){
+                            colCorr++;
+                        }
+                        if(userCol[3]==color[2]&&userCol[2]!=color[2]){
+                            colCorr++;
+                        }
+                        if(userCol[3]==color[4]&&userCol[4]!=color[4]){
+                            colCorr++;
+                        }
+                    }
+                    if(userCol[4]!=color[4]){
+                        if(userCol[4]==color[1]&&userCol[1]!=color[1]){
+                            colCorr++;
+                        }
+                        if(userCol[4]==color[2]&&userCol[2]!=color[2]){
+                            colCorr++;
+                        }
+                        if(userCol[4]==color[3]&&userCol[3]!=color[3]){
+                            colCorr++;
+                        }
+                    }
+                    
+                //Output results of comparison
+                    cout << colCorr << " correct colors, with " << posCorr << " in the correct position." << endl;
+                    if(userCol[1]==color[1]&&userCol[2]==color[2]&&userCol[3]==color[3]&&userCol[4]==color[4]){
+                        cout << "Congratulations on cracking the code in " << counter << " turns!" << endl;
+                        counter=numTurn;
+                        cout << "Enter any key to return to the menu: ";
+                        char temp;
+                        cin >> temp;
+                    }
+                    
+                    colCorr=0;
+                    posCorr=0;
                     counter++;
-                }while(counter<numTurn);
+                }while(counter<=numTurn);
                 
+                //Output in the event of running out of turns
+                if(counter==numTurn){
+                    cout << "You have run out of turns. The correct combination was: ";
+                }
+                
+                //Color code output test (comment block when running finalized game debug)
+                for(int i=1; i<=numCol; i++){
+                    cout << color[i] << " ";
+                }
+                cout << endl << endl;
                 
                 break;
             }
