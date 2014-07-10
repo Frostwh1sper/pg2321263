@@ -95,11 +95,10 @@ int main(int argc, char** argv) {
                         case 1:{
                             //Choose length of code
                             while(loop){
-                                cout << "How long would you like the color combination to be? (4-6) ";
+                                cout << "How long would you like the color combination to be? (4-6, default is 4) ";
                                 cin >> numCol;
                                 switch(numCol){
                                     case 4 ... 6:{
-                                        cout << "You have chosen to crack a " << numCol << " color combination." << endl;
                                         loop=false;
                                         break;
                                     }
@@ -116,11 +115,10 @@ int main(int argc, char** argv) {
                         case 2:{
                             //Choose number or turns to crack the code
                             while(loop){
-                                cout << "How many turns do you think you can crack the code in? (8-12) ";
+                                cout << "How many turns do you think you can crack the code in? (8-12, default is 10) ";
                                 cin >> numTurn;
                                 switch(numTurn){
                                     case 8 ... 12:{
-                                        cout << "You have chosen to crack the code in " << numTurn << " turns." << endl;
                                         loop=false;
                                         break;
                                     }
