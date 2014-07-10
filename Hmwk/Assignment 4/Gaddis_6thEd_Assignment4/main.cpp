@@ -395,6 +395,26 @@ int main(int argc, char** argv) {
         }
         case 8:{        //Problem 17, Sales Bar Chart
             
+            //Declare and initialize variables
+            int store[5];
+            
+            //Display program purpose
+            cout << "This program displays the sales of five (5) stores in a bar graph." << endl << endl;
+            
+            //User input
+            for(int i=1; i<=5; i++){
+                cout << "Enter today's sales for store " << i << ": $";
+                cin >> store[i];
+            }
+            cout << endl;
+            
+            //Display graph
+            cout << "Sales summary for each store:" << endl;
+            for(int i=1; i<=5; i++){
+                cout << "Store " << i << "| " << string(store[i]/100,'*') << endl;
+            }
+            cout << "       * = $100 in sales" << endl << endl;
+            
             cout << "Enter any key to continue: ";
             char temp;
             cin >> temp;
