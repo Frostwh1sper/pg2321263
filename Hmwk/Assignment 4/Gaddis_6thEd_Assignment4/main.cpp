@@ -102,13 +102,27 @@ int main(int argc, char** argv) {
             int mph;
             int hours;
             int distance;
+            bool loop=true;
+            
+            //Program description
+            cout << "This program calculates the distance a vehicle has traveled over time." << endl;
             
             //User input
-            cout << "This program calculates the distance a vehicle has traveled over time." << endl;
-            cout << "Enter the speed of the vehicle, in miles per hour: ";
-            cin >> mph;
-            cout << "Enter the length of time the vehicle will travel: ";
-            cin >> hours;
+            do{
+                cout << "Enter the speed of the vehicle, in miles per hour: ";
+                cin >> mph;
+                cin.ignore();
+                cout << "Enter the length of time the vehicle will travel: ";
+                cin >> hours;
+                cin.ignore();
+                if(mph<=0 || hours<=0){
+                    cout << endl;
+                    cout << "Please enter positive numbers greater than zero." << endl << endl;
+                }
+                else{
+                    loop=false;
+                }
+            }while(loop);
             
             //Calculation and outputs
             for(int i=1; i<=hours; i++){
@@ -125,13 +139,140 @@ int main(int argc, char** argv) {
         }
         case 4:{        //Problem 8, Math Tutor
             
-            cout << "Enter any key to continue: ";
-            char temp;
-            cin >> temp;
+            //Seed the RNG
+            unsigned seed=time(0);
+            srand(seed);
+            
+            //Declare and initialize variables
+            char funct;
+            float num1, num2;
+            float solve;
+            char cont;
+            bool repeat=true;
+            
+            do{
+                //Select mathematical function
+                cout << "  Choose which mathematical function you would like to solve:" << endl;
+                cout << "  1) Addition" << endl;
+                cout << "  2) Subtraction" << endl;
+                cout << "  3) Multiplication" << endl;
+                cout << "  4) Division" << endl;
+                cout << "  Enter any other key to exit" << endl;
+                cin >> funct;
+                cin.ignore();
+
+                switch(funct){
+                    case '1':{
+                        num1=rand()%999+1;
+                        num2=rand()%999+1;
+                        solve=num1+num2;
+                        cout << setw(5) << num1 << endl;
+                        cout << "+" << setw(4) << num2 << endl << endl;
+                        cout << "Enter any key to reveal the answer: ";
+                        cin >> cont;
+                        cin.ignore();
+                        cout << num1 << " + " << num2 << " = " << solve << endl << endl;
+                        break;
+                    }
+                    case '2':{
+                        num1=rand()%999+1;
+                        num2=rand()%999+1;
+                        solve=num1-num2;
+                        cout << setw(5) << num1 << endl;
+                        cout << "-" << setw(4) << num2 << endl << endl;
+                        cout << "Enter any key to reveal the answer: ";
+                        cin >> cont;
+                        cin.ignore();
+                        cout << num1 << " - " << num2 << " = " << solve << endl << endl;
+                        break;
+                    }
+                    case '3':{
+                        num1=rand()%99+1;
+                        num2=rand()%99+1;
+                        solve=num1*num2;
+                        cout << setw(5) << num1 << endl;
+                        cout << "x" << setw(4) << num2 << endl << endl;
+                        cout << "Enter any key to reveal the answer: ";
+                        cin >> cont;
+                        cin.ignore();
+                        cout << num1 << " x " << num2 << " = " << solve << endl << endl;
+                        break;
+                    }
+                    case '4':{
+                        num1=rand()%9999+1;
+                        num2=rand()%99+1;
+                        solve=num1/num2;
+                        cout << "       ____" << endl;
+                        cout << setw(5) << num2 << " |" << setw(4) << num1 << endl << endl;
+                        cout << "Enter any key to reveal the answer: ";
+                        cin >> cont;
+                        cin.ignore();
+                        cout << "       ____" << endl;
+                        cout << setw(5) << num2 << " |" << setw(4) << num1 << " = " << solve << endl << endl;
+                        break;
+                        
+                    }
+                    default:{
+                        repeat=false;
+                        break;
+                    }
+                }
+            }while(repeat);
+            
             cout << string(50,'\n');
             break;
         }
         case 5:{        //Problem 11, Population
+            
+            //Declare and initialize variables
+            int pop, days;      //Number of original organisms, and days to multiply
+            float rate, origin; //Population growth rate, origin population
+            bool start=true;    //Input validation loop operator
+            
+            //User input
+            cout << "This program will calculate how many organisms will be in a population after x amount of days:" << endl;
+            do{
+                cout << "How many organisms did you start with? ";
+                cin >> origin;
+                if(origin>1){
+                    start=false;
+                }
+                else{
+                    cout << "You must start with at least two organisms." << endl;
+                }
+            }while(start);
+            start=true;
+            do{
+                cout << "What is their daily population increase percentage? ";
+                cin >> rate;
+                if(rate>0){
+                    start=false;
+                }
+                else{
+                    cout << "You must have a growth rate greater than zero." << endl;
+                }
+            }while(start);
+            rate/=100;  //Converts the percentage rate to a decimal
+            start=true;
+            do{
+                cout << "How many days of growth will be projected? ";
+                cin >> days;
+                if(days>0){
+                    start=false;
+                }
+                else{
+                    cout << "You must let the organisms populate for at least a day." << endl;
+                }
+            }while(start);
+            
+            //Calculations and outputs
+            pop=origin;
+            for(int i=1; i<=days; i++){
+                origin*=(1+rate);
+                pop=origin;
+                cout << "Day " << setw(4) << i << ": " << setw(10) << pop << " organisms" << endl;
+            }
+            cout << endl << endl;
             
             cout << "Enter any key to continue: ";
             char temp;
