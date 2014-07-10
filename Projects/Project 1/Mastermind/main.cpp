@@ -36,18 +36,18 @@ int main(int argc, char** argv) {
     
     do{
         //Game menu
-        cout << "        _______________________________________________________ " << endl;
-        cout << "       *                                                       *" << endl;
-        cout << "       *                                                       *" << endl;
-        cout << "       *                 Welcome to Mastermind!                *" << endl;
-        cout << "       *                                                       *" << endl;
-        cout << "       *       Menu:                                           *" << endl;
-        cout << "       *       1) Game Objective                               *" << endl;
-        cout << "       *       2) Difficulty Settings                          *" << endl;
-        cout << "       *       3) Start the game                               *" << endl;
-        cout << "       *       4) Exit Mastermind                              *" << endl;
-        cout << "       *                                                       *" << endl;
-        cout << "       *________________________________________________________*" << endl;
+        cout << "        _______________________________________________________        " << endl;
+        cout << "       *                                                       *       " << endl;
+        cout << "       *                                                       *       " << endl;
+        cout << "       *                 Welcome to Mastermind!                *       " << endl;
+        cout << "       *                                                       *       " << endl;
+        cout << "       *       Menu:                                           *       " << endl;
+        cout << "       *       1) Game Objective                               *       " << endl;
+        cout << "       *       2) Difficulty Settings                          *       " << endl;
+        cout << "       *       3) Start the game                               *       " << endl;
+        cout << "       *       4) Exit Mastermind                              *       " << endl;
+        cout << "       *                                                       *       " << endl;
+        cout << "       *_______________________________________________________*       " << endl;
         cout << "        Make your selection: ";
         cin >> choice;
         cin.ignore();
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 
                 //Choose length of code
                 while(loop){
-                    cout << "How long of would you like the code to be? (3-6) ";
+                    cout << "How long would you like the code to be? (3-4) ";
                     cin >> numCol;
                     switch(numCol){
                         case 4 ... 6:{
