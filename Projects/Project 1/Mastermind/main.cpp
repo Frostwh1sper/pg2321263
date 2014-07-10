@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //Declare and initialize variables
     int counter=1;              //Keeps track of guess attempts
     int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
-    int numTurn=3;             //Number of turns to crack the code (defaulted to 10)
+    int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
     int choice;
     int colCorr=0, posCorr=0;   //Number of correct colors, and correct positions
     bool loop=true;             //Mini loop operator
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 
                 //Choose length of code
                 while(loop){
-                    cout << "How long of a code would you like to crack? (4-6) ";
+                    cout << "How long of would you like the code to be? (3-6) ";
                     cin >> numCol;
                     switch(numCol){
                         case 4 ... 6:{
@@ -93,10 +93,10 @@ int main(int argc, char** argv) {
 
                 //Choose number or turns to crack the code
                 while(loop){
-                    cout << "How many turns would you like to have to attempt to crack the color combination? (10-12) ";
+                    cout << "How many turns do you think you can crack the code in? (8-12) ";
                     cin >> numTurn;
                     switch(numTurn){
-                        case 10 ... 12:{
+                        case 8 ... 12:{
                             cout << "You have chosen " << numTurn << " turns." << endl;
                             loop=false;
                             break;
