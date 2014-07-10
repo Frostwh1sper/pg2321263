@@ -61,8 +61,8 @@ int main(int argc, char** argv) {
                 cout << "by the computer (the code-maker). The code is a sequence colored pegs chosen from six" << endl;
                 cout << "colors available. The code-breaker makes a series of pattern guesses - after each guess" << endl;
                 cout << "the code-maker gives feedback in the form of 2 numbers, the number of pegs that are of" << endl;
-                cout << "the right color and in the correct position, and the number of pegs that are of the correct" << endl;
-                cout << "color but not in the correct position." << endl << endl;
+                cout << "the right color and in the correct position (+), and the number of pegs that are of the" << endl;
+                cout << "correct color but not in the correct position (~)." << endl << endl;
                 cout << "Enter any key to return to the menu: ";
                 char temp;
                 cin >> temp;
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
                     cin >> numCol;
                     switch(numCol){
                         case 4 ... 6:{
-                            cout << "You have selected a code " << numCol << " colors long." << endl;
+                            cout << "You have chosen to crack a " << numCol << " color combination." << endl;
                             loop=false;
                             break;
                         }
@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
                     cin >> numTurn;
                     switch(numTurn){
                         case 8 ... 12:{
-                            cout << "You have chosen " << numTurn << " turns." << endl;
+                            cout << "You have chosen to crack the code in " << numTurn << " turns." << endl;
                             loop=false;
                             break;
                         }
@@ -106,6 +106,7 @@ int main(int argc, char** argv) {
                             break;
                         }
                     }
+                    cout << "Game settings saved..." << endl << endl;
                 }loop=true;
                 break;
             }
