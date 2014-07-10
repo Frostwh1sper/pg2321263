@@ -282,6 +282,55 @@ int main(int argc, char** argv) {
         }
         case 6:{        //Problem 13, The Greatest and Least of These
             
+            //Declare and initialize variables
+            int num[99];        //Array of numbers to be entered by user
+            int counter=0;      //Tallies the number of integers entered
+            
+            //User input
+            cout << "This program will choose the largest and smallest numbers from a series." << endl << endl;
+            cout << "Enter a series of integers, each followed by the enter key." << endl
+                 << "Enter '-99' to stop entering numbers (-99 will not count toward your entries):" << endl;
+            for(int i=1; i<=99; i++){
+                cin >> num[i];
+                if(num[i]==-99){
+                    i=100;
+                }
+                else{
+                    counter++;
+                }
+            }
+            
+            //Testing numbers for Greatest and Least
+            for(int i=1; i<=counter; i++){
+                //Test for lesser number
+                for(int n=1; n<=counter; n++){
+                    if(n==i){
+                        //Prevents testing number against itself
+                    }
+                    else if(num[n]<num[i]){
+                        n=counter+1;
+                    }
+                    if(n==counter){
+                        cout << num[i] << " is the lesser number." << endl;
+                    }
+                    
+                }
+                //Test for greater number
+                for(int m=1; m<=counter; m++){
+                    if(m==i){
+                        //Prevents testing number against itself
+                    }
+                    else if(num[m]>num[i]){
+                        m=counter+1;
+                    }
+                    if(m==counter){
+                        cout << num[i] << " is the greater number." << endl;
+                    }
+                    
+                }
+                
+            }
+            
             cout << "Enter any key to continue: ";
             char temp;
             cin >> temp;
