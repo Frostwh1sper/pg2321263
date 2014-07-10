@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     //Declare and initialize variables
     int counter=1;              //Keeps track of guess attempts
     int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
-    int numTurn=3;             //Number of turns to crack the code (defaulted to 10)
+    int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
     int choice;
     int colCorr=0, posCorr=0;   //Number of correct colors, and correct positions
     bool loop=true;             //Mini loop operator
@@ -169,53 +169,31 @@ int main(int argc, char** argv) {
                             posCorr++;
                         }
                     }
+                    
+                    //Tests if the user's first choice matches any other colors on the board, as long as that color isn't already perfectly matched
                     if(userCol[1]!=color[1]){
-                        if(userCol[1]==color[2]&&userCol[2]!=color[2]){
-                            colCorr++;
-                        }
-                        if(userCol[1]==color[3]&&userCol[3]!=color[3]){
-                            colCorr++;
-                        }
-                        if(userCol[1]==color[4]&&userCol[4]!=color[4]){
+                        if((userCol[1]==color[2]&&userCol[2]!=color[2])||(userCol[1]==color[3]&&userCol[3]!=color[3])||(userCol[1]==color[4]&&userCol[4]!=color[4])){
                             colCorr++;
                         }
                     }
                     if(userCol[2]!=color[2]){
-                        if(userCol[2]==color[1]&&userCol[1]!=color[1]){
-                            colCorr++;
-                        }
-                        if(userCol[2]==color[3]&&userCol[3]!=color[3]){
-                            colCorr++;
-                        }
-                        if(userCol[2]==color[4]&&userCol[4]!=color[4]){
+                        if((userCol[2]==color[1]&&userCol[1]!=color[1])||(userCol[2]==color[3]&&userCol[3]!=color[3])||(userCol[2]==color[4]&&userCol[4]!=color[4])){
                             colCorr++;
                         }
                     }
                     if(userCol[3]!=color[3]){
-                        if(userCol[3]==color[1]&&userCol[1]!=color[1]){
-                            colCorr++;
-                        }
-                        if(userCol[3]==color[2]&&userCol[2]!=color[2]){
-                            colCorr++;
-                        }
-                        if(userCol[3]==color[4]&&userCol[4]!=color[4]){
+                        if((userCol[3]==color[1]&&userCol[1]!=color[1])||(userCol[3]==color[2]&&userCol[2]!=color[2])||(userCol[3]==color[4]&&userCol[4]!=color[4])){
                             colCorr++;
                         }
                     }
                     if(userCol[4]!=color[4]){
-                        if(userCol[4]==color[1]&&userCol[1]!=color[1]){
-                            colCorr++;
-                        }
-                        if(userCol[4]==color[2]&&userCol[2]!=color[2]){
-                            colCorr++;
-                        }
-                        if(userCol[4]==color[3]&&userCol[3]!=color[3]){
+                        if((userCol[4]==color[1]&&userCol[1]!=color[1])||(userCol[4]==color[2]&&userCol[2]!=color[2])||(userCol[4]==color[3]&&userCol[3]!=color[3])){
                             colCorr++;
                         }
                     }
                     
                 //Output results of comparison
-                    cout << colCorr << " correct colors, with " << posCorr << " in the correct position." << endl;
+                    cout << colCorr << " of your colors are correct, with " << posCorr << " in the correct position." << endl;
                     if(userCol[1]==color[1]&&userCol[2]==color[2]&&userCol[3]==color[3]&&userCol[4]==color[4]){
                         cout << "Congratulations on cracking the code in " << counter << " turns!" << endl;
                         counter=numTurn;
