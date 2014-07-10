@@ -339,6 +339,54 @@ int main(int argc, char** argv) {
         }
         case 7:{        //Problem 16, Savings Account Balance
             
+            //Declare and initialize variables
+            float rate;
+            float balance;
+            float deposit, withdrw;
+            int months;
+            
+            //User inputs
+            cout << "This program will calculate the balance in your savings account after a certain number of months." << endl;
+            cout << "It will also request deposit and withdrawal amounts for each month leading up to that date." << endl << endl;
+            cout << "What is the starting balance for the account? $";
+            cin >> balance;
+            cout << "What is the annual interest rate for the account? ";
+            cin >> rate;
+            rate/=1200;  //Converts percentage annual rate to monthly decimal rate
+            cout << "How many months would you like to calculate? ";
+            cin >> months;
+            cout << endl;
+            
+            //Continues user input and calculations for each month
+            cout << setprecision(2) << fixed;
+            for(int i=1; i<=months; i++){
+                //Display balance at the start of the month
+                cout << "Month " << i << ": Starting balance of $" << balance << endl;
+                //Enter deposits & calculate balance
+                cout << "Enter total deposited this month: $";
+                cin >> deposit;
+                balance+=deposit;
+                //Enter withdrawals & calculate balance
+                cout << "Enter total withdrawals this month: $";
+                cin >> withdrw;
+                balance-=withdrw;
+                //Displays if the account was closed during this month
+                if(balance<=0){
+                    cout << "The account has been closed due to insufficient funds." << endl;
+                    i=months+1;
+                }
+                //Calculate and display interest earned this month, then add to balance
+                else{
+                    cout << "Interest earned at the end of this month: $" << balance*rate << endl << endl;
+                    balance*=(1+rate);
+                }
+                //Outputs final balance
+                if(i==months){
+                    cout << "At the end of " << months << " months, you have a balance of: " << balance << endl << endl;
+                }
+                
+            }
+            
             cout << "Enter any key to continue: ";
             char temp;
             cin >> temp;
