@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
                 
                 //Choose length of code
                 while(loop){
-                    cout << "How long would you like the code to be? (4-6) ";
+                    cout << "How long would you like the color combination to be? (4-6) ";
                     cin >> numCol;
                     switch(numCol){
                         case 4 ... 6:{
