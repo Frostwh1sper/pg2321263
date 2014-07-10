@@ -170,69 +170,14 @@ int main(int argc, char** argv) {
                 //Compare values
                     for(int i=1; i<=numCol; i++){
                         if(userCol[i]==color[i]){
-                            colCorr++;
                             posCorr++;
                         }
                     }
                     
-                //Tests if the user's first choice matches any other colors on the board, as long as that color isn't already perfectly matched
-                    if(userCol[1]!=color[1]){
-                        if((userCol[1]==color[2] && userCol[2]!=color[2]) ||
-                           (userCol[1]==color[3] && userCol[3]!=color[3]) ||
-                           (userCol[1]==color[4] && userCol[4]!=color[4])){
-                            colCorr++;
-                        }
-                        //Prevent correct color redundancies
-                        if(userCol[1]==userCol[2] && (userCol[1]==color[3] || userCol[1]==color[4])){
-                            colCorr--;
-                        }
-                        if(userCol[1]==userCol[3] && (userCol[1]==color[2] || userCol[1]==color[4])){
-                            colCorr--;
-                        }
-                        if(userCol[1]==userCol[4] && (userCol[1]==color[2] || userCol[1]==color[3])){
-                            colCorr--;
-                        }
-                    }
-                //Tests if the user's second choice matches any other colors on the board, as long as that color isn't already perfectly matched
-                    if(userCol[2]!=color[2]){
-                        if((userCol[2]==color[1] && userCol[1]!=color[1]) ||
-                           (userCol[2]==color[3] && userCol[3]!=color[3]) ||
-                           (userCol[2]==color[4] && userCol[4]!=color[4])){
-                            colCorr++;
-                        }
-                        //Prevent correct color redundancies
-                        if(userCol[2]==userCol[3] && (userCol[2]==color[1] || userCol[2]==color[4])){
-                            colCorr--;
-                        }
-                        if(userCol[2]==userCol[4] && (userCol[2]==color[1] || userCol[2]==color[3])){
-                            colCorr--;
-                        }
-                    }
-                //Tests if the user's third choice matches any other colors on the board, as long as that color isn't already perfectly matched
-                    if(userCol[3]!=color[3]){
-                        if((userCol[3]==color[1] && userCol[1]!=color[1]) ||
-                           (userCol[3]==color[2] && userCol[2]!=color[2]) ||
-                           (userCol[3]==color[4] && userCol[4]!=color[4])){
-                            colCorr++;
-                        }
-                        //Prevent correct color redundancies
-                        if(userCol[3]==userCol[4] && (userCol[3]==color[1] || userCol[3]==color[2])){
-                            colCorr--;
-                        }
-                    }
-                //Tests if the user's fourth choice matches any other colors on the board, as long as that color isn't already perfectly matched
-                    if(userCol[4]!=color[4]){
-                        if((userCol[4]==color[1] && userCol[1]!=color[1]) ||
-                           (userCol[4]==color[2] && userCol[2]!=color[2]) ||
-                           (userCol[4]==color[3] && userCol[3]!=color[3])){
-                            colCorr++;
-                        }
-                    }
                     
-                
                     
                 //Output results of comparison
-                    cout << colCorr << " of your colors are correct, with " << posCorr << " in the correct position." << endl;
+                    cout << string(posCorr,'+') << string(colCorr,'~') << endl;
                     
                 //Output in the event of running out of turns
                     if(counter==numTurn){
