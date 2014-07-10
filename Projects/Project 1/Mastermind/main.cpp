@@ -26,11 +26,53 @@ int main(int argc, char** argv) {
     srand(seed);
     
     //Declare and initialize variables
-    char color[4];  //Array of four colors chosen for the code
+    char userCol[4];    //Variable for user's color selections
+    int counter=0;      //Keeps track of guess attempts
+    int numCol;         //Number of colors to be guessed within the allotted turns
+    int numTurn;        //Number of turns to crack the code
+    bool loop=true;     //Loop operator
+    
+    //User chooses difficulty settings
+    while(loop){
+        cout << "How long of a code would you like to crack? (4-6) ";
+        cin >> numCol;
+        switch(numCol){
+            case 4 ... 6:{
+                cout << "You have selected " << numCol << " colors." << endl;
+                loop=false;
+                break;
+            }
+            default:{
+                cout << "Invalid entry, please re-enter your selection." << endl;
+                break;
+            }
+        }
+    }
+    
+    loop=true;
+    
+    while(loop){
+        cout << "How many turns would you like to have to attempt to crack the color combination? (10-12) ";
+        cin >> numTurn;
+        switch(numTurn){
+            case 10 ... 12:{
+                cout << "You have chosen " << numTurn << " turns." << endl;
+                loop=false;
+                break;
+            }
+            default:{
+                cout << "Invalid entry, please re-enter your selection." << endl;
+                break;
+            }
+        }
+    }
+    
+    loop=true;
     
     //Randomly generate the 'code' to be cracked
-    for(int i=0; i<4; i++){
-        int colNum=rand()%6+1; //Switch operator for assigning color numbers
+    char color[numCol];         //Array of colors chosen for the code
+    for(int i=0; i<numCol; i++){
+        int colNum=rand()%6+1;  //Switch operator for assigning color numbers
         switch(colNum){
             case 1:{
                 color[i]='R';
@@ -60,13 +102,15 @@ int main(int argc, char** argv) {
     }
     
     //Code output test (comment block when running finalized game debug)
-    for(int i=0; i<4; i++){
+    for(int i=0; i<numCol; i++){
         cout << color[i] << " ";
     }
     cout << endl;
     
-    //User input
-    
+    //User guesses
+    do{
+        
+    }while(counter<numTurn);
 
     //Finish him!!
     return 0;
