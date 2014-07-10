@@ -156,13 +156,13 @@ int main(int argc, char** argv) {
                      << "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl
                      << "+ = correct color, correct position," << endl 
                      << "~ = correct color, incorrect position." << endl;
-                
+/*                
                 //Output answer for comparison testing
                 for(int i=1; i<=numCol; i++){
                     cout << color[i] << " ";
                 }
                 cout << endl << endl;
-
+*/
                 //User guesses
                 do{
                     cout << "Attempt " << counter << ":";
