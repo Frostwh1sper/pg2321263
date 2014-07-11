@@ -146,8 +146,8 @@ int main(int argc, char** argv) {
             //Game begins
             case 3:{
                 //Randomly generate the 'code' to be cracked
-                char color[numCol];         //Array of colors chosen for the code
-                char userCol[numCol];       //Variable for user's color selections
+                char color[numCol]='R';         //Array of colors chosen for the code
+                char userCol[numCol]='R';       //Variable for user's color selections
                 for(int i=1; i<=numCol; i++){
                     int colNum=rand()%6+1;  //Switch operator for assigning color numbers
                     switch(colNum){
@@ -227,11 +227,16 @@ int main(int argc, char** argv) {
                         for(int i=1; i<=numCol; i++){
                             cout << color[i] << " ";
                         }
-                        cout << endl << endl;
+                        cout << endl;
                     }
                     
-                //Output in the event of a correct guess
-                    if(userCol[1]==color[1]&&userCol[2]==color[2]&&userCol[3]==color[3]&&userCol[4]==color[4]){
+                //Output in the event of a completely correct guess
+                    if(userCol[1]==color[1]
+                     &&userCol[2]==color[2]
+                     &&userCol[3]==color[3]
+                     &&userCol[4]==color[4]
+                     &&userCol[5]==color[5]
+                     &&userCol[6]==color[6]){
                         cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
                         counter=numTurn;
                     }
