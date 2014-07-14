@@ -16,6 +16,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
+float e=2.71828f;
 
 //Function Prototypes
 void menu();
@@ -244,6 +245,35 @@ void prob4(){
 */
 void prob5(){
     
+    //Declare variables
+    int hours;          //Hours worked
+    float paycheck=0.0f;//Paycheck amount
+    float rate;         //Hourly wage
+    int i=1;            //Loop counter
+    
+    //Inputs
+    cout << "How many hours did you work this week? ";
+    cin >> hours;
+    cout << "What is your hourly pay? $";
+    cin >> rate;
+    
+    //Calculations
+    while(i<=40&&i<=hours){
+        paycheck+=rate;
+        i++;
+    }
+    while(i>40&&i<50&&i<=hours){
+        paycheck+=(rate*2.0f);
+        i++;
+    }
+    while(i>=50&&i<=hours){
+        paycheck+=(rate*3.0f);
+        i++;
+    }
+    
+    //Output
+    cout << "Your paycheck will be $" << paycheck << endl;
+    
 }
 
 /* 
@@ -251,4 +281,28 @@ void prob5(){
 */
 void prob6(){
     
+    //Declare variables
+    int x;
+    int terms;
+    float approx=1.0f, error;
+    float ratio;
+    
+    //Inputs
+    cout << "Enter a positive integer value for x? ";
+    cin >> x;
+    cout << "How many terms would you like to approximate with? ";
+    cin >> terms;
+    
+    //Calculations
+    for(int i=1; i<=terms; i++){
+        ratio=pow(x,i);
+        for(int n=1;n<=i;n++){
+            ratio/=n;
+        }
+        approx+=ratio;
+    }
+    error=(approx-pow(e,x))/pow(e,x);
+    
+    //Output
+    cout << "The approximation of e^" << x << " is " << setprecision(9) << approx << ", which has an error of " << showpoint << setprecision(2) << error*100 << "%, when calculated out with " << terms << " terms" << endl;
 }
