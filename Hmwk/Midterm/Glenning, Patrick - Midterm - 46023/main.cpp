@@ -177,7 +177,7 @@ void prob3(){
     }
     else{
         bal-=27.75f;
-        cout << "Your end of month balance is: $" << bal << endl;
+        cout << "Your end of month balance is: -$" << bal*(-1) << endl;
         cout << "An overdraft fee of $27.75 has been assessed to the account." << endl;
     }
 }
