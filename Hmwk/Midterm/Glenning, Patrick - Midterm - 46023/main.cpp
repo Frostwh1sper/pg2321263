@@ -100,7 +100,7 @@ void prob1(){
     cin >> num;
     
     //Outputs
-    for(int n=num; n>0; n--){
+    while(num>0){
         for(int i=num-1; i>0; i--){
             cout << " ";
         }
