@@ -309,4 +309,5 @@ void prob6(){
     cout << "The approximation of e^" << x << " is " << setprecision(9) << approx;
     cout << ", which has an error of " << showpoint << setprecision(2) << error*100;
     cout << "%, when calculated out with " << terms << " terms" << endl;
+    
 }
