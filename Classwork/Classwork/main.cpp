@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     //Declare Variables
     float prin=100;             //Principal
     float intrst=5;             //Interest, in percent
-    float periods=72/intrst+1;       //Rule of 72, ensures doubled principal
+    float periods=72/intrst+1;  //Rule of 72, ensures doubled principal
     
     //Process - Calculate the savings
     float sav1=save1(prin,intrst/100,periods);
