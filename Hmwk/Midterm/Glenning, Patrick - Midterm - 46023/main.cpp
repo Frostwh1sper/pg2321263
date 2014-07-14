@@ -51,6 +51,8 @@ int main(int argc, char** argv) {
         
     }while(inN<7);
     
+    cout << endl;
+    
     //Finish him!!
     return 0;
 }
@@ -304,5 +306,7 @@ void prob6(){
     error=(approx-pow(e,x))/pow(e,x);
     
     //Output
-    cout << "The approximation of e^" << x << " is " << setprecision(9) << approx << ", which has an error of " << showpoint << setprecision(2) << error*100 << "%, when calculated out with " << terms << " terms" << endl;
+    cout << "The approximation of e^" << x << " is " << setprecision(9) << approx;
+    cout << ", which has an error of " << showpoint << setprecision(2) << error*100;
+    cout << "%, when calculated out with " << terms << " terms" << endl;
 }
