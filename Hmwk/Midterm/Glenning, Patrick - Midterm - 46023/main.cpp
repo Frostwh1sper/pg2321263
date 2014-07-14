@@ -46,11 +46,9 @@ int main(int argc, char** argv) {
             case 5: prob5(); break;
             case 6: prob6(); break;
             default: break;
-        
         }
         
     }while(inN<7);
-    
     cout << endl;
     
     //Finish him!!
@@ -79,7 +77,7 @@ void menu(){
  * getN function
  * Receives input for menu selection
  * Inputs
- *      inN
+ *      none
  * Outputs
  *      inN
 */
@@ -94,7 +92,6 @@ int getN(){
  * Fancy way to output a series of integers
 */
 void prob1(){
-    
     //Declare variables
     int num;
     
@@ -110,7 +107,6 @@ void prob1(){
         cout << n << endl;
         num--;
     }
-    
 }
 
 /* 
@@ -118,7 +114,6 @@ void prob1(){
  * Shows individual number value with asterisk
 */
 void prob2(){
-    
     //Declare variables
     char a,b,c,d;
     
@@ -151,7 +146,6 @@ void prob2(){
     else{
         cout << d << " ?" << endl;
     }
-    
 }
 
 /* 
@@ -159,7 +153,6 @@ void prob2(){
  * Simulates bank statement
 */
 void prob3(){
-    
     //Declare variables
     float bal, withd, depos;
     char dummy;
@@ -194,7 +187,6 @@ void prob3(){
  * Calculates internet bill
 */
 void prob4(){
-    
     //Declare variables
     char package;
     int hours;
@@ -251,7 +243,6 @@ void prob4(){
  * Calculates paycheck
 */
 void prob5(){
-    
     //Declare variables
     int hours;          //Hours worked
     float paycheck=0.0f;//Paycheck amount
@@ -280,7 +271,6 @@ void prob5(){
     
     //Output
     cout << "Your paycheck will be $" << paycheck << endl;
-    
 }
 
 /* 
@@ -288,7 +278,6 @@ void prob5(){
  * approximates e^x
 */
 void prob6(){
-    
     //Declare variables
     int x;
     int terms;
@@ -315,5 +304,4 @@ void prob6(){
     cout << "The approximation of e^" << x << " is " << setprecision(9) << approx;
     cout << ", which has an error of " << showpoint << setprecision(2) << error*100;
     cout << "%, when calculated out with " << terms << " terms" << endl;
-    
 }
