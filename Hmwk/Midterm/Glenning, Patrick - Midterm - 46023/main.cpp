@@ -1,0 +1,254 @@
+/* 
+ * File:   main.cpp
+ * Author: Patrick Glenning
+ * Created on July 14, 2014, 12:34 PM
+ * Purpose: Midterm for C++ 46023
+ */
+
+//System Libraries
+#include <cstdlib>
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <ctime>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+
+//Function Prototypes
+void menu();
+int getN();
+void prob1();
+void prob2();
+void prob3();
+void prob4();
+void prob5();
+void prob6();
+
+//Begin execution
+int main(int argc, char** argv) {
+
+    //Declare variables
+    int inN;
+    
+    //Display menu
+    do{
+        menu();
+        inN=getN();
+        switch(inN){
+            case 1: prob1(); break;
+            case 2: prob2(); break;
+            case 3: prob3(); break;
+            case 4: prob4(); break;
+            case 5: prob5(); break;
+            case 6: prob6(); break;
+            default: break;
+        
+        }
+        
+    }while(inN<7);
+    
+    //Finish him!!
+    return 0;
+}
+
+/* 
+ * Menu function
+ * Displays menu for the midterm program
+ * Inputs
+ *      none
+ * Outputs
+ *      none
+*/
+void menu(){
+    cout << "Enter 1 for problem 1" << endl;
+    cout << "Enter 2 for problem 2" << endl;
+    cout << "Enter 3 for problem 3" << endl;
+    cout << "Enter 4 for problem 4" << endl;
+    cout << "Enter 5 for problem 5" << endl;
+    cout << "Enter 6 for problem 6" << endl;
+    cout << "Enter 7 to exit" << endl;
+}
+
+/* 
+ * getN function
+ * Receives input for menu selection
+ * Inputs
+ *      inN
+ * Outputs
+ *      inN
+*/
+int getN(){
+    int inN;
+    cin >> inN;
+    return inN;
+}
+
+/* 
+ * Problem 1 function
+*/
+void prob1(){
+    
+    //Declare variables
+    int num;
+    
+    //Inputs
+    cout << "Enter any positive integer: ";
+    cin >> num;
+    
+    //Outputs
+    for(int n=num; n>0; n--){
+        for(int i=num-1; i>0; i--){
+            cout << " ";
+        }
+        cout << n << endl;
+        num--;
+    }
+    
+}
+
+/* 
+ * Problem 2 function
+*/
+void prob2(){
+    
+    //Declare variables
+    char a,b,c,d;
+    
+    //Inputs
+    cout << "Enter any 4-digit number: ";
+    cin >> a >> b >> c >> d;
+    
+    //Output
+    if(a>='0' && a<='9'){
+        cout << a << " " << string(a-48,'*') << endl;
+    }
+    else{
+        cout << a << "?" << endl;
+    }
+    if(b>='0' && b<='9'){
+        cout << b << " " << string(b-48,'*') << endl;
+    }
+    else{
+        cout << b << "?" << endl;
+    }
+    if(c>='0' && c<='9'){
+        cout << c << " " << string(c-48,'*') << endl;
+    }
+    else{
+        cout << c << "?" << endl;
+    }
+    if(d>='0' && d<='9'){
+        cout << d << " " << string(d-48,'*') << endl;
+    }
+    else{
+        cout << d << " ?" << endl;
+    }
+    
+}
+
+/* 
+ * Problem 3 function
+*/
+void prob3(){
+    
+    //Declare variables
+    float bal, withd, depos;
+    char dummy;
+    
+    //Inputs
+    cout << "Enter your PIN: ";
+    cin >> dummy >> dummy >> dummy >> dummy;
+    cout << "Initial balance on card: $";
+    cin >> bal;
+    cout << "Total debits during the month: $";
+    cin >> withd;
+    cout << "Total deposits during the month: $";
+    cin >> depos;
+    
+    //Calculations
+    bal+=depos;
+    bal-=withd;
+    
+    //Outputs
+    if(bal>=0){
+        cout << "Your end of month balance is: $" << bal << endl;
+    }
+    else{
+        bal-=27.75f;
+        cout << "Your end of month balance is: $" << bal << endl;
+        cout << "An overdraft fee of $27.75 has been assessed to the account." << endl;
+    }
+}
+
+/* 
+ * Problem 4 function
+*/
+void prob4(){
+    
+    //Declare variables
+    char package;
+    int hours;
+    float bill;
+    int i;      //loop counter
+    
+    //Inputs
+    cout << "Which subscription package are you enrolled in:" << endl;
+    cout << "Package A: $19.95 per month, 5 hours access.  Additional hours" << endl;
+    cout << "           are $0.75 up to 20 hours, then $1 for all additional" << endl;
+    cout << "           hours." << endl;
+    cout << "Package B: $24.95 per month, 15 hours access.  Additional hours" << endl;
+    cout << "           are $0.75 up to 25 hours, then $0.50 for all additional" << endl;
+    cout << "           hours." << endl;
+    cout << "Package C: $29.75 per month, unlimited access." << endl;
+    cin >> package;
+    cout << "How many hours did you utilize during the last billing period? ";
+    cin >> hours;
+    
+    //Outputs
+    if(package=='a'||package=='A'){
+        bill=19.95f;
+        i=5;
+        while(hours>5&&i<=15){
+            bill+=0.75f;
+            i++;
+        }
+        while(hours>15&&i<=hours){
+            bill+=1.0f;
+            i++;
+        }
+    }
+    if(package=='b'||package=='B'){
+        bill=24.95f;
+        i=15;
+        while(hours>15&&i<=25){
+            bill+=0.75f;
+            i++;
+        }
+        while(hours>25&&i<=hours){
+            bill+=0.5f;
+            i++;
+        }
+    }
+    if(package=='c'||package=='C'){
+        bill=29.75f;
+    }
+    cout << fixed << showpoint << setprecision(2);
+    cout << "Your bill for the month is $" << bill << endl;
+}
+
+/* 
+ * Problem 5 function
+*/
+void prob5(){
+    
+}
+
+/* 
+ * Problem 6 function
+*/
+void prob6(){
+    
+}
