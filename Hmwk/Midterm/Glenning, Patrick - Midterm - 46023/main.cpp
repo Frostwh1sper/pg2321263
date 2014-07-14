@@ -91,6 +91,7 @@ int getN(){
 
 /* 
  * Problem 1 function
+ * Fancy way to output a series of integers
 */
 void prob1(){
     
@@ -114,6 +115,7 @@ void prob1(){
 
 /* 
  * Problem 2 function
+ * Shows individual number value with asterisk
 */
 void prob2(){
     
@@ -154,6 +156,7 @@ void prob2(){
 
 /* 
  * Problem 3 function
+ * Simulates bank statement
 */
 void prob3(){
     
@@ -188,6 +191,7 @@ void prob3(){
 
 /* 
  * Problem 4 function
+ * Calculates internet bill
 */
 void prob4(){
     
@@ -244,6 +248,7 @@ void prob4(){
 
 /* 
  * Problem 5 function
+ * Calculates paycheck
 */
 void prob5(){
     
@@ -280,6 +285,7 @@ void prob5(){
 
 /* 
  * Problem 6 function
+ * approximates e^x
 */
 void prob6(){
     
