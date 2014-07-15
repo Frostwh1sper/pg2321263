@@ -16,7 +16,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-float e=2.71828f;
+const float e=2.71828;        //Constant utilized by problem 6
 
 //Function Prototypes
 void menu();
@@ -32,7 +32,7 @@ void prob6();
 int main(int argc, char** argv) {
 
     //Declare variables
-    int inN;
+    int inN;    //Menu selection
     
     //Display menu
     do{
@@ -93,7 +93,7 @@ int getN(){
 */
 void prob1(){
     //Declare variables
-    int num;
+    int num;    //Any positive integer
     
     //Inputs
     cout << "Enter any positive integer: ";
@@ -104,7 +104,7 @@ void prob1(){
         for(int i=num-1; i>0; i--){
             cout << " ";
         }
-        cout << n << endl;
+        cout << num << endl;
         num--;
     }
 }
@@ -115,7 +115,7 @@ void prob1(){
 */
 void prob2(){
     //Declare variables
-    char a,b,c,d;
+    char a,b,c,d;       //4-digit combination
     
     //Inputs
     cout << "Enter any 4-digit number: ";
@@ -154,8 +154,8 @@ void prob2(){
 */
 void prob3(){
     //Declare variables
-    float bal, withd, depos;
-    char dummy;
+    float bal, withd, depos;    //Balance, Withdraw amount, Deposit amount
+    char dummy;                 //Dummy variable for PIN input
     
     //Inputs
     cout << "Enter your PIN: ";
@@ -184,14 +184,14 @@ void prob3(){
 
 /* 
  * Problem 4 function
- * Calculates internet bill
+ * Calculates Internet bill
 */
 void prob4(){
     //Declare variables
-    char package;
-    int hours;
-    float bill;
-    int i;      //loop counter
+    char package;       //Package letter
+    int hours;          //Number of hours used
+    float bill;         //Monthly bill
+    int i;              //loop counter
     
     //Inputs
     cout << "Which subscription package are you enrolled in:" << endl;
@@ -218,6 +218,8 @@ void prob4(){
             bill+=1.0f;
             i++;
         }
+        cout << fixed << showpoint << setprecision(2);
+        cout << "Your bill for the month is $" << bill << endl;
     }
     if(package=='b'||package=='B'){
         bill=24.95f;
@@ -230,12 +232,17 @@ void prob4(){
             bill+=0.5f;
             i++;
         }
+        cout << fixed << showpoint << setprecision(2);
+        cout << "Your bill for the month is $" << bill << endl;
     }
     if(package=='c'||package=='C'){
         bill=29.75f;
+        cout << fixed << showpoint << setprecision(2);
+        cout << "Your bill for the month is $" << bill << endl;
     }
-    cout << fixed << showpoint << setprecision(2);
-    cout << "Your bill for the month is $" << bill << endl;
+    else{
+        cout << "Invalid package selection." << endl;
+    }
 }
 
 /* 
@@ -281,8 +288,8 @@ void prob6(){
     //Declare variables
     int x;
     int terms;
-    float approx=1.0f, error;
-    float ratio;
+    float approx=1.0f, error=0.0f;
+    float ratio=0.0f;
     
     //Inputs
     cout << "Enter a positive integer value for x? ";
@@ -292,16 +299,16 @@ void prob6(){
     
     //Calculations
     for(int i=1; i<=terms; i++){
-        ratio=pow(x,i);
+        ratio=static_cast<float>(pow(x,i));
         for(int n=1;n<=i;n++){
             ratio/=n;
         }
         approx+=ratio;
     }
-    error=(approx-pow(e,x))/pow(e,x);
+    error=(approx-static_cast<float>(pow(e,x)))/static_cast<float>(pow(e,x));
     
     //Output
     cout << "The approximation of e^" << x << " is " << setprecision(9) << approx;
-    cout << ", which has an error of " << showpoint << setprecision(2) << error*100;
+    cout << ", which has an error of " << setprecision(2) << error*100;
     cout << "%, when calculated out with " << terms << " terms" << endl;
 }
