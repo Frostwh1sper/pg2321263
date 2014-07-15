@@ -126,19 +126,19 @@ void prob2(){
         cout << a << " " << string(a-48,'*') << endl;
     }
     else{
-        cout << a << "?" << endl;
+        cout << a << " ?" << endl;
     }
     if(b>='0' && b<='9'){
         cout << b << " " << string(b-48,'*') << endl;
     }
     else{
-        cout << b << "?" << endl;
+        cout << b << " ?" << endl;
     }
     if(c>='0' && c<='9'){
         cout << c << " " << string(c-48,'*') << endl;
     }
     else{
-        cout << c << "?" << endl;
+        cout << c << " ?" << endl;
     }
     if(d>='0' && d<='9'){
         cout << d << " " << string(d-48,'*') << endl;
@@ -239,9 +239,6 @@ void prob4(){
         bill=29.75f;
         cout << fixed << showpoint << setprecision(2);
         cout << "Your bill for the month is $" << bill << endl;
-    }
-    else{
-        cout << "Invalid package selection." << endl;
     }
 }
 
