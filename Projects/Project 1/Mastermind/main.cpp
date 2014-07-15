@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
             //Output Game Objectives
             case 1:{
                 cout << "The idea of the game is for one player (the code-breaker) to guess the secret code chosen" << endl;
-                cout << "by the computer (the code-maker). The code is a sequence colored pegs chosen from six" << endl;
+                cout << "by the computer (the code-maker). The code is a sequence of colored pegs chosen from six" << endl;
                 cout << "colors available. The code-breaker makes a series of pattern guesses - after each guess" << endl;
                 cout << "the code-maker gives feedback in the form of 2 numbers, the number of pegs that are of" << endl;
                 cout << "the right color and in the correct position (+), and the number of pegs that are of the" << endl;
