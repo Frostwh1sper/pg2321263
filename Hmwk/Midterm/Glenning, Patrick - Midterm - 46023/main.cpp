@@ -17,7 +17,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-const float e=2.71828;        //Constant utilized by problem 6
+const float e=2.718282;        //Constant utilized by problem 6
 
 //Function Prototypes
 void menu();
@@ -334,7 +334,7 @@ void prob6(){
     error=(approx-static_cast<float>(pow(e,x)))/static_cast<float>(pow(e,x));
     
     //Output
-    cout << "The approximation of e^" << x << " is " << setprecision(9) << approx;
+    cout << "The approximation of e^" << x << " is " << setprecision(7) << approx;
     cout << ", which has an error of " << setprecision(2) << error*100;
     cout << "%, when calculated out with " << terms << " terms" << endl;
 }
