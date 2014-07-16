@@ -11,6 +11,7 @@
 #include <cmath>
 #include <iomanip>
 #include <ctime>
+#include <string>
 using namespace std;
 
 //User Libraries
@@ -156,11 +157,18 @@ void prob3(){
     //Declare variables
     float bal;                  //Balance on the account
     unsigned short withd, depos;//Withdraw amount, Deposit amount
-    char dummy;                 //Dummy variable for PIN input
+    string pin;                 //Dummy variable for PIN input
+    bool loop=true;
     
     //Inputs
-    cout << "Enter your PIN: ";
-    cin >> dummy >> dummy >> dummy >> dummy;
+    while(pin.size() != 4){
+        cout << "Enter your PIN: ";
+        cin >> pin;
+        if(pin.size()!=4){
+            cout << "Invalid PIN entry." << endl;
+        }
+    }
+    cin.ignore(10,'\n');
     cout << "Initial balance on card: $";
     cin >> bal;
     cout << "Total debits during the month: $";
@@ -194,7 +202,7 @@ void prob4(){
     char package;       //Package letter
     int hours;          //Number of hours used
     float bill;         //Monthly bill
-    int i;              //loop counter
+    int i;              //Loop counter
     
     //Inputs
     cout << "Which subscription package are you enrolled in:" << endl;
@@ -285,17 +293,17 @@ void prob5(){
         paycheck+=rate;
         i++;
     }
-    while(i>40&&i<50&&i<=hours){
+    while(i<50&&i<=hours){
         paycheck+=(rate*2.0f);
         i++;
     }
-    while(i>=50&&i<=hours){
+    while(i<=hours){
         paycheck+=(rate*3.0f);
         i++;
     }
     
     //Output
-    cout << "Your paycheck will be $" << paycheck << endl;
+    cout << "Your gross pay is $" << paycheck << endl;
 }
 
 /* 
