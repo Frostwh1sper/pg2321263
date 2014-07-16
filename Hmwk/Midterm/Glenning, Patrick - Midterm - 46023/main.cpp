@@ -154,7 +154,8 @@ void prob2(){
 */
 void prob3(){
     //Declare variables
-    float bal, withd, depos;    //Balance, Withdraw amount, Deposit amount
+    float bal;                  //Balance on the account
+    unsigned short withd, depos;//Withdraw amount, Deposit amount
     char dummy;                 //Dummy variable for PIN input
     
     //Inputs
@@ -178,7 +179,9 @@ void prob3(){
     else{
         bal-=27.75f;
         cout << "Your end of month balance is: -$" << bal*(-1) << endl;
-        cout << "An overdraft fee of $27.75 has been assessed to the account." << endl;
+        cout << "An overdraft fee of $27.75 has been assessed to the account." << endl <<
+                "In order to make further charges, the balance must be zeroed" << endl <<
+                "out and a new credit balance applied." << endl;
     }
 }
 
@@ -220,6 +223,12 @@ void prob4(){
         }
         cout << fixed << showpoint << setprecision(2);
         cout << "Your bill for the month is $" << bill << endl;
+        if(bill>24.95f&&bill<=29.75f){
+            cout << "You would save more money if you upgraded to package B." << endl;
+        }
+        if(bill>29.75f){
+            cout << "You would save more money if you upgraded to package C." << endl;
+        }
     }
     if(package=='b'||package=='B'){
         bill=24.95f;
@@ -234,11 +243,23 @@ void prob4(){
         }
         cout << fixed << showpoint << setprecision(2);
         cout << "Your bill for the month is $" << bill << endl;
+        if(hours<11){
+            cout << "You would save more money if you downgraded to package A." << endl;
+        }
+        if(bill>29.75f){
+            cout << "You would save more money if you upgraded to package C." << endl;
+        }
     }
     if(package=='c'||package=='C'){
         bill=29.75f;
         cout << fixed << showpoint << setprecision(2);
         cout << "Your bill for the month is $" << bill << endl;
+        if(hours<21&&hours>=11){
+            cout << "You would save more money if you downgraded to package B." << endl;
+        }
+        if(hours<11){
+            cout << "You would save more money if you downgraded to package A." << endl;
+        }
     }
 }
 
