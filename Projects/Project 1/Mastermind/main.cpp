@@ -211,7 +211,7 @@ int main(int argc, char** argv) {
                         for(int i=0; i<numCol; i++){
                             userCol[i]=colStrg[i];
                         }
-                        if(colStrg.size()!=numCol){
+                        if(colStrg.size()!=numCol){ //If incorrect number of colors entered
                             cout << "Invalid entry." << endl;
                             loop=true;
                         }
@@ -221,7 +221,7 @@ int main(int argc, char** argv) {
                              &&userCol[i]!='Y'
                              &&userCol[i]!='G'
                              &&userCol[i]!='B'
-                             &&userCol[i]!='P'){
+                             &&userCol[i]!='P'){    //If any guessed colors don't match the valid color inputs
                                 cout << "Invalid entry." << endl;
                                 loop=true;
                             }
