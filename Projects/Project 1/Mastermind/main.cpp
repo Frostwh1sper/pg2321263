@@ -149,10 +149,10 @@ int main(int argc, char** argv) {
             //Game begins
             case 3:{
                 //Randomly generate the 'code' to be cracked
-                char color[SIZE]="R";         //Array of colors chosen for the code
-                char userCol[SIZE]="R";       //Variable for user's color selections
+                char color[SIZE]="R";           //Array of colors chosen for the code
+                char userCol[SIZE]="R";         //Variable for user's color selections
                 for(int i=0; i<numCol; i++){
-                    int colNum=rand()%6+1;  //Switch operator for assigning color numbers
+                    int colNum=rand()%6+1;      //Switch operator for assigning color numbers
                     switch(colNum){
                         case 1:{
                             color[i]='R';
@@ -205,6 +205,7 @@ int main(int argc, char** argv) {
                 //User guesses
                 do{
                     do{
+                        loop=false;
                         cout << "Attempt " << counter << ":";
                             cin >> colStrg;
                         for(int i=0; i<numCol; i++){
@@ -212,8 +213,22 @@ int main(int argc, char** argv) {
                         }
                         if(colStrg.size()!=numCol){
                             cout << "Invalid entry." << endl;
+                            loop=true;
                         }
-                    }while(colStrg.size()!=numCol);
+                        for(int i=0; i<numCol; i++){
+                            if(userCol[i]!='R'
+                             &&userCol[i]!='O'
+                             &&userCol[i]!='Y'
+                             &&userCol[i]!='G'
+                             &&userCol[i]!='B'
+                             &&userCol[i]!='P'){
+                                cout << "Invalid entry." << endl;
+                                loop=true;
+                            }
+                        }
+                            
+                    }while(loop);   //End of user guess do-while loop
+                    loop=true;
                     
                 //Compare values
                     for(int i=0; i<numCol; i++){
