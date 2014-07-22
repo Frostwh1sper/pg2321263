@@ -37,6 +37,7 @@ int numAcc();
 void findLow(int,int,int,int,int);
 float fallDst(int);
 float kinetic(int,float);
+float presVal(float,float,int);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -282,6 +283,26 @@ void problem4(){
  */
 void problem5(){
     
+    //Declare and initialize variables
+    float present, future, annRate;
+    unsigned short numYrs;
+    
+    //User inputs
+    cout << "What future value would you like in your account? $";
+    cin >> future;
+    cout << "What is your annual interest rate? ";
+    cin >> annRate;
+    annRate/=100;
+    cout << "In how many years would you like to have your future balance? ";
+    cin >> numYrs;
+    
+    //Calculations
+    present=presVal(future,annRate,numYrs);
+    
+    //Display results
+    cout << "In order to have $" << future << " in your account within " << numYrs << 
+            " years, you require an initial investment of $" << setprecision(2) << 
+            fixed << present << endl;
 }
 
 /*
@@ -397,4 +418,16 @@ float kinetic(int m, float v){
     float ke;
     ke=0.5f*m*v*v;
     return ke;
+}
+
+/*
+ * Inputs:
+ *      
+ * Outputs:
+ *      
+ */
+float presVal(float f, float r, int n){
+    float p;
+    p=f/pow(1+r,n);
+    return p;
 }
