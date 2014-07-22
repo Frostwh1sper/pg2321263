@@ -237,21 +237,14 @@ int main(int argc, char** argv) {
                             posCorr++;
                             userCol[i]='Z';         //Removes guessed color from future consideration
                         }
+                    }
                         //Find correct color in wrong place
-                        else{
-                            if(color[i]==userCol[0] ||
-                               color[i]==userCol[1] ||
-                               color[i]==userCol[2] ||
-                               color[i]==userCol[3] ||
-                               color[i]==userCol[4] ||
-                               color[i]==userCol[5]){
+                    for(int i=0; i<numCol; i++){
+                        for(int n=0; n<numCol; n++){
+                            if(color[i]==userCol[n]){
                                 colCorr++;
-                            }
-                            for(int n=0; n<numCol; n++){
-                                if(color[i]==userCol[n]){
-                                    userCol[n]='Z'; //Removes guessed color from future consideration (only the first correctly guessed color it comes across)
-                                    n=numCol;
-                                }
+                                userCol[n]='Z';
+                                n=numCol;
                             }
                         }
                     }
