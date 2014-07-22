@@ -231,62 +231,30 @@ int main(int argc, char** argv) {
                     loop=true;
                     
                 //Compare values
+                    //Find Correct color in correct place
                     for(int i=0; i<numCol; i++){
                         if(userCol[i]==color[i]){
                             posCorr++;
+                            userCol[i]='Z';         //Removes guessed color from future consideration
+                        }
+                        //Find correct color in wrong place
+                        else{
+                            if(color[i]==userCol[0] ||
+                               color[i]==userCol[1] ||
+                               color[i]==userCol[2] ||
+                               color[i]==userCol[3] ||
+                               color[i]==userCol[4] ||
+                               color[i]==userCol[5]){
+                                colCorr++;
+                            }
                             for(int n=0; n<numCol; n++){
-                                if(userCol[i]==color[n]&&n!=i){
-                                    colCorr--;  //Makes sure the correctly guessed color & position isn't also a correct color in the wrong position elsewhere
+                                if(color[i]==userCol[n]){
+                                    userCol[n]='Z'; //Removes guessed color from future consideration (only the first correctly guessed color it comes across)
+                                    n=numCol;
                                 }
                             }
                         }
-                        else if(color[i]==userCol[0]){
-                            colCorr++;
-                            for(int n=i+1; n<numCol; n++){
-                                if(color[i]==color[n]){
-                                    colCorr--;
-                                }
-                            }
-                        }
-                        if(color[i]==userCol[1]){
-                            colCorr++;
-                            for(int n=i+1; n<numCol; n++){
-                                if(color[i]==color[n]){
-                                    colCorr--;
-                                }
-                            }
-                        }
-                        if(color[i]==userCol[2]){
-                            colCorr++;
-                            for(int n=i+1; n<numCol; n++){
-                                if(color[i]==color[n]){
-                                    colCorr--;
-                                }
-                            }
-                        }
-                        if(color[i]==userCol[3]){
-                            colCorr++;
-                            for(int n=i+1; n<numCol; n++){
-                                if(color[i]==color[n]){
-                                    colCorr--;
-                                }
-                            }
-                        }
-                        if(color[i]==userCol[4]){
-                            colCorr++;
-                            for(int n=i+1; n<numCol; n++){
-                                if(color[i]==color[n]){
-                                    colCorr--;
-                                }
-                            }
-                        }
-                        if(color[i]==userCol[5]){
-                            colCorr++;
-                        }
-                        
                     }
-                    
-                    
                     
                 //Output results of comparison
                     cout << string(posCorr,'+') << string(colCorr,'~') << endl;
@@ -301,12 +269,7 @@ int main(int argc, char** argv) {
                     }
                     
                 //Output in the event of a completely correct guess
-                    if(userCol[1]==color[1]
-                     &&userCol[2]==color[2]
-                     &&userCol[3]==color[3]
-                     &&userCol[4]==color[4]
-                     &&userCol[5]==color[5]
-                     &&userCol[6]==color[6]){
+                    if(posCorr==numCol){
                         cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
                         counter=numTurn;
                     }
