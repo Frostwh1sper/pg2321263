@@ -35,18 +35,17 @@ void problem10();       //Gaddis 6thEd Chap6 Prob
 int main(int argc, char** argv) {
     
     //Declare and initialize variables
-    int inN;
+    int choice;
     
     //Display Menu
     do{
         menu();
 
         //User selection
-        inN=slction();
-        cout << "You chose " << inN << endl;
+        choice=slction();
 
         //Problems
-        switch(inN){
+        switch(choice){
             case 1:{
                 problem1();
                 break;
@@ -92,7 +91,7 @@ int main(int argc, char** argv) {
                 break;
             }
         }
-    }while(inN<12);
+    }while(choice<11);
     
     //Finish him!!
     return 0;
@@ -108,16 +107,16 @@ void menu(){
             "          *                                                *" << endl <<
             "          *    Glenning, Patrick - Assignment 5 - 46023    *" << endl <<
             "          *                                                *" << endl <<
-            "          *    1)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    2)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    3)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    4)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    5)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    6)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    7)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    8)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    9)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
-            "          *    10) Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    1)  Markup                                  *" << endl <<
+            "          *    2)  Safest Driving Area                     *" << endl <<
+            "          *    3)  Falling Distance                        *" << endl <<
+            "          *    4)  Kinetic Energy                          *" << endl <<
+            "          *    5)  Present Value                           *" << endl <<
+            "          *    6)  Star Search                             *" << endl <<
+            "          *    7)  Overloaded Hospital                     *" << endl <<
+            "          *    8)  Population                              *" << endl <<
+            "          *    9)  Stock Profit                            *" << endl <<
+            "          *    10) isPrime Function                        *" << endl <<
             "          *    11) Exit Program                            *" << endl <<
             "          *________________________________________________*" << endl <<
             "             Enter your selection number: ";
@@ -131,25 +130,25 @@ void menu(){
 int slction(){
     
     //Declare variables
-    int inN;
+    int n;
     bool x=true;
     
     //User input
     do{
-        cin >> inN;
-        if(inN<1 || inN>11){
+        cin >> n;
+        if(n<1 || n>11){
             cout << "             Please enter a valid input: ";
         }
-        if(inN>0 && inN<12){
+        if(n>0 && n<12){
             x=false;
             cout << string(50,'\n');
         }
     }while(x);
-    return inN;
+    return n;
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob1 - Markup
  * 
  */
 void problem1(){
@@ -157,7 +156,7 @@ void problem1(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob4 - Safest Driving Area
  * 
  */
 void problem2(){
@@ -165,7 +164,7 @@ void problem2(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob5 - Falling Distance
  * 
  */
 void problem3(){
@@ -173,7 +172,7 @@ void problem3(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob6 - Kinetic Energy
  * 
  */
 void problem4(){
@@ -181,7 +180,7 @@ void problem4(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob9 - Present Value
  * 
  */
 void problem5(){
@@ -189,7 +188,7 @@ void problem5(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob11 - Star Search
  * 
  */
 void problem6(){
@@ -197,7 +196,7 @@ void problem6(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob14 - Overloaded Hospital
  * 
  */
 void problem7(){
@@ -205,7 +204,7 @@ void problem7(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob15 - Population
  * 
  */
 void problem8(){
@@ -213,7 +212,7 @@ void problem8(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob19 - Stock Profit
  * 
  */
 void problem9(){
@@ -221,7 +220,7 @@ void problem9(){
 }
 
 /*
- * Gaddis 6thEd Chap6 Prob
+ * Gaddis 6thEd Chap6 Prob21 - isPrime Function
  * 
  */
 void problem10(){
