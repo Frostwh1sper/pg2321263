@@ -32,6 +32,8 @@ void problem8();        //Gaddis 6thEd Chap6 Prob15
 void problem9();        //Gaddis 6thEd Chap6 Prob19
 void problem10();       //Gaddis 6thEd Chap6 Prob21
 float calcRet(float,float);
+int numAcc();
+void findLow(int,int,int,int,int);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -207,6 +209,23 @@ void problem1(){
  */
 void problem2(){
     
+    //Declare and initialize variables
+    int accEst, accNth, accWst, accSth, accCnt;
+    
+    //User inputs
+    cout << "How many accidents were reported in the eastern part of town? ";
+    accEst=numAcc();
+    cout << "How many accidents were reported in the northern part of town? ";
+    accNth=numAcc();
+    cout << "How many accidents were reported in the western part of town? ";
+    accWst=numAcc();
+    cout << "How many accidents were reported in the southern part of town? ";
+    accSth=numAcc();
+    cout << "How many accidents were reported in the central part of town? ";
+    accCnt=numAcc();
+    
+    //Display safest route
+    findLow(accEst,accNth,accWst,accSth,accCnt);
 }
 
 /*
@@ -280,4 +299,31 @@ float calcRet(float w, float m){
     float ret;
     ret=w*(1+m);
     return ret;
+}
+
+int numAcc(){
+    int accdnts;
+    do{
+        cin >> accdnts;
+        if(accdnts<0) cout << "Invalid input, please re-enter: ";
+    }while(accdnts<0);
+    return accdnts;
+}
+
+void findLow(int e, int n, int w, int s, int c){
+    if(e<n && e<w && e<s && e<c){
+        cout << "The safest route is through the eastern part of town." << endl;
+    }
+    if(n<e && n<w && n<s && n<c){
+        cout << "The safest route is through the northern part of town." << endl;
+    }
+    if(w<e && w<n && w<s && w<c){
+        cout << "The safest route is through the western part of town." << endl;
+    }
+    if(s<e && s<n && s<w && s<c){
+        cout << "The safest route is through the southern part of town." << endl;
+    }
+    if(c<e && c<n && c<w && c<s){
+        cout << "The safest route is through the central part of town." << endl;
+    }
 }
