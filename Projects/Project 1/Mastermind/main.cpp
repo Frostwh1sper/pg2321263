@@ -194,13 +194,13 @@ int main(int argc, char** argv) {
                         "~ = correct color, incorrect position." << endl << endl;
                 
                 //Display combination for testing (Remove block comment to display when running program)
-                
+                /*
                 cout << "The combinations is: ";
                 for(int i=0; i<numCol; i++){
                     cout << color[i];
                 }
                 cout << endl << endl;
-                
+                */
 
                 //User guesses
                 do{
