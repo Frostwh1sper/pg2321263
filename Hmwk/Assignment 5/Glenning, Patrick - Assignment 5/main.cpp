@@ -18,35 +18,35 @@ using namespace std;
 //Global Constants
 
 //Function Prototypes
-void menu();
-int slction();
-void problem1();
-void problem2();
-void problem3();
-void problem4();
-void problem5();
-void problem6();
-void problem7();
-void problem8();
-void problem9();
-void problem10();
+void menu();            //Displays main menu
+int slction();          //Returns menu selection
+void problem1();        //Gaddis 6thEd Chap6 Prob
+void problem2();        //Gaddis 6thEd Chap6 Prob
+void problem3();        //Gaddis 6thEd Chap6 Prob
+void problem4();        //Gaddis 6thEd Chap6 Prob
+void problem5();        //Gaddis 6thEd Chap6 Prob
+void problem6();        //Gaddis 6thEd Chap6 Prob
+void problem7();        //Gaddis 6thEd Chap6 Prob
+void problem8();        //Gaddis 6thEd Chap6 Prob
+void problem9();        //Gaddis 6thEd Chap6 Prob
+void problem10();       //Gaddis 6thEd Chap6 Prob
 
 //Begin execution
 int main(int argc, char** argv) {
     
     //Declare and initialize variables
-    int choice;
-    bool loop=true;
+    int inN;
     
     //Display Menu
-    menu();
-    
-    //User selection
-    choice=slction();
-    
-    //Problems
     do{
-        switch(choice){
+        menu();
+
+        //User selection
+        inN=slction();
+        cout << "You chose " << inN << endl;
+
+        //Problems
+        switch(inN){
             case 1:{
                 problem1();
                 break;
@@ -89,13 +89,141 @@ int main(int argc, char** argv) {
             }
             default:{
                 cout << "Exiting program..." << endl << endl;
-                loop=false;
                 break;
             }
         }
-    }while(loop);
+    }while(inN<12);
     
     //Finish him!!
     return 0;
 }
+/*
+ * 
+ * 
+ */
+void menu(){
+    
+    cout << "           ________________________________________________ " << endl <<
+            "          *                                                *" << endl <<
+            "          *                                                *" << endl <<
+            "          *    Glenning, Patrick - Assignment 5 - 46023    *" << endl <<
+            "          *                                                *" << endl <<
+            "          *    1)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    2)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    3)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    4)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    5)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    6)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    7)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    8)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    9)  Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    10) Gaddis 6thEd Chap6 Prob                 *" << endl <<
+            "          *    11) Exit Program                            *" << endl <<
+            "          *________________________________________________*" << endl <<
+            "             Enter your selection number: ";
+    
+}
 
+/*
+ * 
+ * 
+ */
+int slction(){
+    
+    //Declare variables
+    int inN;
+    bool x=true;
+    
+    //User input
+    do{
+        cin >> inN;
+        if(inN<1 || inN>11){
+            cout << "             Please enter a valid input: ";
+        }
+        if(inN>0 && inN<12){
+            x=false;
+            cout << string(50,'\n');
+        }
+    }while(x);
+    return inN;
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem1(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem2(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem3(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem4(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem5(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem6(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem7(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem8(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem9(){
+    
+}
+
+/*
+ * Gaddis 6thEd Chap6 Prob
+ * 
+ */
+void problem10(){
+    
+}
