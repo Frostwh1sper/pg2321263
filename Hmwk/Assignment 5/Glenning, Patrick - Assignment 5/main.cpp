@@ -20,16 +20,17 @@ using namespace std;
 //Function Prototypes
 void menu();            //Displays main menu
 int slction();          //Returns menu selection
-void problem1();        //Gaddis 6thEd Chap6 Prob
-void problem2();        //Gaddis 6thEd Chap6 Prob
-void problem3();        //Gaddis 6thEd Chap6 Prob
-void problem4();        //Gaddis 6thEd Chap6 Prob
-void problem5();        //Gaddis 6thEd Chap6 Prob
-void problem6();        //Gaddis 6thEd Chap6 Prob
-void problem7();        //Gaddis 6thEd Chap6 Prob
-void problem8();        //Gaddis 6thEd Chap6 Prob
-void problem9();        //Gaddis 6thEd Chap6 Prob
-void problem10();       //Gaddis 6thEd Chap6 Prob
+void problem1();        //Gaddis 6thEd Chap6 Prob1
+void problem2();        //Gaddis 6thEd Chap6 Prob4
+void problem3();        //Gaddis 6thEd Chap6 Prob5
+void problem4();        //Gaddis 6thEd Chap6 Prob6
+void problem5();        //Gaddis 6thEd Chap6 Prob9
+void problem6();        //Gaddis 6thEd Chap6 Prob11
+void problem7();        //Gaddis 6thEd Chap6 Prob14
+void problem8();        //Gaddis 6thEd Chap6 Prob15
+void problem9();        //Gaddis 6thEd Chap6 Prob19
+void problem10();       //Gaddis 6thEd Chap6 Prob21
+float calcRet();
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -91,6 +92,9 @@ int main(int argc, char** argv) {
                 break;
             }
         }
+        cout << "Press any key to return to the main menu." << endl;
+        cin.get();
+        cout << string(50,'\n');
     }while(choice<11);
     
     //Finish him!!
@@ -136,14 +140,13 @@ int slction(){
     //User input
     do{
         cin >> n;
-        if(n<1 || n>11){
-            cout << "             Please enter a valid input: ";
-        }
-        if(n>0 && n<12){
-            x=false;
+        if(n>=1 && n<=11){
             cout << string(50,'\n');
         }
-    }while(x);
+        else{
+            cout << "             Please enter a valid input: ";
+        }
+    }while(n<1 || n>11);
     return n;
 }
 
@@ -154,7 +157,20 @@ int slction(){
 void problem1(){
     
     //Declare and initialize variables
+    float wholSal,markup,retail;
     
+    //User input
+    cout << "What is the wholesale price for the item? $";
+    cin >> wholSal;
+    cout << "What is the markup percentage? ";
+    cin >> markup;
+    markup/=100;
+    
+    //Calculate price
+    retail=calcRet(wholSal,markup);
+    
+    //Display retail price after markup
+    cout << "The retail price is $" << retail << endl;
 }
 
 /*
@@ -227,4 +243,13 @@ void problem9(){
  */
 void problem10(){
     
+}
+
+/*
+ * 
+ */
+float calcRet(float w, float m){
+    float ret;
+    ret=w*(1+m);
+    return ret;
 }
