@@ -36,6 +36,7 @@ float calcRet(float,float);
 int numAcc();
 void findLow(int,int,int,int,int);
 float fallDst(int);
+float kinetic(int,float);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -257,6 +258,22 @@ void problem3(){
  */
 void problem4(){
     
+    //Declare and initialize variables
+    int mass;
+    float veloc;
+    float kinEner;
+    
+    //User inputs
+    cout << "What is the mass of the object (in kilograms)? ";
+    cin >> mass;
+    cout << "What is the speed of the object (in meters per second)? ";
+    cin >> veloc;
+    
+    //Calculations
+    kinEner=kinetic(mass,veloc);
+    
+    //Display results
+    cout << "That object has a kinetic energy of " << setprecision(2) << fixed << kinEner << " Joules." << endl;
 }
 
 /*
@@ -359,10 +376,25 @@ void findLow(int e, int n, int w, int s, int c){
 }
 
 /*
- * 
+ * Inputs:
+ *      time
+ * Outputs:
+ *      dist
  */
 float fallDst(int t){
     float d;
     d=0.5f*G*t*t;
     return d;
+}
+
+/*
+ * Inputs:
+ *      mass, veloc
+ * Outputs:
+ *      kinEner
+ */
+float kinetic(int m, float v){
+    float ke;
+    ke=0.5f*m*v*v;
+    return ke;
 }
