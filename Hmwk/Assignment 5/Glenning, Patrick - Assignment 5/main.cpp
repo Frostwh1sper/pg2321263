@@ -19,7 +19,7 @@ using namespace std;
 
 //Function Prototypes
 void menu();
-void slction();
+int slction();
 void problem1();
 void problem2();
 void problem3();
