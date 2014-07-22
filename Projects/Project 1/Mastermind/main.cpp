@@ -188,8 +188,6 @@ int main(int argc, char** argv) {
                         "You have " << numTurn << " turns to crack the code and prove that you are a Mastermind!" << endl <<
                         "The colors available are Red (R), Orange (O), Yellow (Y), Green (G), Blue (B), Purple (P)." << endl <<
                         "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl <<
-                        "You can enter any letters you choose, however you may only enter the number" << endl <<
-                        "of colors in the code." << endl << endl <<
                         "+ = correct color, correct position," << endl <<
                         "~ = correct color, incorrect position." << endl << endl;
                 
