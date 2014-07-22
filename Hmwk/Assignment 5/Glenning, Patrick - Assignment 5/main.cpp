@@ -20,6 +20,7 @@ using namespace std;
 //Function Prototypes
 void menu();            //Displays main menu
 int slction();          //Returns menu selection
+void cntinue();         //Waits for input before continuing
 void problem1();        //Gaddis 6thEd Chap6 Prob1
 void problem2();        //Gaddis 6thEd Chap6 Prob4
 void problem3();        //Gaddis 6thEd Chap6 Prob5
@@ -30,7 +31,7 @@ void problem7();        //Gaddis 6thEd Chap6 Prob14
 void problem8();        //Gaddis 6thEd Chap6 Prob15
 void problem9();        //Gaddis 6thEd Chap6 Prob19
 void problem10();       //Gaddis 6thEd Chap6 Prob21
-float calcRet();
+float calcRet(float,float);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -49,53 +50,72 @@ int main(int argc, char** argv) {
         switch(choice){
             case 1:{
                 problem1();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 2:{
                 problem2();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 3:{
                 problem3();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 4:{
                 problem4();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 5:{
                 problem5();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 6:{
                 problem6();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 7:{
                 problem7();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 8:{
                 problem8();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 9:{
                 problem9();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             case 10:{
                 problem10();
+                cout << "Press any key to return to the main menu." << endl;
+                cntinue();
                 break;
             }
             default:{
-                cout << "Exiting program..." << endl << endl;
                 break;
             }
         }
-        cout << "Press any key to return to the main menu." << endl;
-        cin.get();
         cout << string(50,'\n');
     }while(choice<11);
+    
+    cout << "Exiting program..." << endl << endl;
     
     //Finish him!!
     return 0;
@@ -140,6 +160,7 @@ int slction(){
     //User input
     do{
         cin >> n;
+        cin.ignore();
         if(n>=1 && n<=11){
             cout << string(50,'\n');
         }
@@ -148,6 +169,12 @@ int slction(){
         }
     }while(n<1 || n>11);
     return n;
+}
+
+void cntinue(){
+    char x;
+    cin.get(x);
+    cin.ignore();
 }
 
 /*
@@ -167,9 +194,10 @@ void problem1(){
     markup/=100;
     
     //Calculate price
-    retail=calcRet(wholSal,markup);
+    retail=calcRet(wholSal, markup);
     
     //Display retail price after markup
+    cout << setprecision(2) << fixed;
     cout << "The retail price is $" << retail << endl;
 }
 
