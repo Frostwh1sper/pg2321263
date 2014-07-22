@@ -16,6 +16,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
+const float G=9.80f;
 
 //Function Prototypes
 void menu();            //Displays main menu
@@ -34,6 +35,7 @@ void problem10();       //Gaddis 6thEd Chap6 Prob21
 float calcRet(float,float);
 int numAcc();
 void findLow(int,int,int,int,int);
+float fallDst(int);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -205,7 +207,7 @@ void problem1(){
 
 /*
  * Gaddis 6thEd Chap6 Prob4 - Safest Driving Area
- * Purpose: 
+ * Purpose: Displays the safest driving route
  */
 void problem2(){
     
@@ -230,10 +232,23 @@ void problem2(){
 
 /*
  * Gaddis 6thEd Chap6 Prob5 - Falling Distance
- * Purpose: 
+ * Purpose: Find the distance an object has fallen after a period of time
  */
 void problem3(){
     
+    //Declare and initialize variables
+    float dist;
+    int time;
+    
+    //User input
+    cout << "How long has the object been falling (in seconds)? ";
+    cin >> time;
+    
+    //Find the distance traveled
+    dist=fallDst(time);
+    
+    //Display distance fallen
+    cout << "The object has fallen " << setprecision(1) << fixed << dist << " meters." << endl;
 }
 
 /*
@@ -293,7 +308,10 @@ void problem10(){
 }
 
 /*
- * 
+ * Inputs:
+ *      wholSal, markup
+ * Outputs:
+ *      ret
  */
 float calcRet(float w, float m){
     float ret;
@@ -301,6 +319,12 @@ float calcRet(float w, float m){
     return ret;
 }
 
+/*
+ * Inputs:
+ *      none
+ * Outputs:
+ *      accdnts
+ */
 int numAcc(){
     int accdnts;
     do{
@@ -310,6 +334,12 @@ int numAcc(){
     return accdnts;
 }
 
+/*
+ * Inputs:
+ *      accEst, accNth, accWst, accSth, accCnt
+ * Outputs:
+ *      none
+ */
 void findLow(int e, int n, int w, int s, int c){
     if(e<n && e<w && e<s && e<c){
         cout << "The safest route is through the eastern part of town." << endl;
@@ -326,4 +356,13 @@ void findLow(int e, int n, int w, int s, int c){
     if(c<e && c<n && c<w && c<s){
         cout << "The safest route is through the central part of town." << endl;
     }
+}
+
+/*
+ * 
+ */
+float fallDst(int t){
+    float d;
+    d=0.5f*G*t*t;
+    return d;
 }
