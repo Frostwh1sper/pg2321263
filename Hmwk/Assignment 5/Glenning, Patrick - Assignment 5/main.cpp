@@ -149,15 +149,17 @@ int slction(){
 
 /*
  * Gaddis 6thEd Chap6 Prob1 - Markup
- * 
+ * Purpose: Displays an item's retail price
  */
 void problem1(){
+    
+    //Declare and initialize variables
     
 }
 
 /*
  * Gaddis 6thEd Chap6 Prob4 - Safest Driving Area
- * 
+ * Purpose: 
  */
 void problem2(){
     
@@ -165,7 +167,7 @@ void problem2(){
 
 /*
  * Gaddis 6thEd Chap6 Prob5 - Falling Distance
- * 
+ * Purpose: 
  */
 void problem3(){
     
@@ -173,7 +175,7 @@ void problem3(){
 
 /*
  * Gaddis 6thEd Chap6 Prob6 - Kinetic Energy
- * 
+ * Purpose: 
  */
 void problem4(){
     
@@ -181,7 +183,7 @@ void problem4(){
 
 /*
  * Gaddis 6thEd Chap6 Prob9 - Present Value
- * 
+ * Purpose: 
  */
 void problem5(){
     
@@ -189,7 +191,7 @@ void problem5(){
 
 /*
  * Gaddis 6thEd Chap6 Prob11 - Star Search
- * 
+ * Purpose: 
  */
 void problem6(){
     
@@ -197,7 +199,7 @@ void problem6(){
 
 /*
  * Gaddis 6thEd Chap6 Prob14 - Overloaded Hospital
- * 
+ * Purpose: 
  */
 void problem7(){
     
@@ -205,7 +207,7 @@ void problem7(){
 
 /*
  * Gaddis 6thEd Chap6 Prob15 - Population
- * 
+ * Purpose: 
  */
 void problem8(){
     
@@ -213,7 +215,7 @@ void problem8(){
 
 /*
  * Gaddis 6thEd Chap6 Prob19 - Stock Profit
- * 
+ * Purpose: 
  */
 void problem9(){
     
@@ -221,7 +223,7 @@ void problem9(){
 
 /*
  * Gaddis 6thEd Chap6 Prob21 - isPrime Function
- * 
+ * Purpose: 
  */
 void problem10(){
     
