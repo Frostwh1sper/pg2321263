@@ -30,11 +30,11 @@ int main(int argc, char** argv) {
     int counter=1;              //Keeps track of guess attempts
     int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
     int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
-    int choice;
+    int choice;                 //Main menu selection
     int colCorr=0, posCorr=0;   //Number of correct colors, and correct positions
     bool loop=true;             //Mini loop operator
     bool game=true;             //Loop operator for the game
-    const int SIZE=6;           //Used for initialization of color arrays
+    const int SIZE=12;           //Used for initialization of color arrays
     string colStrg;
     
     cout << string(50,'\n');
@@ -149,8 +149,8 @@ int main(int argc, char** argv) {
             //Game begins
             case 3:{
                 //Randomly generate the 'code' to be cracked
-                char color[SIZE]="R";           //Array of colors chosen for the code
-                char userCol[SIZE]="R";         //Variable for user's color selections
+                char color[SIZE]="K";           //Array of colors chosen for the code, initialized to K, for comparison check
+                char userCol[SIZE]="K";         //Variable for user's color selections, initialized to K, for comparison check
                 for(int i=0; i<numCol; i++){
                     int colNum=rand()%6+1;      //Switch operator for assigning color numbers
                     switch(colNum){
@@ -194,13 +194,13 @@ int main(int argc, char** argv) {
                         "~ = correct color, incorrect position." << endl << endl;
                 
                 //Display combination for testing (Remove block comment to display when running program)
-                /*
+                
                 cout << "The combinations is: ";
                 for(int i=0; i<numCol; i++){
                     cout << color[i];
                 }
                 cout << endl << endl;
-                */
+                
 
                 //User guesses
                 do{
@@ -234,15 +234,56 @@ int main(int argc, char** argv) {
                     for(int i=0; i<numCol; i++){
                         if(userCol[i]==color[i]){
                             posCorr++;
+                            for(int n=0; n<numCol; n++){
+                                if(userCol[i]==color[n]&&n!=i){
+                                    colCorr--;  //Makes sure the correctly guessed color & position isn't also a correct color in the wrong position elsewhere
+                                }
+                            }
                         }
-                        else if(color[i]==userCol[0] || 
-                                color[i]==userCol[1] || 
-                                color[i]==userCol[2] || 
-                                color[i]==userCol[3] ||
-                                color[i]==userCol[4] ||
-                                color[i]==userCol[5]){
+                        else if(color[i]==userCol[0]){
+                            colCorr++;
+                            for(int n=i+1; n<numCol; n++){
+                                if(color[i]==color[n]){
+                                    colCorr--;
+                                }
+                            }
+                        }
+                        if(color[i]==userCol[1]){
+                            colCorr++;
+                            for(int n=i+1; n<numCol; n++){
+                                if(color[i]==color[n]){
+                                    colCorr--;
+                                }
+                            }
+                        }
+                        if(color[i]==userCol[2]){
+                            colCorr++;
+                            for(int n=i+1; n<numCol; n++){
+                                if(color[i]==color[n]){
+                                    colCorr--;
+                                }
+                            }
+                        }
+                        if(color[i]==userCol[3]){
+                            colCorr++;
+                            for(int n=i+1; n<numCol; n++){
+                                if(color[i]==color[n]){
+                                    colCorr--;
+                                }
+                            }
+                        }
+                        if(color[i]==userCol[4]){
+                            colCorr++;
+                            for(int n=i+1; n<numCol; n++){
+                                if(color[i]==color[n]){
+                                    colCorr--;
+                                }
+                            }
+                        }
+                        if(color[i]==userCol[5]){
                             colCorr++;
                         }
+                        
                     }
                     
                     
