@@ -23,7 +23,7 @@ int slction();          //Returns menu selection
 void callPrb(int);      //Calls programs using switch
 void cntinue();         //Waits for input before continuing
 void problem1();        //Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Values
-void problem2();        //Gaddis 6thEd Chap7 Prob
+void problem2();        //Gaddis 6thEd Chap7 Prob4 - Monkey Business
 void problem3();        //Gaddis 6thEd Chap7 Prob
 void problem4();        //Gaddis 6thEd Chap7 Prob
 void problem5();        //Gaddis 6thEd Chap7 Prob
@@ -66,8 +66,8 @@ void menu(){
             "          *                                                *" << endl <<
             "          *    Glenning, Patrick - Assignment 6 - 46023    *" << endl <<
             "          *                                                *" << endl <<
-            "          *    1)                                          *" << endl <<
-            "          *    2)                                          *" << endl <<
+            "          *    1) Largest/Smallest Array Values            *" << endl <<
+            "          *    2) Monkey Business                          *" << endl <<
             "          *    3)                                          *" << endl <<
             "          *    4)                                          *" << endl <<
             "          *    5)                                          *" << endl <<
@@ -181,12 +181,12 @@ void callPrb(int x){
 
 void cntinue(){
     char x;
+    cout << endl;
     cin.get(x);
-    cin.ignore();
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
+ * Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Values
  * Purpose: Displays the largest and smallest values in an array
  */
 void problem1(){
@@ -213,11 +213,60 @@ void problem1(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap7 Prob4 - Monkey Business
+ * Purpose: Record food intake of monkeys
  */
 void problem2(){
     
+    //Declare and initialize variables
+    const int ROW=3, COL=7;
+    int food[ROW][COL], sumTot, ave, lowX, lowY, highX, highY;
+    
+    //User inputs
+    for(int i=0; i<3; i++){
+        cout << "Enter how much food (in whole pounds) monkey " << i+1 << " consumed... " << endl;
+        for(int n=0; n<7; n++){
+            cout << "Day " << n+1 << ": ";
+            do{
+                cin >> food[i][n];
+                cin.ignore();
+                if(food[i][n]<0) cout << "Invalid weight entered, please re-enter: ";
+            }while(food[i][n]<0);
+        }
+    }
+    
+    //Calculations
+    sumTot=food[0][0];
+    for(int i=0; i<3; i++){
+        for(int n=0; n<7; n++){
+            sumTot+=food[i][n];
+        }
+    }
+    ave=sumTot/21;
+    
+    //Determine lowest and highest consumption
+    lowX=0;
+    lowY=0;
+    highX=0;
+    highY=0;
+    for(int i=0; i<3; i++){
+        for(int n=0; n<7; n++){
+            if(food[lowY][lowX]>food[i][n]){
+                lowX=n;
+                lowY=i;
+            }
+            if(food[highY][highX]<food[i][n]){
+                highX=n;
+                highY=i;
+            }
+        }
+    }
+    
+    //Display data
+    cout << "Average daily consumption: " << ave << " pounds" << endl <<
+            " Total weekly consumption: " << sumTot << " pounds." << endl <<
+            " Most was consumed by monkey " << highY+1 << " on day " << highX+1 << ": " << food[highY][highX] << " pounds." << endl <<
+            "Least was consumed by monkey " << lowY+1 << " on day " << lowX+1 << ": " << food[lowY][lowX] << " pounds." << endl;
 }
 
 /*
