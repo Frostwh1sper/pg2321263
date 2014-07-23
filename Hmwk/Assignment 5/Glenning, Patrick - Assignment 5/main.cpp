@@ -44,6 +44,7 @@ float findLo(float,float,float,float,float);
 float findHi(float,float,float,float,float);
 float hosptal(int,float,float,float);
 float hosptal(float,float);
+float stocks(int,float,float,float,float);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -422,6 +423,34 @@ void problem8(){
  */
 void problem9(){
     
+    //Declare and initialize variables
+    int numShar;
+    float buy, buyComm, sale, salComm, profit;
+    
+    //User inputs
+    cout << "How many shares were traded? ";
+    cin >> numShar;
+    cout << "What was the purchase price per share? $";
+    cin >> buy;
+    cout << "What was the commission on the purchase? $";
+    cin >> buyComm;
+    cout << "What was the sell price per share? $";
+    cin >> sale;
+    cout << "What was the commission on the sale? $";
+    cin >> salComm;
+    
+    //Calculations
+    profit=stocks(numShar,buy,buyComm,sale,salComm);
+    
+    //Display profit or loss
+    if(profit>=0){
+        cout << "Your trades resulted in a net $" << profit << endl;
+    }
+    else{
+        profit*=(-1);
+        cout << "Your trades resulted in a net -$" << profit << endl;
+    }
+    
 }
 
 /*
@@ -622,4 +651,16 @@ float hosptal(float m, float s){
     float c;
     c=m+s;
     return c;
+}
+
+/*
+ * Inputs:
+ *      numShar, buy, buyComm, sale, salComm
+ * Outputs:
+ *      profit
+ */
+float stocks(int ns, float pp, float pc, float sp, float sc){
+    float p;
+    p=((ns*sp)-sc)-((ns*pp)-pc);
+    return p;
 }
