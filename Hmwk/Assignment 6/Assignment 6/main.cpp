@@ -181,6 +181,12 @@ void callPrb(int x){
     }
 }
 
+void cntinue(){
+    char x;
+    cin.get(x);
+    cin.ignore();
+}
+
 /*
  * Gaddis 6thEd Chap7 Prob
  * Purpose: Displays the largest and smallest values in an array
