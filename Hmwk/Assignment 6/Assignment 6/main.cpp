@@ -95,9 +95,7 @@ int slction(){
     //User input
     do{
         cin >> n;
-        if(n<1 || n>11){
-            cout << "             Please enter a valid input: ";
-        }
+        if(n<1 || n>11) cout << "             Please enter a valid input: ";
         if(n>0 && n<12){
             x=false;
             cout << string(50,'\n');
