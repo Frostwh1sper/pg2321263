@@ -286,7 +286,7 @@ void problem10(){
  */
 int getNum(){
     int x;
-    cout << "Enter a number: "
+    cout << "Enter a number: ";
     cin >> x;
     return x;
 }
