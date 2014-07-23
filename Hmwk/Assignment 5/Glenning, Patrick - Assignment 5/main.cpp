@@ -44,6 +44,7 @@ float findLo(float,float,float,float,float);
 float findHi(float,float,float,float,float);
 float hosptal(int,float,float,float);
 float hosptal(float,float);
+int populat(int,int,int);
 float stocks(int,float,float,float,float);
 bool isPrime(int);
 
@@ -416,6 +417,37 @@ void problem7(){
  */
 void problem8(){
     
+    //Declare and initialize variables
+    int popBeg, popFin, yrs, brthRat, dethRat;
+    
+    //User inputs
+    cout << "What is the starting population? ";
+    do{
+        cin >> popBeg;
+        if(popBeg<2) cout << "The starting population must be greater than 1. Re-enter:";
+    }while(popBeg<2);
+    cout << "What is the annual birth rate? ";
+    do{
+        cin >> brthRat;
+        if(brthRat<0) cout << "The birth rate mustn't be negative. Re-enter: ";
+    }while(brthRat<0);
+    cout << "What is the annual death rate? ";
+    do{
+        cin >> dethRat;
+        if(dethRat<0) cout << "The death rate mustn't be negative. Re-enter: ";
+    }while(dethRat<0);
+    cout << "How many years would you like to display? ";
+    do{
+        cin >> yrs;
+        if(yrs<1) cout << "The number of years must be greater than 0. Re-enter: ";
+    }while(yrs<1);
+    
+    //Calculations and display
+    for(int i=0; i<yrs; i++){
+        popFin=populat(popBeg,brthRat,dethRat);
+        popBeg=popFin;
+        cout << "Population, year " << setw(2) << i+1 << ": " << setw(9) << popFin << endl;
+    }
 }
 
 /*
@@ -670,6 +702,18 @@ float hosptal(float m, float s){
     float c;
     c=m+s;
     return c;
+}
+
+/*
+ * Inputs:
+ *      popBeg, brthRat, dethRat, yrs
+ * Outputs:
+ *      popFin
+ */
+int populat(int p, int bp, int dp){
+    int n;
+    n=p+bp+dp;
+    return n;
 }
 
 /*
