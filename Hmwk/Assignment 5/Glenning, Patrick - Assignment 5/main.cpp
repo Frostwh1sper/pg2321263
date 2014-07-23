@@ -38,6 +38,10 @@ void findLow(int,int,int,int,int);
 float fallDst(int);
 float kinetic(int,float);
 float presVal(float,float,int);
+void jdgData(float &);
+void calcScr(float,float,float,float,float);
+float findLo(float,float,float,float,float);
+float findHi(float,float,float,float,float);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -311,6 +315,18 @@ void problem5(){
  */
 void problem6(){
     
+    //Declare and initialize variables
+    float judge1, judge2, judge3, judge4, judge5;   //Scores by judge
+    
+    //User input
+        jdgData(judge1);
+        jdgData(judge2);
+        jdgData(judge3);
+        jdgData(judge4);
+        jdgData(judge5);
+    
+    //Calculate and display final score
+    calcScr(judge1,judge2,judge3,judge4,judge5);
 }
 
 /*
@@ -430,4 +446,86 @@ float presVal(float f, float r, int n){
     float p;
     p=f/pow(1+r,n);
     return p;
+}
+
+/*
+ * Inputs:
+ *      i, judge[i]
+ * Outputs:
+ *      none
+ */
+void jdgData(float &score){
+    cout << "Enter judge's score: ";
+    do{
+        cin >> score;
+        if(score<0 || score>10) cout << "Invalid judges score, please enter a score between 0 and 10: ";
+    }while(score<0 || score>10);
+}
+
+/*
+ * Inputs:
+ *      judge[i]
+ * Outputs:
+ *      none
+ */
+void calcScr(float a, float b, float c, float d, float e){
+    float low, high, ave;
+    //Find the lowest score
+        low=findLo(a,b,c,d,e);
+    
+    //Find the highest score
+        high=findHi(a,b,c,d,e);
+    
+    //Calculate the average
+    ave=(a+b+c+d+e-high-low)/3;
+    
+    //Display the final score
+    cout << "The final score is: " << setprecision(1) << fixed << ave << endl;
+    
+}
+
+/*
+ * Inputs:
+ *      a,b,c,d,e
+ * Outputs:
+ *      low
+ */
+float findLo(float a, float b, float c, float d, float e){
+    float low=a;
+    if(low>b){
+        low=b;
+    }
+    if(low>c){
+        low=c;
+    }
+    if(low>d){
+        low=d;
+    }
+    if(low>e){
+        low=e;
+    }
+    return low;
+}
+
+/*
+ * Inputs:
+ *      a,b,c,d,e
+ * Outputs:
+ *      high
+ */
+float findHi(float a, float b, float c, float d, float e){
+    int high=a;
+    if(high<b){
+        high=b;
+    }
+    if(high<c){
+        high=c;
+    }
+    if(high<d){
+        high=d;
+    }
+    if(high<e){
+        high=e;
+    }
+    return high;
 }
