@@ -20,7 +20,9 @@ using namespace std;
 //Function Prototypes
 void menu();            //Displays main menu
 int slction();          //Returns menu selection
-void problem1();        //Gaddis 6thEd Chap7 Prob
+void callPrb(int);      //Calls programs using switch
+void cntinue();         //Waits for input before continuing
+void problem1();        //Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Values
 void problem2();        //Gaddis 6thEd Chap7 Prob
 void problem3();        //Gaddis 6thEd Chap7 Prob
 void problem4();        //Gaddis 6thEd Chap7 Prob
@@ -30,6 +32,7 @@ void problem7();        //Gaddis 6thEd Chap7 Prob
 void problem8();        //Gaddis 6thEd Chap7 Prob
 void problem9();        //Gaddis 6thEd Chap7 Prob
 void problem10();       //Gaddis 6thEd Chap7 Prob
+int getNum();
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -45,52 +48,8 @@ int main(int argc, char** argv) {
         choice=slction();
 
         //Problems
-        switch(choice){
-            case 1:{
-                problem1();
-                break;
-            }
-            case 2:{
-                problem2();
-                break;
-            }
-            case 3:{
-                problem3();
-                break;
-            }
-            case 4:{
-                problem4();
-                break;
-            }
-            case 5:{
-                problem5();
-                break;
-            }
-            case 6:{
-                problem6();
-                break;
-            }
-            case 7:{
-                problem7();
-                break;
-            }
-            case 8:{
-                problem8();
-                break;
-            }
-            case 9:{
-                problem9();
-                break;
-            }
-            case 10:{
-                problem10();
-                break;
-            }
-            default:{
-                cout << "Exiting program..." << endl << endl;
-                break;
-            }
-        }
+        callPrb(choice);
+        
     }while(choice<11);
     
     //Finish him!!
@@ -148,13 +107,105 @@ int slction(){
 }
 
 /*
+ * Input
+ *      choice
+ * Output
+ *      none
+ */
+void callPrb(int x){
+    switch(x){
+        case 1:{
+            problem1();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 2:{
+            problem2();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 3:{
+            problem3();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 4:{
+            problem4();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 5:{
+            problem5();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 6:{
+            problem6();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 7:{
+            problem7();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 8:{
+            problem8();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 9:{
+            problem9();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        case 10:{
+            problem10();
+            cout << "Press any key to return to the main menu." << endl;
+            cntinue();
+            break;
+        }
+        default:{
+            cout << "Exiting program..." << endl << endl;
+            break;
+        }
+    }
+}
+
+/*
  * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Purpose: Displays the largest and smallest values in an array
  */
 void problem1(){
     
     //Declare and initialize variables
+    int num[10];
+    int high, low;
     
+    //User inputs
+    for(int i=0; i<10; i++){
+        num[i]=getNum();
+    }
+    
+    //Find largest and smallest
+    high=low=num[0];
+    for(int i=1; i<10; i++){
+        if(high<num[i]) high=num[i];
+        if(low>num[i]) low=num[i];
+    }
+    
+    //Display largest and smallest
+    cout << "Highest: " << high << endl <<
+            " Lowest: " << low << endl;
 }
 
 /*
@@ -227,4 +278,15 @@ void problem9(){
  */
 void problem10(){
     
+}
+
+/*
+ * 
+ * 
+ */
+int getNum(){
+    int x;
+    cout << "Enter a number: "
+    cin >> x;
+    return x;
 }
