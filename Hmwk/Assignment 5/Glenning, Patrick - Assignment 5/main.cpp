@@ -45,6 +45,7 @@ float findHi(float,float,float,float,float);
 float hosptal(int,float,float,float);
 float hosptal(float,float);
 float stocks(int,float,float,float,float);
+bool isPrime(int);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -459,6 +460,24 @@ void problem9(){
  */
 void problem10(){
     
+    //Declare and initialize variables
+    int num;
+    bool prime=true;
+    
+    //User input
+    cout << "Enter any positive integer to determine whether or not it is a prime number: ";
+    do{
+        cin >> num;
+        if(num<2) cout << num << " is not a positive integer value, try again: ";
+    }while(num<2);
+    
+    //Determine whether it is prime
+    if(isPrime(num)){
+        cout << num << " is a prime number." << endl;
+    }
+    else{
+        cout << num << " is not a prime number." << endl;
+    }
 }
 
 /*
@@ -663,4 +682,21 @@ float stocks(int ns, float pp, float pc, float sp, float sc){
     float p;
     p=((ns*sp)-sc)-((ns*pp)-pc);
     return p;
+}
+
+/*
+ * Inputs:
+ *      num
+ * Outputs:
+ *      none
+ */
+bool isPrime(int n){
+    bool x=true;
+    for(int i=n-1; i>1; i--){
+        if(n%i==0){
+            x=false;
+            i=1;
+        }
+    }
+    return x;
 }
