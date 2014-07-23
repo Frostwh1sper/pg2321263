@@ -42,6 +42,8 @@ void jdgData(float &);
 void calcScr(float,float,float,float,float);
 float findLo(float,float,float,float,float);
 float findHi(float,float,float,float,float);
+float hosptal(int,float,float,float);
+float hosptal(float,float);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -259,7 +261,7 @@ void problem3(){
 
 /*
  * Gaddis 6thEd Chap6 Prob6 - Kinetic Energy
- * Purpose: 
+ * Purpose: Calculates the kinetic energy in an object
  */
 void problem4(){
     
@@ -283,7 +285,7 @@ void problem4(){
 
 /*
  * Gaddis 6thEd Chap6 Prob9 - Present Value
- * Purpose: 
+ * Purpose: Calculate the initial investment needed to reach a future goal
  */
 void problem5(){
     
@@ -311,7 +313,7 @@ void problem5(){
 
 /*
  * Gaddis 6thEd Chap6 Prob11 - Star Search
- * Purpose: 
+ * Purpose: Calculate the final judges score at a talent competition
  */
 void problem6(){
     
@@ -331,10 +333,79 @@ void problem6(){
 
 /*
  * Gaddis 6thEd Chap6 Prob14 - Overloaded Hospital
- * Purpose: 
+ * Purpose: Calculate the total charges for a hospital visit
  */
 void problem7(){
     
+    //Declare and initialize variables
+    int patient;
+    int numDays;
+    float rate, inMeds, inServ, outMed, outSrv, balance;
+    
+    
+    //User input
+    do{
+        cout << "Enter 1 for in-patient care." << endl <<
+                "Enter 2 for out-patient care." << endl <<
+                "Enter 3 to terminate the program." << endl;
+        cin >> patient;
+        cin.ignore();
+    }while(patient>2 || patient<1);
+    switch(patient){
+        case 1:{
+            do{
+                cout << "Enter information as requested:" << endl <<
+                        "Number of days spent in the hospital: ";
+                cin >> numDays;
+                if(numDays<0) cout << "Invalid number of days, please re-enter: ";
+            }while(numDays<0);
+            do{
+                cout << "Daily rate for room: $";
+                cin >> rate;
+                if(rate<0) cout << "Invalid daily rate, please re-enter: $";
+            }while(rate<0);
+            do{
+                cout << "Hospital medication charges: $";
+                cin >> inMeds;
+                if(inMeds<0) cout << "Invalid medication charges, please re-enter: $";
+            }while(inMeds<0);
+            do{
+                cout << "Charges for services (lab tests, etc): $";
+                cin >> inServ;
+                if(inServ<0) cout << "Invalid service charges, please re-enter: $";
+            }while(inServ<0);
+            
+            //Calculations
+            balance=hosptal(numDays,rate,inMeds,inServ);
+            
+            //Display total charges
+                cout << "Your balance is: $" << setprecision(2) << fixed << balance << endl;
+            break;
+        }
+        case 2:{
+            do{
+                cout << "Hospital medication charges: $";
+                cin >> outMed;
+                if(outMed<0) cout << "Invalid medication charges, please re-enter: $";
+            }while(outMed<0);
+            do{
+                cout << "Charges for services (lab tests, etc): $";
+                cin >> outSrv;
+                if(outSrv<0) cout << "Invalid service charges, please re-enter: $";
+            }while(outSrv<0);
+            
+            //Calculations
+            balance=hosptal(outMed,outSrv);
+            
+            //Display total charges
+                cout << "Your balance is: $" << setprecision(2) << fixed << balance << endl;
+            break;
+        }
+        default:{
+            cout << "Terminating program..." << endl << endl;
+            break;
+        }
+    }
 }
 
 /*
@@ -528,4 +599,27 @@ float findHi(float a, float b, float c, float d, float e){
         high=e;
     }
     return high;
+}
+/*
+ * Inputs:
+ *      numDays, rate, inMeds, inServ
+ * Outputs:
+ *      balance
+ */
+float hosptal(int d, float r, float m, float s){
+    float c;
+    c=d*r+m+s;
+    return c;
+}
+
+/*
+ * Inputs:
+ *      outMed, outSrv
+ * Outputs:
+ *      balance
+ */
+float hosptal(float m, float s){
+    float c;
+    c=m+s;
+    return c;
 }
