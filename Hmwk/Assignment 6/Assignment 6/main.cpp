@@ -105,18 +105,18 @@ void menu(){
     cout << "           ________________________________________________ " << endl <<
             "          *                                                *" << endl <<
             "          *                                                *" << endl <<
-            "          *    Glenning, Patrick - Assignment 5 - 46023    *" << endl <<
+            "          *    Glenning, Patrick - Assignment 6 - 46023    *" << endl <<
             "          *                                                *" << endl <<
-            "          *    1)  Markup                                  *" << endl <<
-            "          *    2)  Safest Driving Area                     *" << endl <<
-            "          *    3)  Falling Distance                        *" << endl <<
-            "          *    4)  Kinetic Energy                          *" << endl <<
-            "          *    5)  Present Value                           *" << endl <<
-            "          *    6)  Star Search                             *" << endl <<
-            "          *    7)  Overloaded Hospital                     *" << endl <<
-            "          *    8)  Population                              *" << endl <<
-            "          *    9)  Stock Profit                            *" << endl <<
-            "          *    10) isPrime Function                        *" << endl <<
+            "          *    1)                                          *" << endl <<
+            "          *    2)                                          *" << endl <<
+            "          *    3)                                          *" << endl <<
+            "          *    4)                                          *" << endl <<
+            "          *    5)                                          *" << endl <<
+            "          *    6)                                          *" << endl <<
+            "          *    7)                                          *" << endl <<
+            "          *    8)                                          *" << endl <<
+            "          *    9)                                          *" << endl <<
+            "          *    10)                                         *" << endl <<
             "          *    11) Exit Program                            *" << endl <<
             "          *________________________________________________*" << endl <<
             "             Enter your selection number: ";
