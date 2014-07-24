@@ -25,7 +25,7 @@ void cntinue();         //Waits for input before continuing
 void problem1();        //Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Values
 void problem2();        //Gaddis 6thEd Chap7 Prob4 - Monkey Business
 void problem3();        //Gaddis 6thEd Chap7 Prob13 - Grade Book
-void problem4();        //Gaddis 6thEd Chap7 Prob
+void problem4();        //Gaddis 6thEd Chap7 Prob7 - Lowercase to Uppercase Converter
 void problem5();        //Gaddis 6thEd Chap7 Prob
 void problem6();        //Gaddis 6thEd Chap7 Prob
 void problem7();        //Gaddis 6thEd Chap7 Prob
@@ -37,6 +37,7 @@ string getName();
 float getGrad();
 float getAver(float [][4], int);
 void shwGrad(float,string);
+string propNam(string);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -73,8 +74,8 @@ void menu(){
             "          *    1) Largest/Smallest Array Values            *" << endl <<
             "          *    2) Monkey Business                          *" << endl <<
             "          *    3) Grade Book                               *" << endl <<
-            "          *    4)                                          *" << endl <<
-            "          *    5)                                          *" << endl <<
+            "          *    4) Lowercase to Uppercase Converter         *" << endl <<
+            "          *    5) Proper Words                             *" << endl <<
             "          *    6)                                          *" << endl <<
             "          *    7)                                          *" << endl <<
             "          *    8)                                          *" << endl <<
@@ -313,15 +314,46 @@ void problem3(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap7 Prob7 - Lowercase to Uppercase Converter
+ * Purpose: Converts any lowercase letters in a string to uppercase
  */
 void problem4(){
     
+    //Declare and initialize variables
+    const int SIZE=25;
+    string word;
+    int length;
+    char upper[SIZE];
+    
+    //User input
+    do{
+    cout << "Enter any string of characters, up to 25 characters in length: " << endl;
+    cin >> word;
+    length=word.size();
+    cin.ignore();
+    }while(length>25);
+    
+    //Convert string to char array
+    for(int i=0; i<length; i++){
+        upper[i]=word[i];
+    }
+    
+    //Capitalize any lowercase letters
+    for(int i=0; i<length; i++){
+        if(upper[i]>=97 && upper[i]<=122){
+            upper[i]-=32;
+        }
+    }
+    
+    //Display all uppercase string of characters
+    for(int i=0; i<length; i++){
+        cout << upper[i];
+    }
+    cout << endl << endl;
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
+ * Gaddis 6thEd Chap7 Prob8 - Proper Words
  * Purpose: 
  */
 void problem5(){
@@ -449,4 +481,13 @@ void shwGrad(float x, string y){
     if(x>=90.0f && x<=100.0f){
         cout << "A" << endl;
     }
+}
+
+/*
+ * 
+ * 
+ */
+string propNam(string x, int l){
+    if(x[0]>97 && x[0]<122) x[0]-=32;
+    return x;
 }
