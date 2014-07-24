@@ -24,7 +24,7 @@ void callPrb(int);      //Calls programs using switch
 void cntinue();         //Waits for input before continuing
 void problem1();        //Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Values
 void problem2();        //Gaddis 6thEd Chap7 Prob4 - Monkey Business
-void problem3();        //Gaddis 6thEd Chap7 Prob
+void problem3();        //Gaddis 6thEd Chap7 Prob13 - Grade Book
 void problem4();        //Gaddis 6thEd Chap7 Prob
 void problem5();        //Gaddis 6thEd Chap7 Prob
 void problem6();        //Gaddis 6thEd Chap7 Prob
@@ -33,6 +33,10 @@ void problem8();        //Gaddis 6thEd Chap7 Prob
 void problem9();        //Gaddis 6thEd Chap7 Prob
 void problem10();       //Gaddis 6thEd Chap7 Prob
 int getNum();
+string getName();
+float getGrad();
+float getAver(float [][4], int);
+void shwGrad(float,string);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -68,7 +72,7 @@ void menu(){
             "          *                                                *" << endl <<
             "          *    1) Largest/Smallest Array Values            *" << endl <<
             "          *    2) Monkey Business                          *" << endl <<
-            "          *    3)                                          *" << endl <<
+            "          *    3) Grade Book                               *" << endl <<
             "          *    4)                                          *" << endl <<
             "          *    5)                                          *" << endl <<
             "          *    6)                                          *" << endl <<
@@ -265,15 +269,46 @@ void problem2(){
     //Display data
     cout << "Average daily consumption: " << ave << " pounds" << endl <<
             " Total weekly consumption: " << sumTot << " pounds." << endl <<
-            " Most was consumed by monkey " << highY+1 << " on day " << highX+1 << ": " << food[highY][highX] << " pounds." << endl <<
-            "Least was consumed by monkey " << lowY+1 << " on day " << lowX+1 << ": " << food[lowY][lowX] << " pounds." << endl;
+            " Most was consumed by monkey " << highY+1 << " on day " << highX+1 << 
+            ": " << food[highY][highX] << " pounds." << endl <<
+            "Least was consumed by monkey " << lowY+1 << " on day " << lowX+1 << 
+            ": " << food[lowY][lowX] << " pounds." << endl;
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap7 Prob13 - Grade Book
+ * Purpose: Store and display test scores for 5 students
  */
 void problem3(){
+    
+    //Declare and Initialize Variables
+    const int COL=4;
+    const int STUD=5;
+    string nam[STUD];
+    float grade[STUD][COL];
+    float ave[STUD];
+    
+    //User input
+    for(int i=0; i<STUD; i++){
+        cout << "Enter student " << i+1 << "'s name:" << endl;
+        nam[i]=getName();
+        for(int n=0; n<COL; n++){
+            cout << "Enter " << nam[i] << "'s score for test " << n+1 << ": ";
+            grade[i][n]=getGrad();
+        }
+    }
+    cin.ignore();
+    
+    //Calculations
+    for(int i=0; i<STUD; i++){
+        ave[i]=getAver(grade,i);
+    }
+    
+    //Display results
+    for(int i=0; i<STUD; i++){
+        shwGrad(ave[i], nam[i]);
+    }
+    
     
 }
 
@@ -342,4 +377,76 @@ int getNum(){
     cout << "Enter a number: ";
     cin >> x;
     return x;
+}
+
+/*
+ * Function that receives and returns an input name
+ * Input:
+ *      none
+ * Output:
+ *      name
+ */
+string getName(){
+    string x;
+    cin >> x;
+    return x;
+}
+
+/*
+ * Function that receives and returns an input grade
+ * Input:
+ *      none
+ * Output:
+ *      grade
+ */
+float getGrad(){
+    float x;
+    do{
+        cin >> x;
+        if(x<0 || x>100) cout << "Invalid grade input, please re-enter: ";
+    }while(x<0 || x>100);
+    return x;
+}
+
+/*
+ * Function that gets the average of 4 test scores
+ * Input:
+ *      grade, i
+ * Output: 
+ *      ave
+ */
+float getAver(float g[][4], int x){
+    float sum=0;
+    float ave;
+    for(int i=0; i<4; i++){
+        sum+=g[x][i];
+    }
+    ave=sum/4;
+    return ave;
+}
+
+/*
+ * Function that displays the average grades of three students
+ * Input:
+ *      ave, name
+ * Output:
+ *      none
+ */
+void shwGrad(float x, string y){
+    cout << y << ": ";
+    if(x<60.0f){
+        cout << "F" << endl;
+    }
+    if(x>=60.0f && x<70.0f){
+        cout << "D" << endl;
+    }
+    if(x>=70.0f && x<80.0f){
+        cout << "C" << endl;
+    }
+    if(x>=80.0f && x<90.0f){
+        cout << "B" << endl;
+    }
+    if(x>=90.0f && x<=100.0f){
+        cout << "A" << endl;
+    }
 }
