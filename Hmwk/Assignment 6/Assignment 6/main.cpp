@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <cmath>
 #include <string>
+#include <ctime>
 using namespace std;
 
 //User Libraries
@@ -29,8 +30,8 @@ void problem4();        //Gaddis 6thEd Chap7 Prob7 - Lowercase to Uppercase Conv
 void problem5();        //Gaddis 6thEd Chap7 Prob10 - Payroll
 void problem6();        //Gaddis 6thEd Chap7 Prob11 - Driver's License Exam
 void problem7();        //Gaddis 6thEd Chap8 Prob1 - Charge Account Validation
-void problem8();        //Gaddis 6thEd Chap7 Prob
-void problem9();        //Gaddis 6thEd Chap7 Prob
+void problem8();        //Gaddis 6thEd Chap8 Prob3 - Lottery Winners Binary
+void problem9();        //Gaddis 6thEd Chap8 Prob8 - Search Benchmarks
 void problem10();       //Gaddis 6thEd Chap7 Prob
 int getNum();
 string getName();
@@ -42,10 +43,15 @@ float getRate();
 char getCh();
 void score(char [],char [],int, int &);
 int linSear(int [],int,int);
+int binSear(int [],int,int);
+int binSear(int [],int,int,int &);
 
 
 //Begin execution
 int main(int argc, char** argv) {
+    
+    //Seed the RNG
+    srand(time(0));
     
     //Declare and initialize variables
     int choice;
@@ -76,15 +82,15 @@ void menu(){
             "          *                                                *" << endl <<
             "          *    Glenning, Patrick - Assignment 6 - 46023    *" << endl <<
             "          *                                                *" << endl <<
-            "          *    1) Largest/Smallest Array Values            *" << endl <<
-            "          *    2) Monkey Business                          *" << endl <<
-            "          *    3) Grade Book                               *" << endl <<
-            "          *    4) Lowercase to Uppercase Converter         *" << endl <<
-            "          *    5) Payroll                                  *" << endl <<
-            "          *    6) Driver's License Exam                    *" << endl <<
-            "          *    7) Charge Account Validation                *" << endl <<
-            "          *    8)                                          *" << endl <<
-            "          *    9)                                          *" << endl <<
+            "          *    1)  Largest/Smallest Array Values           *" << endl <<
+            "          *    2)  Monkey Business                         *" << endl <<
+            "          *    3)  Grade Book                              *" << endl <<
+            "          *    4)  Lowercase to Uppercase Converter        *" << endl <<
+            "          *    5)  Payroll                                 *" << endl <<
+            "          *    6)  Driver's License Exam                   *" << endl <<
+            "          *    7)  Charge Account Validation               *" << endl <<
+            "          *    8)  Lottery Winners Binary                  *" << endl <<
+            "          *    9)  Search Benchmarks                       *" << endl <<
             "          *    10)                                         *" << endl <<
             "          *    11) Exit Program                            *" << endl <<
             "          *________________________________________________*" << endl <<
@@ -105,6 +111,7 @@ int slction(){
     //User input
     do{
         cin >> n;
+        cin.ignore();
         if(n<1 || n>11) cout << "             Please enter a valid input: ";
         if(n>0 && n<12){
             x=false;
@@ -425,7 +432,7 @@ void problem6(){
 
 /*
  * Gaddis 6thEd Chap8 Prob1 - Charge Account Validation
- * Purpose: Determine whether an account number is valid
+ * Purpose: Determine whether an entered account number is valid
  */
 void problem7(){
     
@@ -449,19 +456,53 @@ void problem7(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap8 Prob3 - Lottery Winners binary search
+ * Purpose: Execute a binary search to determine whether a winner
  */
 void problem8(){
     
+    //Declare and initialize variables
+    const int SIZE=10;
+    int lottery[SIZE]={13579,26791,26792,33445,55555,62483,77777,79422,85647,93121};
+    int winner;
+    int match;
+    
+    //User input
+    cout << "What was this week's winning 5-digit lottery combination? ";
+    cin >> winner;
+    cin.ignore();
+    
+    //Execute binary search for match
+    match=binSear(lottery,SIZE,winner);
+    
+    //Display whether lottery ticket matches
+    if(match==(-1)) cout << "None of your lottery tickets match." << endl;
+    else cout << "You have a winner!!" << endl;
+    cout << endl;
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap8 Prob8 - Search Benchmarks
+ * Purpose: Benchmarks two different sorting algorithms
  */
 void problem9(){
     
+    //Seed the RNG
+    //Declare and initialize variables
+    const int SIZE=20;
+    int one[SIZE]={1254,24,157,169,1485,126,32,1457,1496,254,857,9648,3547,1682,2596,4562,4568,3578,1598,1475};
+    int two[SIZE]={12,35,125,264,321,405,489,578,598,604,672,756,792,831,844,888,892,921,1025,1476};
+    int first=one[rand()%SIZE];
+    int second=two[rand()%SIZE];
+    int count1=0, count2=0;
+    
+    //Search for the randomly selected value
+    count1=linSear(one,SIZE,first)+1;
+    count2=binSear(two,SIZE,second,count2)+1;
+    
+    //Display the search counter value
+    cout << "Linear search took " << count1 << " cycles." << endl <<
+            "Binary search took " << count2 << " cycles." << endl << endl;
 }
 
 /*
@@ -603,4 +644,56 @@ int linSear(int x[], int s, int y){
         i++;
     }
     return pos;
+}
+
+/*
+ * Function which executes a binary search for a match
+ * Input:
+ *      lottery, SIZE, winner
+ * Output:
+ *      match
+ */
+int binSear( int array[], int s, int x){
+    int first=0, last=(s-1), mid, pos=(-1);
+    bool found=false;
+    while(!found && first<=last){
+        mid=(first+last)/2;
+        if(array[mid]==x){
+            found=true;
+            pos=mid;
+        }
+        else if(array[mid]>x){
+            last=mid-1;
+        }
+        else{
+            first=mid+1;
+        }
+    }
+    return pos;
+}
+
+/*
+ * Function which executes a binary search for a match
+ * Input:
+ *      lottery, SIZE, winner
+ * Output:
+ *      match
+ */
+int binSear( int array[], int s, int x, int &c){
+    int first=0, last=(s-1), mid;
+    bool found=false;
+    while(!found && first<=last){
+        mid=(first+last)/2;
+        if(array[mid]==x){
+            found=true;
+        }
+        else if(array[mid]>x){
+            last=mid-1;
+        }
+        else{
+            first=mid+1;
+        }
+        c++;    //Increments counter for search
+    }
+    return c;
 }
