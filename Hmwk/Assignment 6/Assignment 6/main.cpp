@@ -26,7 +26,7 @@ void problem1();        //Gaddis 6thEd Chap7 Prob1 - Largest/Smallest Array Valu
 void problem2();        //Gaddis 6thEd Chap7 Prob4 - Monkey Business
 void problem3();        //Gaddis 6thEd Chap7 Prob13 - Grade Book
 void problem4();        //Gaddis 6thEd Chap7 Prob7 - Lowercase to Uppercase Converter
-void problem5();        //Gaddis 6thEd Chap7 Prob
+void problem5();        //Gaddis 6thEd Chap7 Prob10 - Payroll
 void problem6();        //Gaddis 6thEd Chap7 Prob
 void problem7();        //Gaddis 6thEd Chap7 Prob
 void problem8();        //Gaddis 6thEd Chap7 Prob
@@ -39,6 +39,8 @@ float getAver(float [][4], int);
 void shwGrad(float,string);
 int getHour();
 float getRate();
+char getCh();
+void score(char [],char [],int, int &);
 
 
 //Begin execution
@@ -77,8 +79,8 @@ void menu(){
             "          *    2) Monkey Business                          *" << endl <<
             "          *    3) Grade Book                               *" << endl <<
             "          *    4) Lowercase to Uppercase Converter         *" << endl <<
-            "          *    5) Proper Words                             *" << endl <<
-            "          *    6)                                          *" << endl <<
+            "          *    5) Payroll                                  *" << endl <<
+            "          *    6) Driver's License Exam                    *" << endl <<
             "          *    7)                                          *" << endl <<
             "          *    8)                                          *" << endl <<
             "          *    9)                                          *" << endl <<
@@ -361,7 +363,7 @@ void problem4(){
 void problem5(){
     
     //Declare and initialize variables
-    const int SIZE=2;
+    const int SIZE=7;
     int eID[SIZE]={5658845,4520125,7895122,8777541,8451277,1302850,7580489};
     int hours[SIZE];
     float payRate[SIZE];
@@ -390,11 +392,34 @@ void problem5(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap7 Prob11 - Driver's License Exam
+ * Purpose: Grades a Driver's License Exam
  */
 void problem6(){
     
+    //Declare and initialize variables
+    const int SIZE=20;
+    char ansKey[SIZE]={'B','D','A','A','C','A','B','A','C','D','B','C','D','A','D','C','C','B','D','A'};
+    char answer[SIZE];
+    int correct=0;
+    
+    //User input
+    cout << "Enter the student's answer for" << endl;
+    for(int i=0; i<SIZE; i++){
+        cout << "Question " << i+1 << ": ";
+        cin >> answer[i];
+    }
+    cin.ignore();
+    
+    //Compare answers with test key
+        score(ansKey,answer,SIZE,correct);
+    
+    //Display whether passed or failed
+    cout << endl;
+    if(correct<15){
+        cout << "Student failed the exam." << endl;
+    }
+    else cout << "Student passed the exam." << endl;
 }
 
 /*
@@ -532,4 +557,14 @@ float getRate(){
     cout << "Enter hourly pay rate: ";
     cin >> r;
     return r;
+}
+
+/*
+ * 
+ * 
+ */
+void score(char x[], char y[], int z, int &s){
+    for(int i=0; i<z; i++){
+        if(x==y || x==(y-32)) s++;
+    }
 }
