@@ -32,7 +32,7 @@ void problem6();        //Gaddis 6thEd Chap7 Prob11 - Driver's License Exam
 void problem7();        //Gaddis 6thEd Chap8 Prob1 - Charge Account Validation
 void problem8();        //Gaddis 6thEd Chap8 Prob3 - Lottery Winners Binary
 void problem9();        //Gaddis 6thEd Chap8 Prob8 - Search Benchmarks
-void problem10();       //Gaddis 6thEd Chap7 Prob
+void problem10();       //Gaddis 6thEd Chap8 Prob10 - Sorting Orders
 int getNum();
 string getName();
 float getGrad();
@@ -45,6 +45,8 @@ void score(char [],char [],int, int &);
 int linSear(int [],int,int);
 int binSear(int [],int,int);
 int binSear(int [],int,int,int &);
+void bubSort(int [],int);
+void selSort(int [],int);
 
 
 //Begin execution
@@ -91,7 +93,7 @@ void menu(){
             "          *    7)  Charge Account Validation               *" << endl <<
             "          *    8)  Lottery Winners Binary                  *" << endl <<
             "          *    9)  Search Benchmarks                       *" << endl <<
-            "          *    10)                                         *" << endl <<
+            "          *    10) Sorting Orders                          *" << endl <<
             "          *    11) Exit Program                            *" << endl <<
             "          *________________________________________________*" << endl <<
             "             Enter your selection number: ";
@@ -506,10 +508,27 @@ void problem9(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap8 Prob10 - Sorting Orders
+ * Purpose: Display the way two methods sort matching arrays
  */
 void problem10(){
+    
+    //Declare and initialize variables
+    const int SIZE=8;
+    int array1[SIZE]={1425,2536,3625,2514,7845,4512,2154,5487};
+    int array2[SIZE]={1425,2536,3625,2514,7845,4512,2154,5487};
+    
+    //Sort and display each step
+    cout << "Original array order is:" << array1[0];
+    for(int i=1; i<SIZE; i++){
+        cout << ", " << array1[i];
+    }
+    cout << endl;
+    cout << "This is the bubble sort:" << endl;
+    bubSort(array1,SIZE);
+    cout << endl << endl << "This is the selection sort:" << endl;
+    selSort(array2,SIZE);
+    cout << endl;
     
 }
 
@@ -696,4 +715,54 @@ int binSear( int array[], int s, int x, int &c){
         c++;    //Increments counter for search
     }
     return c;
+}
+
+/*
+ * 
+ * 
+ */
+void bubSort(int arr[], int s){
+    bool swap;
+    int temp;
+    do{
+        swap=false;
+        for(int i=0; i<s; i++){
+            if(arr[i]>arr[i+1]){
+                temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+                swap=true;
+                cout << arr[0];
+                for(int n=1; n<s; n++){
+                    cout << ", " << arr[n];
+                }
+                cout << endl;
+            }
+        }
+    }while(swap);
+}
+
+/*
+ * 
+ * 
+ */
+void selSort(int arr[], int s){
+    int start, minIn, minVal;
+    for(start=0; start<(s-1); start++){
+        minIn=start;
+        minVal=arr[start];
+        for(int i=(start+1); i<s; i++){
+            if(arr[i]<minVal){
+                minVal=arr[i];
+                minIn=i;
+            }
+        }
+        arr[minIn]=arr[start];
+        arr[start]=minVal;
+        cout << arr[0];
+        for(int i=1; i<s; i++){
+            cout << ", " << arr[i];
+        }
+        cout << endl;
+    }
 }
