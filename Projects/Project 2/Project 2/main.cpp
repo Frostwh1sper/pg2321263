@@ -20,7 +20,7 @@ using namespace std;
 //Function Prototypes
 void menu();
 int getN();
-void menSel(int);
+bool menSel();
 void rules();
 void setting(int &,int &);
 void getCode(char &[],char &[],int);
@@ -47,8 +47,8 @@ int main(int argc, char** argv) {
         //Game menu
         menu();
         
-        //Menu selection
-        choice=getN();
+        //Menu Selection
+        game=menSel(choice);
         
     }while(game);
     
@@ -78,7 +78,10 @@ void menu(){
 
 /*
  * Function which retrieves an entered integer
- * 
+ * Input:
+ *      none
+ * Output:
+ *      sel
  */
 int getN(){
     int n;
@@ -87,47 +90,54 @@ int getN(){
 }
 
 /*
- * 
+ * Function which calls other functions chosen from a menu
+ * Input:
+ *      none
+ * Output:
+ *      game
  * 
  */
-void menSel(int sel){
+bool menSel(){
     const int SIZE=12;
     int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
     int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
+    bool game=true;
+    int sel=getN();             //Retrieves menu selection
     switch(sel){
+        //Output Game Objectives
+        case 1:{
+            rules();
+            cntinue();
+            break;
+        }
 
-            //Output Game Objectives
-            case 1:{
-                rules();
-                cntinue();
-                break;
-            }
+        //User chooses difficulty settings
+        case 2:{
+            setting(numCol,numTurn);
+            break;
+        }
 
-            //User chooses difficulty settings
-            case 2:{
-                setting(numCol,numTurn);
-                break;
-            }
+        //Game begins
+        case 3:{
 
-            //Game begins
-            case 3:{
-                
-                break;
-            }
+            break;
+        }
 
-            //Exit Program
-            case 4:{
-                cout << endl << endl;
-                cout << "Exiting Mastermind..." << endl;
-                game=false;
-                break;
-            }
-
-            default:{
-                cout << "Invalid input. Please re-enter your selection: " << endl;
-                break;
-            }
+        //Exit Program
+        case 4:{
+            cout << endl << endl;
+            cout << "Exiting Mastermind..." << endl;
+            game=false;
+            break;
+        }
+        
+        //Invalid menu selection
+        default:{
+            cout << "Invalid input. Please re-enter your selection: " << endl;
+            break;
+        }
     }
+    return game;
 }
 
 /*
@@ -147,7 +157,7 @@ void rules(){
  * 
  * 
  */
-void setting(int &x, int&y){
+void setting(int &length, int&turns){
     bool loop=true;
     do{
         //Settings menu
@@ -171,8 +181,8 @@ void setting(int &x, int&y){
                 //Choose length of code
                 while(loop){
                     cout << "How long would you like the color combination to be? (4-6, default is 4) ";
-                    cin >> numCol;
-                    switch(numCol){
+                    cin >> length;
+                    switch(length){
                         case 4 ... 6:{
                             loop=false;
                             break;
@@ -191,8 +201,8 @@ void setting(int &x, int&y){
                 //Choose number or turns to crack the code
                 while(loop){
                     cout << "How many turns do you think you can crack the code in? (8-12, default is 10) ";
-                    cin >> numTurn;
-                    switch(numTurn){
+                    cin >> turns;
+                    switch(turns){
                         case 8 ... 12:{
                             loop=false;
                             break;
