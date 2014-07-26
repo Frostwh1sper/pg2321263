@@ -16,6 +16,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
+const int SIZE=12;
 
 //Function Prototypes
 void menu();
@@ -26,6 +27,8 @@ void setting(int &,int &);
 void getCode(char &[],char &[],int);
 void mstrmind(int,int,char);
 void cntinue();
+void guess();
+void check();
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -39,7 +42,6 @@ int main(int argc, char** argv) {
     int colCorr=0, posCorr=0;   //Number of correct colors, and correct positions
     bool loop=true;             //Mini loop operator
     bool game=true;             //Loop operator for the game
-    const int SIZE=12;           //Used for initialization of color arrays
     string colStrg;
     
     cout << string(50,'\n');
@@ -98,16 +100,15 @@ int getN(){
  * 
  */
 bool menSel(){
-    const int SIZE=12;
     int numCol=4;               //Number of colors to be guessed within the allotted turns (defaulted to 4)
     int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
+    char code[SIZE];
     bool game=true;
     int sel=getN();             //Retrieves menu selection
     switch(sel){
         //Output Game Objectives
         case 1:{
             rules();
-            cntinue();
             break;
         }
 
@@ -119,7 +120,7 @@ bool menSel(){
 
         //Game begins
         case 3:{
-
+            mstrmind(numCol,numTurn,code,);
             break;
         }
 
@@ -151,6 +152,7 @@ void rules(){
             "the code-maker gives feedback in the form of 2 numbers, the number of pegs that are of" << endl <<
             "the right color and in the correct position (+), and the number of pegs that are of the" << endl <<
             "correct color but not in the correct position (~)." << endl << endl;
+    cntinue();
 }
 
 /*
@@ -158,8 +160,7 @@ void rules(){
  * 
  */
 void setting(int &length, int&turns){
-    bool loop=true;
-    do{
+    int sett;
         //Settings menu
         cout << "        _______________________________________________________        " << endl;
         cout << "       *                                                       *       " << endl;
@@ -174,57 +175,41 @@ void setting(int &length, int&turns){
         cout << "       *                                                       *       " << endl;
         cout << "       *_______________________________________________________*       " << endl;
         cout << "        Make your selection: ";
-        int sett;
-        cin>> sett;
-        switch(sett){
-            case 1:{
-                //Choose length of code
-                while(loop){
-                    cout << "How long would you like the color combination to be? (4-6, default is 4) ";
-                    cin >> length;
-                    switch(length){
-                        case 4 ... 6:{
-                            loop=false;
-                            break;
-                        }
-                        default:{
-                            cout << "Invalid entry, please re-enter your selection." << endl;
-                            break;
-                        }
-                    }
-                }loop=true;
-                cout << string(50,'\n');
-                break;
-            }
+        do{
+            sett=getN();
+            switch(sett){
+                case 1:{
+                    //Choose length of code
+                    do{
+                        cout << "How long would you like the color combination to be? (4-6, default is 4) ";
+                        cin >> length;
+                        if(length<4 || length >6) cout << "Invalid input." << endl;
+                    }while(length<4 || length >6);
+                    cout << string(50,'\n');
+                    break;
+                }
 
-            case 2:{
-                //Choose number or turns to crack the code
-                while(loop){
-                    cout << "How many turns do you think you can crack the code in? (8-12, default is 10) ";
-                    cin >> turns;
-                    switch(turns){
-                        case 8 ... 12:{
-                            loop=false;
-                            break;
-                        }
-                        default:{
-                            cout << "Invalid entry, please re-enter your selection." << endl;
-                            break;
-                        }
-                    }
-                }loop=true;
-                cout << string(50,'\n');
-                break;
-            }
+                case 2:{
+                    //Choose number or turns to crack the code
+                    do{
+                        cout << "How many turns do you think you can crack the code in? (8-12, default is 10) ";
+                        cin >> turns;
+                        if(turns<8 || turns >12) cout << "Invalid input." << endl;
+                    }while(turns<8 || turns >12);
+                    cout << string(50,'\n');
+                    break;
+                }
 
-            default:{
-                cout << string(50,'\n');
-                loop=false;
-                break;
+                case 3:{
+                    cout << string(50,'\n');
+                    break;
+                }
+
+                default:{ 
+                    cout << "Invalid menu selection, please re-enter: ";
+                }
             }
-        }
-    }while(loop);
-    loop=true;
+        }while(sett<1 || sett>3);
 }
 
 /*
@@ -233,7 +218,7 @@ void setting(int &length, int&turns){
  */
 void getCode(char &code[], char &arr[], int length){
     //Declare and initialize variables
-    const int SIZE=12;
+    
     
     //Randomly generate the 'code' to be cracked
     code[SIZE]="K";     //Array of colors chosen for the code, initialized to K, for comparison check
@@ -277,6 +262,8 @@ void mstrmind(int length, int turns, char code[]){
     
     //Declare and initialize variables
     int counter=1;              //Keeps track of guess attempts
+    char userCol[SIZE];
+    string colStrg;
     bool loop=true;
 
     //Output game information
@@ -302,14 +289,14 @@ void mstrmind(int length, int turns, char code[]){
             loop=false;
             cout << "Attempt " << counter << ":";
                 cin >> colStrg;
-            for(int i=0; i<numCol; i++){
+            for(int i=0; i<length; i++){
                 userCol[i]=colStrg[i];
             }
-            if(colStrg.size()!=numCol){ //If incorrect number of colors entered
+            if(colStrg.size()!=length){ //If incorrect number of colors entered
                 cout << "Invalid entry." << endl;
                 loop=true;
             }
-            for(int i=0; i<numCol; i++){
+            for(int i=0; i<length; i++){
                 if(userCol[i]!='R'
                  &&userCol[i]!='O'
                  &&userCol[i]!='Y'
@@ -326,19 +313,19 @@ void mstrmind(int length, int turns, char code[]){
 
     //Compare values
         //Find Correct color in correct place
-        for(int i=0; i<numCol; i++){
+        for(int i=0; i<length; i++){
             if(userCol[i]==color[i]){
                 posCorr++;
                 userCol[i]='Z';         //Removes guessed color from future consideration
             }
         }
             //Find correct color in wrong place
-        for(int i=0; i<numCol; i++){
-            for(int n=0; n<numCol; n++){
+        for(int i=0; i<length; i++){
+            for(int n=0; n<length; n++){
                 if(color[i]==userCol[n]){
                     colCorr++;
                     userCol[n]='Z';
-                    n=numCol;
+                    n=length;
                 }
             }
         }
@@ -372,8 +359,25 @@ void mstrmind(int length, int turns, char code[]){
  * 
  * 
  */
+void guess(){
+    
+}
+
+/*
+ * 
+ * 
+ */
+void check(){
+    
+}
+
+/*
+ * 
+ * 
+ */
 void cntinue(){
     char x;
     cout << "Press any key to continue." << endl;
     cin.get(x);
 }
+
