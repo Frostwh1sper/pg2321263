@@ -37,6 +37,8 @@ string getName();
 float getGrad();
 float getAver(float [][4], int);
 void shwGrad(float,string);
+int getHour();
+float getRate();
 
 
 //Begin execution
@@ -353,11 +355,38 @@ void problem4(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap7 Prob10 - Payroll
+ * Purpose: Calculates gross wages for employees
  */
 void problem5(){
     
+    //Declare and initialize variables
+    const int SIZE=2;
+    int eID[SIZE]={5658845,4520125,7895122,8777541,8451277,1302850,7580489};
+    int hours[SIZE];
+    float payRate[SIZE];
+    float wages[SIZE];
+    
+    //User inputs
+    for(int i=0; i<SIZE; i++){
+        cout << "Enter pay information for employee " << eID[i] << endl;
+        hours[i]=getHour();
+        payRate[i]=getRate();
+        cin.ignore();
+        cout << endl;
+    }
+    
+    //Calculate gross wages for all employees
+    for(int i=0; i<SIZE; i++){
+        wages[i]=payRate[i]*hours[i];
+    }
+    
+    //Display gross wages
+    cout << "Employee | Gross Wages" << endl;
+    for(int i=0; i<SIZE; i++){
+        cout << setprecision(2) << fixed;
+        cout << eID[i] << ":    $" << setw(7) << wages[i] << endl;
+    }
 }
 
 /*
@@ -487,3 +516,20 @@ void shwGrad(float x, string y){
  * 
  * 
  */
+int getHour(){
+    int h;
+    cout << "Enter hours worked: ";
+    cin >> h;
+    return h;
+}
+
+/*
+ * 
+ * 
+ */
+float getRate(){
+    float r;
+    cout << "Enter hourly pay rate: ";
+    cin >> r;
+    return r;
+}
