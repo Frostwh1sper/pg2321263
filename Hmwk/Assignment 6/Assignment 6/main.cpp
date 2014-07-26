@@ -27,8 +27,8 @@ void problem2();        //Gaddis 6thEd Chap7 Prob4 - Monkey Business
 void problem3();        //Gaddis 6thEd Chap7 Prob13 - Grade Book
 void problem4();        //Gaddis 6thEd Chap7 Prob7 - Lowercase to Uppercase Converter
 void problem5();        //Gaddis 6thEd Chap7 Prob10 - Payroll
-void problem6();        //Gaddis 6thEd Chap7 Prob
-void problem7();        //Gaddis 6thEd Chap7 Prob
+void problem6();        //Gaddis 6thEd Chap7 Prob11 - Driver's License Exam
+void problem7();        //Gaddis 6thEd Chap8 Prob1 - Charge Account Validation
 void problem8();        //Gaddis 6thEd Chap7 Prob
 void problem9();        //Gaddis 6thEd Chap7 Prob
 void problem10();       //Gaddis 6thEd Chap7 Prob
@@ -41,6 +41,7 @@ int getHour();
 float getRate();
 char getCh();
 void score(char [],char [],int, int &);
+int linSear(int [],int,int);
 
 
 //Begin execution
@@ -81,7 +82,7 @@ void menu(){
             "          *    4) Lowercase to Uppercase Converter         *" << endl <<
             "          *    5) Payroll                                  *" << endl <<
             "          *    6) Driver's License Exam                    *" << endl <<
-            "          *    7)                                          *" << endl <<
+            "          *    7) Charge Account Validation                *" << endl <<
             "          *    8)                                          *" << endl <<
             "          *    9)                                          *" << endl <<
             "          *    10)                                         *" << endl <<
@@ -423,11 +424,28 @@ void problem6(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob
- * Purpose: 
+ * Gaddis 6thEd Chap8 Prob1 - Charge Account Validation
+ * Purpose: Determine whether an account number is valid
  */
 void problem7(){
     
+    //Declare and initialize variables
+    const int SIZE=18;
+    int account[SIZE]={5658845,8080152,1005231,4520125,4562555,6545231,7895122,5552012,3852085,8777541,5050552,7576651,8451277,7825877,7881200,1302850,1250255,4581002};
+    int entry;
+    int valid;
+    
+    //User input
+    cout << "Enter your 7-digit account number: ";
+    cin >> entry;
+    cin.ignore();
+    
+    //Execute linear search to validate entered account number
+    valid=linSear(account,SIZE,entry);
+    
+    //Display whether entered number is valid
+    if(valid==(-1)) cout << "Invalid account number." << endl;
+    else cout << "Valid account number entered." << endl;
 }
 
 /*
@@ -567,4 +585,22 @@ void score(char x[], char y[], int z, int &s){
     for(int i=0; i<z; i++){
         if(x==y || x==(y-32)) s++;
     }
+}
+
+/*
+ * 
+ * 
+ */
+int linSear(int x[], int s, int y){
+    int i=0;
+    int pos=(-1);
+    bool found=false;
+    while(i<s && !found){
+        if(x[i]==y){
+            found=true;
+            pos=i;
+        }
+        i++;
+    }
+    return pos;
 }
