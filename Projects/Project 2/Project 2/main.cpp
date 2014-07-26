@@ -23,8 +23,8 @@ int getN();
 void menSel(int);
 void rules();
 void setting(int &,int &);
-void getCode(char &[]);
-void mstrmind();
+void getCode(char &[],char &[],int);
+void mstrmind(int,int,char);
 void cntinue();
 
 //Begin execution
@@ -221,37 +221,38 @@ void setting(int &x, int&y){
  * 
  * 
  */
-void getCode(){
+void getCode(char &code[], char &arr[], int length){
     //Declare and initialize variables
     const int SIZE=12;
+    
     //Randomly generate the 'code' to be cracked
-    char color[SIZE]="K";           //Array of colors chosen for the code, initialized to K, for comparison check
-    char userCol[SIZE]="K";         //Variable for user's color selections, initialized to K, for comparison check
-    for(int i=0; i<numCol; i++){
+    code[SIZE]="K";     //Array of colors chosen for the code, initialized to K, for comparison check
+    arr[SIZE]="K";      //Variable for user's color selections, initialized to K, for comparison check
+    for(int i=0; i<length; i++){
         int colNum=rand()%6+1;      //Switch operator for assigning color numbers
         switch(colNum){
             case 1:{
-                color[i]='R';
+                code[i]='R';
                 break;
             }
             case 2:{
-                color[i]='O';
+                code[i]='O';
                 break;
             }
             case 3:{
-                color[i]='Y';
+                code[i]='Y';
                 break;
             }
             case 4:{
-                color[i]='G';
+                code[i]='G';
                 break;
             }
             case 5:{
-                color[i]='B';
+                code[i]='B';
                 break;
             }
             case 6:{
-                color[i]='P';
+                code[i]='P';
                 break;
             }
         }
@@ -266,10 +267,11 @@ void mstrmind(int length, int turns, char code[]){
     
     //Declare and initialize variables
     int counter=1;              //Keeps track of guess attempts
+    bool loop=true;
 
     //Output game information
-    cout << numCol << " colors have been chosen, and placed into a random order." << endl <<
-            "You have " << numTurn << " turns to crack the code and prove that you are a Mastermind!" << endl <<
+    cout << length << " colors have been chosen, and placed into a random order." << endl <<
+            "You have " << turns << " turns to crack the code and prove that you are a Mastermind!" << endl <<
             "The colors available are Red (R), Orange (O), Yellow (Y), Green (G), Blue (B), Purple (P)." << endl <<
             "(Enter your guesses with capital letters, in the form of XXXX, i.e. RORY)" << endl <<
             "+ = correct color, correct position," << endl <<
@@ -354,4 +356,14 @@ void mstrmind(int length, int turns, char code[]){
         counter++;
     }while(counter<=numTurn);   //End of do-while loop for guessing
     counter=1;                  //Resets guess counter for next game
+}
+
+/*
+ * 
+ * 
+ */
+void cntinue(){
+    char x;
+    cout << "Press any key to continue." << endl;
+    cin.get(x);
 }
