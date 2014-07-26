@@ -342,10 +342,10 @@ void problem4(){
     
     //User input
     do{
-    cout << "Enter any string of characters, up to 25 characters in length: " << endl;
-    cin >> word;
-    length=word.size();
-    cin.ignore();
+        cout << "Enter any string of characters, up to 25 characters in length: " << endl;
+        cin >> word;
+        length=word.size();
+        cin.ignore();
     }while(length>25);
     
     //Convert string to char array
