@@ -217,6 +217,7 @@ void problem1(){
     //User inputs
     for(int i=0; i<10; i++){
         num[i]=getNum();
+        cin.ignore();
     }
     
     //Find largest and smallest
@@ -515,15 +516,22 @@ void problem10(){
     
     //Declare and initialize variables
     const int SIZE=8;
-    int array1[SIZE]={1425,2536,3625,2514,7845,4512,2154,5487};
-    int array2[SIZE]={1425,2536,3625,2514,7845,4512,2154,5487};
+    int array1[SIZE];
+    int array2[SIZE];
+    for(int i=0; i<SIZE; i++){
+        array1[i]=rand()%9999+1;
+    }
+    for(int i=0; i<SIZE; i++){
+        array2[i]=array1[i];
+    }
     
     //Sort and display each step
-    cout << "Original array order is:" << array1[0];
+    cout << "Original array order is:" << endl << 
+            array1[0];
     for(int i=1; i<SIZE; i++){
         cout << ", " << array1[i];
     }
-    cout << endl;
+    cout << endl << endl;
     cout << "This is the bubble sort:" << endl;
     bubSort(array1,SIZE);
     cout << endl << endl << "This is the selection sort:" << endl;
@@ -726,7 +734,7 @@ void bubSort(int arr[], int s){
     int temp;
     do{
         swap=false;
-        for(int i=0; i<s; i++){
+        for(int i=0; i<(s-1); i++){
             if(arr[i]>arr[i+1]){
                 temp=arr[i];
                 arr[i]=arr[i+1];
