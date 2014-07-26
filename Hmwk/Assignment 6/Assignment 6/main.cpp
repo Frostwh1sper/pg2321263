@@ -37,7 +37,7 @@ string getName();
 float getGrad();
 float getAver(float [][4], int);
 void shwGrad(float,string);
-string propNam(string);
+
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -353,7 +353,7 @@ void problem4(){
 }
 
 /*
- * Gaddis 6thEd Chap7 Prob8 - Proper Words
+ * Gaddis 6thEd Chap7 Prob
  * Purpose: 
  */
 void problem5(){
@@ -487,7 +487,3 @@ void shwGrad(float x, string y){
  * 
  * 
  */
-string propNam(string x, int l){
-    if(x[0]>97 && x[0]<122) x[0]-=32;
-    return x;
-}
