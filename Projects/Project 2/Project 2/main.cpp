@@ -16,7 +16,7 @@ using namespace std;
 //User Libraries
 
 //Global Constants
-const int SIZE=4;
+const int SIZE=12;
 const int COL=4;
 
 //Function Prototypes
@@ -25,17 +25,25 @@ int getN();
 bool menSel();
 void rules();
 void setting(int &);
-void getCode(char &[],char &[]);
-void mstrmind(int,char [],char []);
+void mstrmind(int);
 void cntinue();
-void guess(char &[][COL],int);
-void check(char [],char [][COL],int &,int);
+void attempt(int &,int,char []);
 void board(char [][COL],int);
 
 //Begin execution
 int main(int argc, char** argv) {
     
+    //Declare and initialize variables
+    bool game;
     
+    do{
+        //Display menu
+        menu();
+
+        //Make menu choice
+        game=menSel();
+        
+    }while(game);
     
     //Finish him!!
     return 0;
@@ -103,8 +111,8 @@ bool menSel(){
 
         //Game begins
         case 3:{
-            getCode(code,guess);
-            mstrmind(COL,numTurn,code,guess);
+            string(50,'\n');
+            mstrmind(numTurn);
             break;
         }
 
@@ -157,13 +165,15 @@ void setting(int&turns){
  * 
  * 
  */
-void getCode(char &code[], char &arr[]){
-    //Declare and initialize variables
+void mstrmind(int turns){
     
+    //Declare and initialize variables
+    int counter=0;
+    char guess[SIZE][COL];
+    char code[COL];                      //Array of colors chosen for the code, initialized to K, for comparison check
     
     //Randomly generate the 'code' to be cracked
-    code[SIZE]="K";     //Array of colors chosen for the code, initialized to K, for comparison check
-    arr[SIZE]="K";      //Variable for user's color selections, initialized to K, for comparison check
+    srand(time(0));
     for(int i=0; i<COL; i++){
         int colNum=rand()%6+1;      //Switch operator for assigning color numbers
         switch(colNum){
@@ -193,27 +203,30 @@ void getCode(char &code[], char &arr[]){
             }
         }
     }
-}
-
-/*
- * 
- * 
- */
-void mstrmind(int turns, char code[], char guess[][COL]){
     
-    //Declare and initialize variables
-    int counter=1;
+    //Output game information
+    cout << "A color code of four (4) colors has been generated." << endl <<
+            "You have " << turns << " turns to crack the code!" << endl <<
+            "The colors you can choose from are:" << endl <<
+            "Red (R), Orange (O), Yellow (Y), Green (G), Blue (B), Purple (P)" << endl <<
+            "Entered guesses must be in the format of XXXX (i.e. RORY)" << endl <<
+            "+ = Correct position" << endl <<
+            "~ = Correct color in wrong position" << endl << endl;
+    
+    //Display code for debugging purposes
+    for(int i=0; i<COL; i++){
+        cout << code[i] << " ";
+    }
+    cout << endl;
     
     do{
         //User input
-        guess(guess,counter);
+        attempt(counter,turns,code);
         
-        //Check guess against code and output results
-        check(code,guess,counter,turns);
         counter++;
         
-        //Display board
-        board();
+        //Display board and past guesses
+        
         
     }while(counter<turns);
 }
@@ -222,12 +235,15 @@ void mstrmind(int turns, char code[], char guess[][COL]){
  * 
  * 
  */
-void guess(char &guess[][COL], int counter){
+void attempt(int &counter, int turns, char code[]){
     string colStrg;
+    char guess[SIZE][COL];
+    char check[COL];
+    char temp[COL];
     bool loop;
     do{
         loop=false;
-        cout << "Attempt " << counter << ":";
+        cout << "                        Attempt " << counter+1 << ":";
             cin >> colStrg;
         for(int i=0; i<COL; i++){
             guess[counter][i]=colStrg[i];
@@ -237,23 +253,25 @@ void guess(char &guess[][COL], int counter){
             loop=true;
         }
         for(int i=0; i<COL; i++){
-            if(guess[i]!='R'
-             &&guess[i]!='O'
-             &&guess[i]!='Y'
-             &&guess[i]!='G'
-             &&guess[i]!='B'
-             &&guess[i]!='P'){    //If any guessed colors don't match the valid color inputs
+            if(guess[counter][i]!='R'
+             &&guess[counter][i]!='O'
+             &&guess[counter][i]!='Y'
+             &&guess[counter][i]!='G'
+             &&guess[counter][i]!='B'
+             &&guess[counter][i]!='P'){    //If any guessed colors don't match the valid color inputs
                 cout << "Invalid entry." << endl;
+                loop=true;
             }
         }
     }while(loop);   //End of user guess do-while loop
-}
-
-/*
- * 
- * 
- */
-void check(char code[], char guess[][COL], int &counter, int turns){
+    
+    //Transcribe guess and code into a check array
+    for(int i=0; i<COL; i++){
+        check[i]=guess[counter][i];
+    }
+    for(int i=0; i<COL; i++){
+        temp[i]=code[i];
+    }
     
     //Declare and initialize variables
     int posCorr=0;
@@ -261,30 +279,26 @@ void check(char code[], char guess[][COL], int &counter, int turns){
     
     //Find Correct color in correct place
     for(int i=0; i<COL; i++){
-        if(guess[i]==code[i]){
+        if(check[i]==temp[i]){
             posCorr++;
-            guess[i]='Z';         //Removes guessed color from future consideration
+            temp[i]='Z';
+            check[i]='X';         //Removes guessed color from future consideration
         }
     }
     //Find correct color in wrong place
     for(int i=0; i<COL; i++){
         for(int n=0; n<COL; n++){
-            if(code[i]==guess[n]){
+            if(temp[i]==check[n]){
                 colCorr++;
-                guess[n]='Z';
+                check[n]='X';   //Removes guessed color from future consideration
                 n=COL;
             }
         }
     }
     
     //Output results of comparison
+    board(guess,counter);
     cout << string(posCorr,'+') << string(colCorr,'~') << endl;
-    
-    //Output in the event of a completely correct guess
-    if(posCorr==COL){
-        cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
-        counter=turns;
-    }
     
     //Output in the event of running out of turns
     if(counter==turns){
@@ -293,6 +307,14 @@ void check(char code[], char guess[][COL], int &counter, int turns){
             cout << code[i] << " ";
         }
         cout << endl;
+        cntinue();
+    }
+    
+    //Output in the event of a completely correct guess
+    if(posCorr==COL){
+        cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
+        counter=turns;
+        cntinue();
     }
 }
 
@@ -301,7 +323,10 @@ void check(char code[], char guess[][COL], int &counter, int turns){
  * 
  */
 void board(char guess[][COL], int counter){
-    
+    for(int n; n<COL; n++){
+        cout << " | " << guess[counter][n];
+    }
+    cout << " |   ";
 }
 
 /*
