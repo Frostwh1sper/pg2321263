@@ -28,7 +28,7 @@ void setting(int &);
 void getCode(char &[],char &[]);
 void mstrmind(int,char [],char []);
 void cntinue();
-void guess(char &[],int,int);
+void guess(char &[],int);
 void check(char [],char [],int &,int);
 
 //Begin execution
@@ -207,7 +207,7 @@ void mstrmind(int turns, char code[], char guess[]){
  * 
  * 
  */
-void guess(char &guess[][COL], int COL, int counter){
+void guess(char &guess[][COL], int counter){
     string colStrg;
     bool loop;
     do{
