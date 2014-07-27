@@ -79,6 +79,8 @@ void menu(){
 int getN(){
     int n;
     cin >> n;
+    cin.ignore();
+    cout << string(50,'\n');
     return n;
 }
 
@@ -156,7 +158,7 @@ void setting(int&turns){
     //Choose number or turns to crack the code
     do{
         cout << "How many turns do you think you can crack the code in? (8-12, default is 10) ";
-        cin >> turns;
+        turns=getN();
         if(turns<8 || turns >12) cout << "Invalid input." << endl;
     }while(turns<8 || turns >12);
 }
@@ -213,11 +215,13 @@ void mstrmind(int turns){
             "+ = Correct position" << endl <<
             "~ = Correct color in wrong position" << endl << endl;
     
+    /*
     //Display code for debugging purposes
     for(int i=0; i<COL; i++){
         cout << code[i] << " ";
     }
     cout << endl;
+    */
     
     do{
         //User input
@@ -243,8 +247,9 @@ void attempt(int &counter, int turns, char code[]){
     bool loop;
     do{
         loop=false;
-        cout << "                                 Attempt " << counter+1 << ":";
+        cout << " |   |   |   |   |     Attempt " << counter+1 << ":";
             cin >> colStrg;
+            cin.ignore();
         for(int i=0; i<COL; i++){
             guess[counter][i]=colStrg[i];
         }
@@ -312,7 +317,7 @@ void attempt(int &counter, int turns, char code[]){
     
     //Output in the event of a completely correct guess
     if(posCorr==COL){
-        cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
+        cout << "Congratulations on cracking the code in " << counter+1 << " turns!" << endl << endl << endl;
         counter=turns;
         cntinue();
     }
@@ -337,5 +342,6 @@ void cntinue(){
     char x;
     cout << "Press any key to continue." << endl;
     cin.get(x);
+    cout << string(50,'\n');
 }
 
