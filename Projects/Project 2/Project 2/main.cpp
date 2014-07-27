@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
         //Make menu choice
         game=menSel();
         
-    }while(game);
+    }while(game);   //End of game loop
     
     //Finish him!!
     return 0;
@@ -51,7 +51,10 @@ int main(int argc, char** argv) {
 
 /*
  * Function which displays the main menu
- * 
+ * Input:
+ *      none
+ * Output:
+ *      none
  */
 void menu(){
     cout << "        _______________________________________________________        " << endl <<
@@ -90,7 +93,6 @@ int getN(){
  *      none
  * Output:
  *      game
- * 
  */
 bool menSel(){
     int numTurn=10;             //Number of turns to crack the code (defaulted to 10)
@@ -136,8 +138,11 @@ bool menSel(){
 }
 
 /*
- * 
- * 
+ * Function to display the rules of the game
+ * Input:
+ *      none
+ * Output:
+ *      none
  */
 void rules(){
     cout << "The idea of the game is for one player (the code-breaker) to guess the secret code chosen" << endl << 
@@ -150,10 +155,13 @@ void rules(){
 }
 
 /*
- * 
- * 
+ * Function to change the number of turns allowed for cracking the code
+ * Input:
+ *      turns
+ * Output:
+ *      none
  */
-void setting(int&turns){
+void setting(int &turns){
     
     //Choose number or turns to crack the code
     do{
@@ -164,8 +172,11 @@ void setting(int&turns){
 }
 
 /*
- * 
- * 
+ * Function which executes the mastermind game
+ * Input:
+ *      turns
+ * Output:
+ *      none
  */
 void mstrmind(int turns){
     
@@ -224,20 +235,17 @@ void mstrmind(int turns){
     */
     
     do{
-        //User input
         attempt(counter,turns,code);
-        
         counter++;
-        
-        //Display board and past guesses
-        
-        
     }while(counter<turns);
 }
 
 /*
- * 
- * 
+ * Function which receives and checks the accuracy of code guesses
+ * Input:
+ *      counter, turns, code
+ * Output:
+ *      none
  */
 void attempt(int &counter, int turns, char code[]){
     string colStrg;
@@ -286,8 +294,8 @@ void attempt(int &counter, int turns, char code[]){
     for(int i=0; i<COL; i++){
         if(check[i]==temp[i]){
             posCorr++;
-            temp[i]='Z';
-            check[i]='X';         //Removes guessed color from future consideration
+            temp[i]='Z';        //Removes matched code segment from future consideration
+            check[i]='X';       //Removes guessed color from future consideration
         }
     }
     //Find correct color in wrong place
@@ -324,8 +332,11 @@ void attempt(int &counter, int turns, char code[]){
 }
 
 /*
- * 
- * 
+ * Function which displays the guessed code in a "board-like" manner
+ * Input:
+ *      guess, counter
+ * Output:
+ *      none
  */
 void board(char guess[][COL], int counter){
     for(int n; n<COL; n++){
@@ -335,8 +346,11 @@ void board(char guess[][COL], int counter){
 }
 
 /*
- * 
- * 
+ * Function which pauses code execution, waiting for key-press
+ * Input:
+ *      none
+ * Output:
+ *      none
  */
 void cntinue(){
     char x;
