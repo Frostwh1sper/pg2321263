@@ -243,7 +243,7 @@ void attempt(int &counter, int turns, char code[]){
     bool loop;
     do{
         loop=false;
-        cout << "                        Attempt " << counter+1 << ":";
+        cout << "                                 Attempt " << counter+1 << ":";
             cin >> colStrg;
         for(int i=0; i<COL; i++){
             guess[counter][i]=colStrg[i];
