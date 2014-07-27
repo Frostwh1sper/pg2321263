@@ -27,8 +27,9 @@ void setting(int &,int &);
 void getCode(char &[],char &[],int);
 void mstrmind(int,int,char []);
 void cntinue();
-void guess();
-void check();
+void guess(char &[]);
+void check(char [],char []);
+void guess(char &[]);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -262,8 +263,7 @@ void mstrmind(int length, int turns, char code[]){
     
     //Declare and initialize variables
     int counter=1;              //Keeps track of guess attempts
-    char userCol[turns][SIZE];
-    string colStrg;
+    char guess[turns][SIZE];  //Array of player guesses
     bool loop=true;
 
     //Output game information
@@ -282,76 +282,32 @@ void mstrmind(int length, int turns, char code[]){
     }
     cout << endl << endl;
     */
-
-    //User guesses
+    
     do{
-        do{
-            loop=false;
-            cout << "Attempt " << counter << ":";
-                cin >> colStrg;
-            for(int i=0; i<length; i++){
-                userCol[counter][i]=colStrg[i];
-            }
-            if(colStrg.size()!=length){ //If incorrect number of colors entered
-                cout << "Invalid entry." << endl;
-                loop=true;
-            }
-            for(int i=0; i<length; i++){
-                if(userCol[i]!='R'
-                 &&userCol[i]!='O'
-                 &&userCol[i]!='Y'
-                 &&userCol[i]!='G'
-                 &&userCol[i]!='B'
-                 &&userCol[i]!='P'){    //If any guessed colors don't match the valid color inputs
-                    cout << "Invalid entry." << endl;
-                    loop=true;
-                }
-            }
+        //User guesses
+        guess(guess,length,counter);
 
-        }while(loop);   //End of user guess do-while loop
-        loop=true;
+        
 
-    //Compare values
-        //Find Correct color in correct place
-        for(int i=0; i<length; i++){
-            if(userCol[i]==color[i]){
-                posCorr++;
-                userCol[i]='Z';         //Removes guessed color from future consideration
-            }
-        }
-            //Find correct color in wrong place
-        for(int i=0; i<length; i++){
-            for(int n=0; n<length; n++){
-                if(color[i]==userCol[n]){
-                    colCorr++;
-                    userCol[n]='Z';
-                    n=length;
-                }
-            }
-        }
-
-    //Output results of comparison
-        cout << string(posCorr,'+') << string(colCorr,'~') << endl;
-
-    //Output in the event of running out of turns
-        if(counter==numTurn){
+        //Output in the event of running out of turns
+        if(counter==turns){
             cout << "You have run out of turns. The correct combination was: ";
-            for(int i=0; i<numCol; i++){
-                cout << color[i] << " ";
+            for(int i=0; i<length; i++){
+                cout << code[i] << " ";
             }
             cout << endl;
         }
 
-    //Output in the event of a completely correct guess
-        if(posCorr==numCol){
+        //Output in the event of a completely correct guess
+        if(posCorr==length){
             cout << "Congratulations on cracking the code in " << counter << " turns!" << endl << endl << endl;
-            counter=numTurn;
+            counter=turns;
         }
 
         colCorr=0;
         posCorr=0;
         counter++;
-    }while(counter<=numTurn);   //End of do-while loop for guessing
+    }while(counter<=turns);   //End of do-while loop for guessing
     counter=1;                  //Resets guess counter for next game
 }
 
@@ -359,16 +315,63 @@ void mstrmind(int length, int turns, char code[]){
  * 
  * 
  */
-void guess(){
-    
+void guess(char &guess[], int length, int counter){
+    string colStrg;
+    bool loop;
+    do{
+        loop=false;
+        cout << "Attempt " << counter << ":";
+            cin >> colStrg;
+        for(int i=0; i<length; i++){
+            guess[counter][i]=colStrg[i];
+        }
+        if(colStrg.size()!=length){ //If incorrect number of colors entered
+            cout << "Invalid entry." << endl;
+            loop=true;
+        }
+        for(int i=0; i<length; i++){
+            if(guess[i]!='R'
+             &&guess[i]!='O'
+             &&guess[i]!='Y'
+             &&guess[i]!='G'
+             &&guess[i]!='B'
+             &&guess[i]!='P'){    //If any guessed colors don't match the valid color inputs
+                cout << "Invalid entry." << endl;
+            }
+        }
+    }while(loop);   //End of user guess do-while loop
 }
 
 /*
  * 
  * 
  */
-void check(){
+void check(char code[], char guess[], int length){
     
+    //Declare and initialize variables
+    int posCorr=0;
+    int colCorr=0;
+    
+    //Find Correct color in correct place
+    for(int i=0; i<length; i++){
+        if(guess[i]==code[i]){
+            posCorr++;
+            guess[i]='Z';         //Removes guessed color from future consideration
+        }
+    }
+    //Find correct color in wrong place
+    for(int i=0; i<length; i++){
+        for(int n=0; n<length; n++){
+            if(code[i]==guess[n]){
+                colCorr++;
+                guess[n]='Z';
+                n=length;
+            }
+        }
+    }
+    
+    //Output results of comparison
+    cout << string(posCorr,'+') << string(colCorr,'~') << endl;
 }
 
 /*
