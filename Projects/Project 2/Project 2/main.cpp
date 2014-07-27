@@ -28,8 +28,9 @@ void setting(int &);
 void getCode(char &[],char &[]);
 void mstrmind(int,char [],char []);
 void cntinue();
-void guess(char &[],int);
-void check(char [],char [],int &,int);
+void guess(char &[][COL],int);
+void check(char [],char [][COL],int &,int);
+void board(char [][COL],int);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -198,9 +199,23 @@ void getCode(char &code[], char &arr[]){
  * 
  * 
  */
-void mstrmind(int turns, char code[], char guess[]){
+void mstrmind(int turns, char code[], char guess[][COL]){
     
+    //Declare and initialize variables
+    int counter=1;
     
+    do{
+        //User input
+        guess(guess,counter);
+        
+        //Check guess against code and output results
+        check(code,guess,counter,turns);
+        counter++;
+        
+        //Display board
+        board();
+        
+    }while(counter<turns);
 }
 
 /*
@@ -238,7 +253,7 @@ void guess(char &guess[][COL], int counter){
  * 
  * 
  */
-void check(char code[], char guess[], int &counter, int turns){
+void check(char code[], char guess[][COL], int &counter, int turns){
     
     //Declare and initialize variables
     int posCorr=0;
@@ -279,6 +294,14 @@ void check(char code[], char guess[], int &counter, int turns){
         }
         cout << endl;
     }
+}
+
+/*
+ * 
+ * 
+ */
+void board(char guess[][COL], int counter){
+    
 }
 
 /*
