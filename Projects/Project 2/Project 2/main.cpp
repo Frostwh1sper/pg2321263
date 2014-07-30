@@ -406,4 +406,3 @@ void cntinue(){
     cin.get(x);
     cout << string(50,'\n');
 }
-
