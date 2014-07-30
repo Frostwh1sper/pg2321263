@@ -30,6 +30,7 @@ void mstrmind(int);
 void cntinue();
 void attempt(int &,int,char []);
 void board(char [][COL],int);
+void compare(char [],char [],int &,int &);
 
 //Begin execution
 int main(int argc, char** argv) {
@@ -306,24 +307,8 @@ void attempt(int &counter, int turns, char code[]){
     int posCorr=0;
     int colCorr=0;
     
-    //Find Correct color in correct place
-    for(int i=0; i<COL; i++){
-        if(check[i]==temp[i]){
-            posCorr++;
-            temp[i]='Z';        //Removes matched code segment from future consideration
-            check[i]='X';       //Removes guessed color from future consideration
-        }
-    }
-    //Find correct color in wrong place
-    for(int i=0; i<COL; i++){
-        for(int n=0; n<COL; n++){
-            if(temp[i]==check[n]){
-                colCorr++;
-                check[n]='X';   //Removes guessed color from future consideration
-                n=COL;
-            }
-        }
-    }
+    //Execute check function to find correct color and position
+    compare(check,temp,posCorr,colCorr);
     
     //Output results of comparison
     board(guess,counter);
@@ -405,4 +390,25 @@ void cntinue(){
     cout << endl << endl << "Press any key to continue." << endl;
     cin.get(x);
     cout << string(50,'\n');
+}
+
+void compare(char check[],char temp[],int &pos,int &col){
+    //Find Correct color in correct place
+    for(int i=0; i<COL; i++){
+        if(check[i]==temp[i]){
+            pos++;
+            temp[i]='Z';        //Removes matched code segment from future consideration
+            check[i]='X';       //Removes guessed color from future consideration
+        }
+    }
+    //Find correct color in wrong place
+    for(int i=0; i<COL; i++){
+        for(int n=0; n<COL; n++){
+            if(temp[i]==check[n]){
+                col++;
+                check[n]='X';   //Removes guessed color from future consideration
+                n=COL;
+            }
+        }
+    }
 }
